@@ -1,0 +1,51 @@
+Feature: Home Page(Download Cloud Agent)
+
+Background: Common Steps for all scenarios
+    Given Launch Chrome Browser
+    When Opens URL "https://www1.faronicsbeta.com/"
+    And Enters Email as "nikhilg@alohatechnologydev.com"
+    And Click on NextButton
+    And Enter Password as "Aloha@123"
+    And Click on Login
+    Then Page Title Should be "Deep Freeze Cloud"
+
+@sanity
+  Scenario: TC0001 Download Windows installer and make sure it should be downloaded correctly.
+    And click on Policy tab
+    And click on Add Policy button
+    And Select policy type Deep Freeze Windows
+    And Enter Policy Name as "Test"
+    And Select DEEP FREEZE Product
+    And Click for Enable DeepFreeze Product
+    And Select Deep Freeze setting as "2"
+    And Save the policy
+    And Click on Download Agent
+    And Select newly created policy from Policy: dropdown
+    And Select download type "Download the installer to install on any computer."
+    Then Click on Download button
+    And Windows installer downloaded successfully
+    And Close browser
+@regression
+  Scenario: TC0002 Download MSI installer and make sure it should be downloaded correctly.
+    And Click on Download Agent
+    Then Select newly created policy from Policy: dropdown
+    And Select MSI download type "Download MSI installer to deploy via Active Directory."
+    Then Click on Download button
+    And MSI installer downloaded successfully
+    And Close browser
+
+  Scenario: TC0003 Download Deployment Utility and make sure it should be downloaded correctly.
+    And Click on Download Agent
+    Then Select newly created policy from Policy: dropdown
+    And Select Deployment Utility type "Download the Deployment Utility to detect and install on any computer."
+    Then Click on Download button
+    And Deployment Utility downloaded successfully
+    And Close browser
+
+  Scenario: TC0004 Download Full installer and make sure it should be downloaded correctly.
+    And Click on Download Agent
+    Then Select newly created policy from Policy: dropdown
+    And Select Full Installer type "Download the full installer to save bandwidth (for large deployments)."
+    Then Click on Download button for download Full Installer
+    And Full Installer downloaded successfully
+    And Close browser
