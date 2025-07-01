@@ -1,0 +1,30 @@
+/test-output/
+# Ignore IntelliJ / Eclipse
+*.iml
+.idea/
+.project
+.classpath
+
+# Ignore build/test output
+/test-output/
+/target/
+/build/
+/Download/
+# Ignore logs and temp
+*.log
+*.tmp
+*.bak
+
+# Ignore screenshots and big files
+*.png
+*.jpg
+*.jpeg
+*.zip
+
+# Maven/Gradle wrappers
+.mvn/
+.gradle/
+
+# OS junk files
+.DS_Store
+Thumbs.db

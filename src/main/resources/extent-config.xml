@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+  <configuration>
+
+    <!-- Report theme: standard | dark -->
+    <theme>dark</theme>
+
+    <!-- Document encoding -->
+    <encoding>UTF-8</encoding>
+
+    <!-- Protocol for script and stylesheets (http | https) -->
+    <protocol>https</protocol>
+
+    <!-- Title of the document (browser tab name) -->
+    <documentTitle>DeepFreeze Automation Report</documentTitle>
+
+    <!-- Report name displayed in the top navigation -->
+    <reportName>DeepFreeze Web UI – Automation Test Summary</reportName>
+
+    <!-- Global date format override -->
+    <dateFormat>dd-MMM-yyyy</dateFormat>
+
+    <!-- Global time format override -->
+    <timeFormat>hh:mm:ss a</timeFormat>
+
+    <!-- Enable Timeline Chart -->
+    <timelineEnabled>true</timelineEnabled>
+
+    <!-- Enable offline mode (no external dependencies) -->
+    <offlineMode>true</offlineMode>
+
+    <!-- Show Category View (like tags/modules) -->
+    <categoryViewVisible>true</categoryViewVisible>
+
+    <!-- Logo support: optional
+    <logo>path/to/logo.png</logo>
+    -->
+
+    <!-- Custom JavaScript (optional)
+    <scripts>
+        <![CDATA[
+            // custom JS if needed
+        ]]>
+    </scripts>
+    -->
+
+    <!-- Custom CSS (optional)
+    <styles>
+        <![CDATA[
+            /* custom CSS if needed */
+        ]]>
+    </styles>
+    -->
+
+  </configuration>
+</extentreports>
