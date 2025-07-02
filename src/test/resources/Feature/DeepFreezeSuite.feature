@@ -1,5 +1,5 @@
 Feature: DeepFreezeSuite
-@nik
+
   Scenario: TC001 Successful Login with Valid Credentials
     Given Launch Chrome Browser
     When Opens URL "https://www1.faronicsbeta.com/"
@@ -13,9 +13,7 @@ Feature: DeepFreezeSuite
     And Close browser
     
     
-    
-@nik1
-  Scenario Outline: TC002 Successful Login with Valid Credentials DDT
+     Scenario Outline: TC002 Successful Login with Valid Credentials DDT
     Given Launch Chrome Browser
     When Opens URL "https://www1.faronicsbeta.com/"
     And Enters Email as "<emails>"
