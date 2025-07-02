@@ -1,10 +1,15 @@
 package PageObject;
 
 
+import java.time.Duration;
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class PageObjectForDeepFreezeSuite {
@@ -93,7 +98,132 @@ public class PageObjectForDeepFreezeSuite {
     @FindBy(xpath = "(//label[@for='rdMac'])[1]")
     WebElement SelectDownloaderTypeeMac;
     
+    @FindBy(xpath = "//a[normalize-space()='COMPUTERS']")
+    WebElement ComputersPage;
     
+    @FindBy(xpath = "//div[@aria-label='Search in data grid']//input[@role='textbox']")
+    WebElement SearchBoxOnComputersPage;
+    
+    @FindBy(xpath = "//img[@id=\"imgmysitedownaarow\"]")
+    WebElement SiteDropDown;
+    
+    @FindBy(xpath = "(//a[@title=' Migration '])[1]")
+    WebElement SelectSite;
+    
+    @FindBy(xpath = "//td[@aria-label='Column Policy, Value Automation test']")
+    WebElement ClickOnPolicy;
+    
+    @FindBy(xpath = "//li[@id='li_WINSELECT']//div[@class='sidebar-product-names']")
+    WebElement SelectProductWINSELECT;
+    
+    @FindBy(xpath = "//select[@id='ddPolicySettingsWinSelect']")
+    WebElement ClickOnEnablePolicyDropDown;
+    
+    @FindBy(xpath = "//option[@value='EnabledWithoutInheritance']")
+    WebElement EnableWINSELECT;
+    
+    @FindBy(xpath = "//input[@id='btnSave']")
+    WebElement SaveBtn;
+    
+    @FindBy(xpath = "//input[@id='policyupdateref']")
+    WebElement checkRadioBtn;
+    
+    @FindBy(xpath = "//button[@id='btnWUOk']")
+    WebElement clickOK;
+    
+    @FindBy(xpath = "(//div[@title='Enabled'])[302]") // Status when installed
+	public WebElement WinSelectStatusEnabled;
+
+    @FindBy(xpath = "(//div[@title='Not Installed'])[302]") // Status when not installed
+    WebElement WinSelectStatusNotInstalled;
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+   
+    public boolean waitForWinSelectInstallationStatus(int timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(timeoutSeconds));
+        try {
+            wait.until(ExpectedConditions.visibilityOf(WinSelectStatusEnabled));
+            return true; // Status turned green
+        } catch (Exception e) {
+            return false; // Timeout or element not found
+        }
+    }
+    
+    public void clickok() {
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(clickOK)).click();
+   	 
+    }
+    
+    public void checkradiobtn()
+    {
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(checkRadioBtn)).click();
+    }
+    
+    public void Savebtn() {
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(SaveBtn)).click();
+    	
+    	    }
+    
+    public void ClickOnWINSELECTToEnableFromDropDown() {
+    	
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(EnableWINSELECT)).click();
+    	    }
+    
+    
+    public void ClickOnEnablePolicyDropdown()
+    {
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
+    
+	}
+    
+    public void ClickONWINSELECT()
+    {
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(SelectProductWINSELECT)).click();
+    	
+    }
+    
+    public void ClickOnPolicyName()
+    {
+    	 WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+    	 wait.until(ExpectedConditions.elementToBeClickable(ClickOnPolicy)).click();
+    	
+    	
+    }
+    
+    public void SelectRelatedSite() {
+        WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(SelectSite)).click();
+    }
+    
+    public void clickOnSiteDropDown() 
+    {
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(SiteDropDown)).click();
+    	
+    }
+   
+    
+    public void searchComputerByName(String computerName) throws InterruptedException {
+    	SearchBoxOnComputersPage.click();
+    	SearchBoxOnComputersPage.clear();
+        SearchBoxOnComputersPage.sendKeys(computerName);
+        // Optional: press Enter if search doesn't auto trigger
+         SearchBoxOnComputersPage.sendKeys(Keys.ENTER);
+         Thread.sleep(4000);
+    }
+    
+    public void clickonComputersPage()
+	{
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+   	 wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click();
+    	
+	}
     
     public void enterEmailID(String emailAddress)
     {

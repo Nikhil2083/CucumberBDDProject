@@ -8,6 +8,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
 import PageObject.PageObjectForDeepFreezeSuite;
 import Utilities.FileUtils;
 import Utilities.ReadConfig;
@@ -368,6 +370,89 @@ public void mac_installer_downloaded_successfully() throws InterruptedException 
 }
 
 
+
+
+//////////////////////////////////////////Product install and  uninstall using policy////////////////////////////////////////
+
+
+
+
+@Then("Goto Switch site option")
+public void goto_switch_site_option() throws InterruptedException {
+    DeepFreezeSuitePg.clickOnSiteDropDown();
 }
 
+@Then("Click on Computers Page")
+public void click_on_computers_page() {
+   DeepFreezeSuitePg.clickonComputersPage();
+}
+
+@Then("Select Related Site")
+public void select_related_site() {
+  DeepFreezeSuitePg.SelectRelatedSite();
+}
+
+@Then("Search Computer Name {string}")
+public void search_computer_name(String computerName) throws InterruptedException {
+    DeepFreezeSuitePg.searchComputerByName(computerName);
+}
+
+
+@Then("click on assigned policy name")
+public void click_on_assigned_policy_name() {
+   DeepFreezeSuitePg.ClickOnPolicyName();
+}
+
+@Then("Click on DeepFreeze Product- WINSELECT")
+public void click_on_deep_freeze_product_winselect() {
+    DeepFreezeSuitePg.ClickONWINSELECT();
+}
+
+@Then("Click on Enable product dropdown")
+public void click_on_enable_product_dropdown() {
+ DeepFreezeSuitePg.ClickOnWINSELECTToEnableFromDropDown();
+}
+
+
+@Then("Enable DeepFreeze Product- WINSELECT")
+public void enable_deep_freeze_product_winselect() {
+ DeepFreezeSuitePg.ClickOnEnablePolicyDropdown();
+}
+
+@Then("Click on Save button")
+public void click_on_save_button() {
+    DeepFreezeSuitePg.Savebtn();
+}
+
+@Then("On Policy Update Preference window select- Notify the user immediately when the computer checks-in and restart after {int} minutes.")
+public void on_policy_update_preference_window_select_notify_the_user_immediately_when_the_computer_checks_in_and_restart_after_minutes(Integer int1) {
+  DeepFreezeSuitePg.checkradiobtn();
+}
+
+@Then("On Policy Update Preference window click OK")
+public void on_policy_update_preference_window_click_ok() {
+DeepFreezeSuitePg.clickok();
+}
+
+@Then("check WINSELECT status indicator should be green")
+public void check_winselect_status_indicator_should_be_green() {
+	boolean status = DeepFreezeSuitePg.waitForWinSelectInstallationStatus(3600); // Wait up to 1hr mins
+    Assert.assertTrue("❌ WINSelect product was not installed within expected time.", status);
+    log.info("✅ WINSelect installation verified on computers page.");
+}
+
+@Then("Mouse hover on the WINSELECT status indicator")
+
+	public void mouse_hover_on_the_winselect_status_indicator() throws InterruptedException {
+	    Actions actions = new Actions(driver);
+	    actions.moveToElement(DeepFreezeSuitePg.WinSelectStatusEnabled).perform();
+	    log.info("Hovered on WINSelect status indicator.");
+	    Thread.sleep(15000);
+}
+
+
+
+
+
+}
 
