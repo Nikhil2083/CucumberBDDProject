@@ -2,6 +2,7 @@ package PageObject;
 
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -132,14 +133,14 @@ public class PageObjectForDeepFreezeSuite {
     @FindBy(xpath = "//button[@id='btnWUOk']")
     WebElement clickOK;
     
-    @FindBy(xpath = "(//div[@title='Enabled'])[302]") // Status when installed
-	public WebElement WinSelectStatusEnabled;
+   // @FindBy(xpath = "(//div[@title='Enabled'])[302]") // Status when installed
+	//public WebElement WinSelectStatusEnabled;
 
     @FindBy(xpath = "(//div[@title='Not Installed'])[302]") // Status when not installed
     WebElement WinSelectStatusNotInstalled;
     
-    @FindBy(xpath = "(//div[@title='Enabled (Outdated)'])[1]")
-    WebElement WinSelectStatusEnabledOutdated;
+ //   @FindBy(xpath = "(//div[@title='Enabled (Outdated)'])[1]")
+//	public WebElement WinSelectStatusEnabledOutdated;
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
    
@@ -147,13 +148,14 @@ public class PageObjectForDeepFreezeSuite {
     public boolean waitForWinSelectInstallationStatus(int timeoutSeconds) {
         WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(timeoutSeconds));
         try {
-            wait.until(ExpectedConditions.or(
-                ExpectedConditions.visibilityOf(WinSelectStatusEnabled),
-                ExpectedConditions.visibilityOf(WinSelectStatusEnabledOutdated)
-            ));
-            return true;
+            return wait.until(driver -> {
+                List<WebElement> enabledElements = driver.findElements(By.xpath("//div[@title='Enabled']"));
+                List<WebElement> outdatedElements = driver.findElements(By.xpath("//div[@title='Enabled (Outdated)']"));
+
+                return !enabledElements.isEmpty() || !outdatedElements.isEmpty();
+            });
         } catch (Exception e) {
-            return false; // Neither of the statuses appeared within timeout
+            return false;
         }
     }
     
@@ -205,8 +207,11 @@ public class PageObjectForDeepFreezeSuite {
     }
     
     public void SelectRelatedSite() {
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(SelectSite)).click();
+        WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+        By relatedSiteLocator = By.xpath("//a[@title=' Migration ']");
+
+        WebElement relatedSiteElement = wait.until(ExpectedConditions.elementToBeClickable(relatedSiteLocator));
+        relatedSiteElement.click();
     }
     
     public void clickOnSiteDropDown() 
