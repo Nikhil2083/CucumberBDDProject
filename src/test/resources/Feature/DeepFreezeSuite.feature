@@ -1,5 +1,5 @@
 Feature: DeepFreezeSuite
-
+@test
   Scenario: TC001 Successful Login with Valid Credentials
     Given Launch Chrome Browser
     When Opens URL "https://www1.faronicsbeta.com/"
@@ -12,7 +12,7 @@ Feature: DeepFreezeSuite
     And click on Logout
     And Close browser
     
-    
+    @test
      Scenario Outline: TC002 Successful Login with Valid Credentials DDT
     Given Launch Chrome Browser
     When Opens URL "https://www1.faronicsbeta.com/"
@@ -29,4 +29,5 @@ Feature: DeepFreezeSuite
     Examples: 
       | emails                         | passwords |
       | nikhilg@alohatechnologydev.com | Aloha@123 |
+      | Nikhilgurav@gmail.com		   | Aloha@123 |
  

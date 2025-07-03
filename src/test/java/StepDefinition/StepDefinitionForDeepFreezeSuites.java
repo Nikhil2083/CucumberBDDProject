@@ -5,12 +5,9 @@ import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-
 import PageObject.PageObjectForDeepFreezeSuite;
 import Utilities.FileUtils;
 import Utilities.ReadConfig;
@@ -27,8 +24,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 //child class of base class
 public class StepDefinitionForDeepFreezeSuites extends BaseClass {
-	private static boolean isLoggedIn = false;
 	
+	private static boolean isLoggedIn = false;
+//	PageObjectForDeepFreezeSuite df = new PageObjectForDeepFreezeSuite();
 
 	////////////////////////before/////////////////////////////////////////
 	
@@ -274,7 +272,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 
 	@Then("Windows installer downloaded successfully")
 	public void verify_agent_download() {  String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-    String expectedFile = "FWAWebInstaller_Test.exe";
+    String expectedFile = "FWAWebInstaller_Faronics Default.exe";
 
     boolean isDownloaded = FileUtils.isFileDownloaded(downloadDir, expectedFile, 30);
     Assert.assertTrue("❌ Download failed!", isDownloaded);
@@ -292,7 +290,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	@Then("MSI installer downloaded successfully")
 	public void msi_installer_downloaded_successfully() {
 		String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-		String expectedFileName = "WebAgent_Test.msi";
+		String expectedFileName = "WebAgent_Faronics Default.msi";
 
 		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 30);
 		Assert.assertTrue("❌ Agent download failed!", isDownloaded);
@@ -309,7 +307,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	@Then("Deployment Utility downloaded successfully")
 	public void deployment_utility_downloaded_successfully() {
 		String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-		String expectedFileName = "DeploymentUtility_Test.exe";
+		String expectedFileName = "DeploymentUtility_Faronics Default.exe";
 
 		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 30);
 		Assert.assertTrue("❌ Agent download failed!", isDownloaded);
@@ -324,7 +322,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	public void full_installer_downloaded_successfully() throws InterruptedException {
 
 		String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-		String expectedFileName = "FullFWAWebInstaller_Test.exe";
+		String expectedFileName = "FullFWAWebInstaller_Faronics Default.exe";
 
 		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 30);
 		Assert.assertTrue("❌ Agent download failed!", isDownloaded);
@@ -435,29 +433,41 @@ public void on_policy_update_preference_window_click_ok() {
 DeepFreezeSuitePg.clickok();
 }
 
+
 @Then("check WINSELECT status indicator should be green")
 public void check_winselect_status_indicator_should_be_green() {
-	boolean status = DeepFreezeSuitePg.waitForWinSelectInstallationStatus(3600); // Wait up to 1hr mins
-    Assert.assertTrue("❌ WINSelect product was not installed within expected time.", status);
-    log.info("✅ WINSelect installation verified on computers page.");
+    log.info("⏳ Waiting for WINSELECT to be installed and status to appear (Enabled / Outdated)...");
+    boolean statusIsGreen = DeepFreezeSuitePg.waitForWinSelectInstalledAndHover(3600); // 1 hour wait
+    Assert.assertTrue("❌ WINSELECT not installed or mouse hover failed.", statusIsGreen);
+    log.info("✅ WINSELECT status verified and mouse hover held for 30 seconds.");
 }
 
 @Then("Mouse hover on the WINSELECT status indicator")
-public void mouse_hover_on_the_winselect_status_indicator() throws InterruptedException {
-    WebElement elementToHover;
-
-    if (DeepFreezeSuitePg.WinSelectStatusEnabled.isDisplayed()) {
-        elementToHover = DeepFreezeSuitePg.WinSelectStatusEnabled;
-    } else {
-        elementToHover = DeepFreezeSuitePg.WinSelectStatusEnabledOutdated;
-    }
-
-    Actions actions = new Actions(driver);
-    actions.moveToElement(elementToHover).perform();
-    log.info("Hovered on WINSelect status indicator.");
-    Thread.sleep(15000);
+public void mouse_hover_on_the_winselect_status_indicator() {
+    log.info("✅ Mouse hover already performed during status check.");
 }
 
+
+@Then("Click on product dropdown")
+public void click_on_product_dropdown() {
+    DeepFreezeSuitePg.ClickOnDisablePolicyDropdown();
+    log.info("Click on product dropdown.");
+}
+
+@Then("Disable DeepFreeze Product- WINSELECT")
+public void disable_deep_freeze_product_winselect() {
+  DeepFreezeSuitePg.disabledproductfromdropdown();
+  log.info("Disabled product from dropdown.");
+}
+
+
+@Then("check WINSELECT status indicator should be grey")
+public void check_winselect_status_indicator_should_be_grey() {
+    log.info("⏳ Waiting for WINSELECT to be uninstalled (status grey)...");
+    boolean isUninstalled = DeepFreezeSuitePg.waitForWinSelectUninstalledAndHover(3600); // 1 hour
+    Assert.assertTrue("❌ WINSELECT not uninstalled or hover failed.", isUninstalled);
+    log.info("✅ WINSELECT status is grey and hover held for 30 seconds.");
+}
 
 
 

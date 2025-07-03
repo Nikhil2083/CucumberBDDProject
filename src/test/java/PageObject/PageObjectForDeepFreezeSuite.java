@@ -2,12 +2,11 @@ package PageObject;
 
 
 import java.time.Duration;
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -133,31 +132,94 @@ public class PageObjectForDeepFreezeSuite {
     @FindBy(xpath = "//button[@id='btnWUOk']")
     WebElement clickOK;
     
-   // @FindBy(xpath = "(//div[@title='Enabled'])[302]") // Status when installed
-	//public WebElement WinSelectStatusEnabled;
+   @FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Enabled']") // Status when installed
+	public WebElement WinSelectStatusEnabled;
 
-    @FindBy(xpath = "(//div[@title='Not Installed'])[302]") // Status when not installed
+    @FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Not Installed']") // Status when not installed
     WebElement WinSelectStatusNotInstalled;
     
- //   @FindBy(xpath = "(//div[@title='Enabled (Outdated)'])[1]")
-//	public WebElement WinSelectStatusEnabledOutdated;
+   @FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Enabled (Outdated)']")
+	public WebElement WinSelectStatusEnabledOutdated;
+   
+   @FindBy(xpath = "//option[@value='Disabled']")
+   WebElement DisabledProduct;
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
    
-        
-    public boolean waitForWinSelectInstallationStatus(int timeoutSeconds) {
-        WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(timeoutSeconds));
-        try {
-            return wait.until(driver -> {
-                List<WebElement> enabledElements = driver.findElements(By.xpath("//div[@title='Enabled']"));
-                List<WebElement> outdatedElements = driver.findElements(By.xpath("//div[@title='Enabled (Outdated)']"));
+   public void disabledproductfromdropdown () {
+	   DisabledProduct.click();
+   }
+   
+   
+   public void ClickOnDisablePolicyDropdown()
+   {
+   	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+  	 wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
+   
+	}
+   public boolean waitForWinSelectUninstalledAndHover(int maxWaitInSeconds) {
+	    Actions actions = new Actions(ldriver);
+	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 
-                return !enabledElements.isEmpty() || !outdatedElements.isEmpty();
-            });
-        } catch (Exception e) {
-            return false;
-        }
-    }
+	    long endTime = System.currentTimeMillis() + (maxWaitInSeconds * 1000);
+
+	    while (System.currentTimeMillis() < endTime) {
+	        try {
+	            if (WinSelectStatusNotInstalled.isDisplayed()) {
+	                actions.moveToElement(WinSelectStatusNotInstalled).perform();
+	                Thread.sleep(30000); // 30 sec hover
+	                return true;
+	            }
+	        } catch (Exception ignored) {}
+
+	        try {
+	            Thread.sleep(15000); // wait before retry
+	            ldriver.navigate().refresh();
+	            wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return false; // timeout
+	}
+   
+   public boolean waitForWinSelectInstalledAndHover(int maxWaitInSeconds) {
+	    Actions actions = new Actions(ldriver);
+	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+
+	    long endTime = System.currentTimeMillis() + (maxWaitInSeconds * 1000);
+
+	    while (System.currentTimeMillis() < endTime) {
+	        try {
+	            if (WinSelectStatusEnabled.isDisplayed()) {
+	                actions.moveToElement(WinSelectStatusEnabled).perform();
+	                Thread.sleep(30000); // 🕒 Hover for 30 sec
+	                return true;
+	            }
+	        } catch (Exception ignored) { }
+
+	        try {
+	            if (WinSelectStatusEnabledOutdated.isDisplayed()) {
+	                actions.moveToElement(WinSelectStatusEnabledOutdated).perform();
+	                Thread.sleep(30000); // 🕒 Hover for 30 sec
+	                return true;
+	            }
+	        } catch (Exception ignored) { }
+
+	        try {
+	            Thread.sleep(15000); // wait 15 sec before next try
+	            ldriver.navigate().refresh();
+	            wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click(); // reopen Computers tab
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return false; // Timeout
+	}
+    
+    
     
     public void clickok() {
     	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
@@ -215,7 +277,9 @@ public class PageObjectForDeepFreezeSuite {
     }
     
     public void clickOnSiteDropDown() 
-    {
+    { 
+    	
+    	ldriver.navigate().refresh();
     	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
    	 wait.until(ExpectedConditions.elementToBeClickable(SiteDropDown)).click();
     	
