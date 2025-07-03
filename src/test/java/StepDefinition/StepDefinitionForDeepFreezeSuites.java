@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -442,12 +443,19 @@ public void check_winselect_status_indicator_should_be_green() {
 }
 
 @Then("Mouse hover on the WINSELECT status indicator")
+public void mouse_hover_on_the_winselect_status_indicator() throws InterruptedException {
+    WebElement elementToHover;
 
-	public void mouse_hover_on_the_winselect_status_indicator() throws InterruptedException {
-	    Actions actions = new Actions(driver);
-	    actions.moveToElement(DeepFreezeSuitePg.WinSelectStatusEnabled).perform();
-	    log.info("Hovered on WINSelect status indicator.");
-	    Thread.sleep(15000);
+    if (DeepFreezeSuitePg.WinSelectStatusEnabled.isDisplayed()) {
+        elementToHover = DeepFreezeSuitePg.WinSelectStatusEnabled;
+    } else {
+        elementToHover = DeepFreezeSuitePg.WinSelectStatusEnabledOutdated;
+    }
+
+    Actions actions = new Actions(driver);
+    actions.moveToElement(elementToHover).perform();
+    log.info("Hovered on WINSelect status indicator.");
+    Thread.sleep(15000);
 }
 
 

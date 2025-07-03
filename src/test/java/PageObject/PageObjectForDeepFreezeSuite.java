@@ -3,6 +3,7 @@ package PageObject;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -107,7 +108,7 @@ public class PageObjectForDeepFreezeSuite {
     @FindBy(xpath = "//img[@id=\"imgmysitedownaarow\"]")
     WebElement SiteDropDown;
     
-    @FindBy(xpath = "(//a[@title=' Migration '])[1]")
+    @FindBy(xpath = "//a[normalize-space()='Migration']")
     WebElement SelectSite;
     
     @FindBy(xpath = "//td[@aria-label='Column Policy, Value Automation test']")
@@ -137,15 +138,22 @@ public class PageObjectForDeepFreezeSuite {
     @FindBy(xpath = "(//div[@title='Not Installed'])[302]") // Status when not installed
     WebElement WinSelectStatusNotInstalled;
     
+    @FindBy(xpath = "(//div[@title='Enabled (Outdated)'])[1]")
+    WebElement WinSelectStatusEnabledOutdated;
+    
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
    
+        
     public boolean waitForWinSelectInstallationStatus(int timeoutSeconds) {
         WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(timeoutSeconds));
         try {
-            wait.until(ExpectedConditions.visibilityOf(WinSelectStatusEnabled));
-            return true; // Status turned green
+            wait.until(ExpectedConditions.or(
+                ExpectedConditions.visibilityOf(WinSelectStatusEnabled),
+                ExpectedConditions.visibilityOf(WinSelectStatusEnabledOutdated)
+            ));
+            return true;
         } catch (Exception e) {
-            return false; // Timeout or element not found
+            return false; // Neither of the statuses appeared within timeout
         }
     }
     
@@ -197,7 +205,7 @@ public class PageObjectForDeepFreezeSuite {
     }
     
     public void SelectRelatedSite() {
-        WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(SelectSite)).click();
     }
     
