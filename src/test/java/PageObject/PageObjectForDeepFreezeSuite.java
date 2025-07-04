@@ -69,11 +69,13 @@ public class PageObjectForDeepFreezeSuite {
     @FindBy(xpath = "//span[text()='Download Agent']")
     WebElement ClickONDownloadAhentbtn;
     
-    @FindBy(xpath = "//select[@id=\"policyId\"]")
-    WebElement SelectPolicyName;
+    @FindBy(xpath = "//select[@id='policyId']")
+    WebElement SelectPolicyNameDropDown;
     
-    @FindBy(xpath = "//option[@value='62']")
+    @FindBy(xpath = "//option[@value='56']")
     WebElement SelectPolicy;
+    
+    
     
     @FindBy(xpath = "//label[@for='RDOInst']")
     WebElement SelectDownloadTypeFromList;
@@ -108,8 +110,15 @@ public class PageObjectForDeepFreezeSuite {
     @FindBy(xpath = "//img[@id=\"imgmysitedownaarow\"]")
     WebElement SiteDropDown;
     
-    @FindBy(xpath = "//a[normalize-space()='Migration']")
+    @FindBy(xpath = "//div[@class='site_header']//li[3]")
     WebElement SelectSite;
+    
+//    @FindBy(xpath = "//a[normalize-space(text())='Migration']")
+//    WebElement migrationLink;
+//
+//    public void clickMigration() {
+//        ((JavascriptExecutor) ldriver).executeScript("arguments[0].click();", migrationLink);
+//    }
     
     @FindBy(xpath = "//td[@aria-label='Column Policy, Value Automation test']")
     WebElement ClickOnPolicy;
@@ -143,8 +152,59 @@ public class PageObjectForDeepFreezeSuite {
    
    @FindBy(xpath = "//option[@value='Disabled']")
    WebElement DisabledProduct;
-    
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+   
+   ///////////////////////////////////////////////////////////
+   
+   
+   @FindBy(xpath = "//span[@title='Tags Management']")
+   WebElement ClickTagManagentTab;
+   
+   @FindBy(id="addTag_Ticket")
+   WebElement clickaddtagonticket;
+   
+   @FindBy(id="txtTagName")
+   WebElement entertickettagunderaddtickettagtextfailed;
+   
+   @FindBy(id="btnAddTagOk")
+   WebElement btnAddTagOk;
+   
+   @FindBy(xpath = "//span[contains(@class,'abstractText') and contains(text(),'Test1')]")
+   WebElement tickettagisaddedsuccessfully;
+   
+   
+   
+///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
+   
+   
+   
+   
+   
+   public void checktickettagisaddedsuccessfully() throws InterruptedException {
+	   Thread.sleep(2000);
+	   tickettagisaddedsuccessfully.click();
+   }
+  
+   public void entertickettagunderaddtickettagtextfailedandsave() throws InterruptedException {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(entertickettagunderaddtickettagtextfailed)).sendKeys("Test1");
+	  	 Thread.sleep(2000);
+	     btnAddTagOk.click();
+   }
+   
+   public void ontagmanagementpageclickonaddtickets() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
+  	 wait.until(ExpectedConditions.elementToBeClickable(clickaddtagonticket)).click();
+  }
+   
+   public void clicktagmanagementtab() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(ClickTagManagentTab)).click();
+	      }
+   
+   
+   
+   
+   ////////////////////////////////////////////////////////////////////////////////////////
    
    public void disabledproductfromdropdown () {
 	   DisabledProduct.click();
@@ -269,11 +329,7 @@ public class PageObjectForDeepFreezeSuite {
     }
     
     public void SelectRelatedSite() {
-        WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-        By relatedSiteLocator = By.xpath("//a[@title=' Migration ']");
-
-        WebElement relatedSiteElement = wait.until(ExpectedConditions.elementToBeClickable(relatedSiteLocator));
-        relatedSiteElement.click();
+       SelectSite.click();
     }
     
     public void clickOnSiteDropDown() 
@@ -367,11 +423,13 @@ public class PageObjectForDeepFreezeSuite {
     {
     	ClickONDownloadAhentbtn.click();
     }
+    
     public void selectnNewlyCreatedPolicy() throws InterruptedException
     {
-    	SelectPolicyName.click();
-    	Thread.sleep(2000);
-    	SelectPolicy.click();
+    	SelectPolicyNameDropDown.click();
+   	 Thread.sleep(2000);
+   	   SelectPolicy.click();
+    
     }
 
 		
@@ -395,7 +453,9 @@ public class PageObjectForDeepFreezeSuite {
 	}
 	public void SelectFullInstallerType()
 	{
-		SelectFullInstallerTypeFromList.click();
+				
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(3600));
+	   	 wait.until(ExpectedConditions.elementToBeClickable(SelectFullInstallerTypeFromList)).click();
 	}
 	public void Downloadbtnn() throws InterruptedException
 	{

@@ -3,11 +3,15 @@ package StepDefinition;
 import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
 import PageObject.PageObjectForDeepFreezeSuite;
 import Utilities.FileUtils;
 import Utilities.ReadConfig;
@@ -26,7 +30,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	
 	private static boolean isLoggedIn = false;
-//	PageObjectForDeepFreezeSuite df = new PageObjectForDeepFreezeSuite();
+	PageObjectForDeepFreezeSuite df = new PageObjectForDeepFreezeSuite(driver);
 
 	////////////////////////before/////////////////////////////////////////
 	
@@ -98,6 +102,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         if (scenario.isFailed()) {
             Thread.sleep(1000);
             ScreenshotUtil.capture(driver, scenario.getName());
+            Thread.sleep(20000);
         }
     }
 
@@ -136,7 +141,53 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     
     
  ////////////////////////step definition code from till///////////////////////////////////
-	
+
+    
+    
+    
+   /////////////////////////////// Tags Management Page//////////////////////////////
+    
+    @Then("Click Tags Management tab")
+    public void click_tags_management_tab() {
+        DeepFreezeSuitePg.clicktagmanagementtab();
+    }
+    @Then("On Tag Management page click on Add Tickets")
+    public void on_tag_management_page_click_on_add_tickets() {
+        DeepFreezeSuitePg.ontagmanagementpageclickonaddtickets();
+    }
+    
+    @Then("Enter Ticket Tag under Add Ticket Tag text failed and save- {string}")
+    public void enter_ticket_tag_under_add_ticket_tag_text_failed_and_save(String Test1) throws InterruptedException {
+       DeepFreezeSuitePg.entertickettagunderaddtickettagtextfailedandsave();
+       
+    }
+    @Then("check ticket tag is added successfully.")
+    public void check_ticket_tag_is_added_successfully() throws InterruptedException {
+        DeepFreezeSuitePg.checktickettagisaddedsuccessfully();
+    }
+
+    @Then("click on delete X tab")
+    public void click_on_delete_x_tab() throws InterruptedException {
+    	Actions ac=new Actions(driver);
+    	   WebElement deleteicon=driver.findElement(By.xpath("//div[@id='dvTMblueTag_31']"));
+    	   ac.moveToElement(deleteicon).build().perform();
+    	  Thread.sleep(2000);
+ //   	   WebElement deletex=driver.findElement(By.xpath("//img[@id='deleteImage_31']"));
+//    	   ac.moveToElement(deletex).click().build().perform();
+    	   driver.findElement(By.xpath("//img[@id='deleteImage_4']")).click();
+    }
+    @Then("Are you sure you wish to delete the tag, click on Delete")
+    public void are_you_sure_you_wish_to_delete_the_tag_click_on_delete() {
+     
+    }
+    @Then("Check Entered Ticket Tag is deleted properly")
+    public void check_entered_ticket_tag_is_deleted_properly() {
+        
+    }
+    
+  //////////////////////////////launch browser////////////////////////////////////  
+    
+    
     @Given("Launch Chrome Browser")
 	public void launch_chrome_browser() {
 
@@ -272,7 +323,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 
 	@Then("Windows installer downloaded successfully")
 	public void verify_agent_download() {  String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-    String expectedFile = "FWAWebInstaller_Faronics Default.exe";
+    String expectedFile = "FWAWebInstaller_Test.exe";
 
     boolean isDownloaded = FileUtils.isFileDownloaded(downloadDir, expectedFile, 30);
     Assert.assertTrue("❌ Download failed!", isDownloaded);
@@ -290,9 +341,9 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	@Then("MSI installer downloaded successfully")
 	public void msi_installer_downloaded_successfully() {
 		String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-		String expectedFileName = "WebAgent_Faronics Default.msi";
+		String expectedFileName = "WebAgent_Test.msi";
 
-		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 30);
+		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 3600);
 		Assert.assertTrue("❌ Agent download failed!", isDownloaded);
 	}
 
@@ -307,7 +358,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	@Then("Deployment Utility downloaded successfully")
 	public void deployment_utility_downloaded_successfully() {
 		String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-		String expectedFileName = "DeploymentUtility_Faronics Default.exe";
+		String expectedFileName = "DeploymentUtility_Test.exe";
 
 		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 30);
 		Assert.assertTrue("❌ Agent download failed!", isDownloaded);
@@ -316,15 +367,16 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	@Then("Select Full Installer type {string}")
 	public void select_full_installer_type(String string) {
 		DeepFreezeSuitePg.SelectFullInstallerType();
+		
 	}
 
 	@Then("Full Installer downloaded successfully")
 	public void full_installer_downloaded_successfully() throws InterruptedException {
 
 		String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
-		String expectedFileName = "FullFWAWebInstaller_Faronics Default.exe";
+		String expectedFileName = "FullFWAWebInstaller_Test.exe";
 
-		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 30);
+		boolean isDownloaded = Utilities.FileUtils.isFileDownloaded(downloadDir, expectedFileName, 3600);
 		Assert.assertTrue("❌ Agent download failed!", isDownloaded);
 	}
 
@@ -376,19 +428,20 @@ public void mac_installer_downloaded_successfully() throws InterruptedException 
 
 
 
-@Then("Goto Switch site option")
-public void goto_switch_site_option() throws InterruptedException {
-    DeepFreezeSuitePg.clickOnSiteDropDown();
-}
+
 
 @Then("Click on Computers Page")
 public void click_on_computers_page() {
    DeepFreezeSuitePg.clickonComputersPage();
 }
+@Then("Goto Switch site option")
+public void goto_switch_site_option() throws InterruptedException {
+    DeepFreezeSuitePg.clickOnSiteDropDown();
+}
 
 @Then("Select Related Site")
 public void select_related_site() {
-  DeepFreezeSuitePg.SelectRelatedSite();
+    DeepFreezeSuitePg.SelectRelatedSite();
 }
 
 @Then("Search Computer Name {string}")
