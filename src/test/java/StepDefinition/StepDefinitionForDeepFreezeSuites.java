@@ -169,20 +169,18 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     @Then("click on delete X tab")
     public void click_on_delete_x_tab() throws InterruptedException {
     	Actions ac=new Actions(driver);
-    	   WebElement deleteicon=driver.findElement(By.xpath("//div[@id='dvTMblueTag_31']"));
-    	   ac.moveToElement(deleteicon).build().perform();
+    	   WebElement deleteicon=driver.findElement(By.xpath("//img[@title='Delete']"));
+    	   ac.moveToElement(deleteicon).click().build().perform();
     	  Thread.sleep(2000);
- //   	   WebElement deletex=driver.findElement(By.xpath("//img[@id='deleteImage_31']"));
-//    	   ac.moveToElement(deletex).click().build().perform();
-    	   driver.findElement(By.xpath("//img[@id='deleteImage_4']")).click();
+
     }
     @Then("Are you sure you wish to delete the tag, click on Delete")
     public void are_you_sure_you_wish_to_delete_the_tag_click_on_delete() {
-     
+       DeepFreezeSuitePg.deletetagfromtickettag();
     }
     @Then("Check Entered Ticket Tag is deleted properly")
-    public void check_entered_ticket_tag_is_deleted_properly() {
-        
+    public void check_entered_ticket_tag_is_deleted_properly() throws InterruptedException {
+    	DeepFreezeSuitePg.verifyTicketTagDeleted();
     }
     
   //////////////////////////////launch browser////////////////////////////////////  

@@ -2,7 +2,8 @@ package PageObject;
 
 
 import java.time.Duration;
-import org.openqa.selenium.By;
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 
 public class PageObjectForDeepFreezeSuite {
@@ -153,6 +155,7 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//option[@value='Disabled']")
    WebElement DisabledProduct;
    
+     
    ///////////////////////////////////////////////////////////
    
    
@@ -171,12 +174,32 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//span[contains(@class,'abstractText') and contains(text(),'Test1')]")
    WebElement tickettagisaddedsuccessfully;
    
+   @FindBy(id ="btnDeleteTagOK")
+   WebElement Deletetickettag;
+   
+   @FindBy(xpath = "//ul[@id='Ticket']/li")
+   List<WebElement> ticketTags;
    
    
 ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
    
+   public void verifyTicketTagDeleted() throws InterruptedException {
+	   Thread.sleep(2000); 
+	   if (ticketTags.isEmpty()) {
+	        System.out.println("✅ Ticket tag deleted successfully. No tags found under Ticket section.");
+	    } else {
+	        System.out.println("❌ Ticket tag deletion failed. Found " + ticketTags.size() + " tag(s).");
+	        for (WebElement tag : ticketTags) {
+	            System.out.println("Tag still present: " + tag.getText());
+	        }
+	        Assert.fail("Tag still exists under Ticket section after deletion.");
+	    }
+	   Thread.sleep(2000); 
+	}
    
-   
+   public void deletetagfromtickettag() {
+	   Deletetickettag.click();
+   }
    
    
    public void checktickettagisaddedsuccessfully() throws InterruptedException {
