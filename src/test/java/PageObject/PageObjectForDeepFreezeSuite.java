@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -171,7 +172,7 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(id="btnAddTagOk")
    WebElement btnAddTagOk;
    
-   @FindBy(xpath = "//span[contains(@class,'abstractText') and contains(text(),'Test1')]")
+   @FindBy(xpath = "//span[@class='abstractText']")
    WebElement tickettagisaddedsuccessfully;
    
    @FindBy(id ="btnDeleteTagOK")
@@ -180,8 +181,64 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//ul[@id='Ticket']/li")
    List<WebElement> ticketTags;
    
+   @FindBy(id = "addTag_Normal")
+   WebElement addTagNormal;
+   
+   @FindBy(id = "txtTagName")
+   WebElement entertagname;
+   
+   @FindBy(id = "btnAddTagOk")
+   WebElement clickonOK;
+   
+   @FindBy(xpath = "//ul[@id='Normal']//span[contains(normalize-space(), 'Test1')]")
+   WebElement addedTag;
+   
+   @FindBy(id = "normal_tag")
+   List<WebElement> NormalTags;
    
 ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
+   
+   public void verifyNormalTagDeleted() throws InterruptedException {
+	   Thread.sleep(2000); 
+	   if (NormalTags.isEmpty()) {
+	        System.out.println("✅ Ticket tag deleted successfully. No tags found under Ticket section.");
+	    } else {
+	        System.out.println("❌ Ticket tag deletion failed. Found " + NormalTags.size() + " tag(s).");
+	        for (WebElement tag : NormalTags) {
+	            System.out.println("Tag still present: " + tag.getText());
+	        }
+	        Assert.fail("Tag still exists under Ticket section after deletion.");
+	    }
+	   Thread.sleep(3000); 
+	}
+   
+   public void verifyTagIsAddedSuccessfully() throws InterruptedException {
+	    Thread.sleep(2000); // Wait for tag to appear
+
+	    try {
+	        if (addedTag.isDisplayed()) {
+	            System.out.println("✅ Ticket tag added successfully: " + addedTag.getText());
+	        } else {
+	            System.out.println("❌ Ticket tag element is not displayed.");
+	            Assert.fail("Ticket tag was not displayed after adding.");
+	        }
+	    } catch (NoSuchElementException e) {
+	        System.out.println("❌ Ticket tag element not found in DOM.");
+	        Assert.fail("Ticket tag not added or not present in DOM.");
+	    }
+	}
+   
+   public void entertagnametextbox() throws InterruptedException {
+	  WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+ 	 wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");  
+ 	 Thread.sleep(2000);
+ 	clickonOK.click();
+  }
+  
+   public void addtagnormal() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+  	 wait.until(ExpectedConditions.elementToBeClickable(addTagNormal)).click();
+	   }
    
    public void verifyTicketTagDeleted() throws InterruptedException {
 	   Thread.sleep(2000); 
@@ -202,10 +259,21 @@ public class PageObjectForDeepFreezeSuite {
    }
    
    
-   public void checktickettagisaddedsuccessfully() throws InterruptedException {
-	   Thread.sleep(2000);
-	   tickettagisaddedsuccessfully.click();
-   }
+   public void checkTicketTagIsAddedSuccessfully() throws InterruptedException {
+	    Thread.sleep(2000); // Wait for tag to appear
+
+	    try {
+	        if (tickettagisaddedsuccessfully.isDisplayed()) {
+	            System.out.println("✅ Ticket tag added successfully: " + tickettagisaddedsuccessfully.getText());
+	        } else {
+	            System.out.println("❌ Ticket tag element is not displayed.");
+	            Assert.fail("Ticket tag was not displayed after adding.");
+	        }
+	    } catch (NoSuchElementException e) {
+	        System.out.println("❌ Ticket tag element not found in DOM.");
+	        Assert.fail("Ticket tag not added or not present in DOM.");
+	    }
+	}
   
    public void entertickettagunderaddtickettagtextfailedandsave() throws InterruptedException {
 	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));

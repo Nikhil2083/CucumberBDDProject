@@ -4,6 +4,7 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
@@ -161,19 +162,32 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
        DeepFreezeSuitePg.entertickettagunderaddtickettagtextfailedandsave();
        
     }
+    
     @Then("check ticket tag is added successfully.")
     public void check_ticket_tag_is_added_successfully() throws InterruptedException {
-        DeepFreezeSuitePg.checktickettagisaddedsuccessfully();
+        DeepFreezeSuitePg.checkTicketTagIsAddedSuccessfully();
     }
-
+    
     @Then("click on delete X tab")
     public void click_on_delete_x_tab() throws InterruptedException {
-    	Actions ac=new Actions(driver);
-    	   WebElement deleteicon=driver.findElement(By.xpath("//img[@title='Delete']"));
-    	   ac.moveToElement(deleteicon).click().build().perform();
-    	  Thread.sleep(2000);
+    	Actions actions = new Actions(driver);
 
-    }
+        WebElement tagElement = driver.findElement(By.xpath("//span[@class='abstractText']"));
+        actions.moveToElement(tagElement).perform();
+    	    	  Thread.sleep(2000);
+          // 2. Locate the delete icon which becomes visible after hover
+          WebElement deleteIcon = driver.findElement(By.xpath("//ul[@id='Ticket']//li[.//span[normalize-space()='Test1']]//img[@title='Delete']"));
+
+          // 3. Click using JavaScript (since Actions.click() fails if hidden earlier)
+          JavascriptExecutor js = (JavascriptExecutor) driver;
+          js.executeScript("arguments[0].click();", deleteIcon);
+
+          System.out.println("✅ Clicked delete icon successfully.");
+      }
+    	  
+    	  
+    	  
+ 
     @Then("Are you sure you wish to delete the tag, click on Delete")
     public void are_you_sure_you_wish_to_delete_the_tag_click_on_delete() {
        DeepFreezeSuitePg.deletetagfromtickettag();
@@ -182,6 +196,52 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void check_entered_ticket_tag_is_deleted_properly() throws InterruptedException {
     	DeepFreezeSuitePg.verifyTicketTagDeleted();
     }
+    
+    
+    
+    @Then("Click on Add Tags")
+    public void click_on_add_tags() {
+       DeepFreezeSuitePg.addtagnormal();
+    }
+    
+    @Then("Enter Tag name under Add Tag text failed and save- {string}")
+    public void enter_tag_name_under_add_tag_text_failed_and_save(String Test1) throws InterruptedException {
+       DeepFreezeSuitePg.entertagnametextbox();
+    }
+    @Then("check Tag is added successfully.")
+    public void check_tag_is_added_successfully() throws InterruptedException {
+        DeepFreezeSuitePg.verifyTagIsAddedSuccessfully();
+    }
+    
+    
+    
+    @Then("click on delete X tab on Normal Tag")
+    public void click_on_delete_x_tab_on_normal_tag() throws InterruptedException {
+        Actions actions = new Actions(driver);
+
+        WebElement tagElement = driver.findElement(By.xpath("//span[@class='abstractText']"));
+        actions.moveToElement(tagElement).perform();
+        Thread.sleep(1000); // allow UI to update
+
+        // 2. Locate the delete icon which becomes visible after hover
+        WebElement deleteIcon = driver.findElement(By.xpath("//img[@title='Delete' and contains(@id,'deleteImage')]"));
+
+        // 3. Click using JavaScript (since Actions.click() fails if hidden earlier)
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", deleteIcon);
+
+        System.out.println("✅ Clicked delete icon successfully.");
+    }
+    
+    @Then("Are you sure you wish to delete the tag normal, click on Delete")
+    public void are_you_sure_you_wish_to_delete_the_tag_normal_click_on_delete() {
+       DeepFreezeSuitePg.deletetagfromtickettag();
+    }
+    @Then("Check Entered Normal Tag is deleted properly")
+    public void check_entered_normal_tag_is_deleted_properly() throws InterruptedException {
+        DeepFreezeSuitePg.verifyNormalTagDeleted();
+    }
+
     
   //////////////////////////////launch browser////////////////////////////////////  
     
