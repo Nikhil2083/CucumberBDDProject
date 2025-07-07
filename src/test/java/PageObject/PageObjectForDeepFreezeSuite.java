@@ -193,23 +193,23 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//ul[@id='Normal']//span[contains(normalize-space(), 'Test1')]")
    WebElement addedTag;
    
-   @FindBy(id = "normal_tag")
-   List<WebElement> NormalTags;
+   @FindBy(xpath = "//ul[@id='Normal']//li")
+   List<WebElement> normalTagsList;
    
 ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
    
    public void verifyNormalTagDeleted() throws InterruptedException {
-	   Thread.sleep(2000); 
-	   if (NormalTags.isEmpty()) {
-	        System.out.println("✅ Ticket tag deleted successfully. No tags found under Ticket section.");
+	    Thread.sleep(2000); // wait for UI update
+	    if (normalTagsList.isEmpty()) {
+	        System.out.println("✅ Normal tag deleted successfully. No tags found under tag section.");
 	    } else {
-	        System.out.println("❌ Ticket tag deletion failed. Found " + NormalTags.size() + " tag(s).");
-	        for (WebElement tag : NormalTags) {
+	        System.out.println("❌ Normal tag deletion failed. Found " + normalTagsList.size() + " tag(s).");
+	        for (WebElement tag : normalTagsList) {
 	            System.out.println("Tag still present: " + tag.getText());
 	        }
-	        Assert.fail("Tag still exists under Ticket section after deletion.");
+	        Assert.fail("Tag still exists under tag section after deletion.");
 	    }
-	   Thread.sleep(3000); 
+	    Thread.sleep(3000); 
 	}
    
    public void verifyTagIsAddedSuccessfully() throws InterruptedException {

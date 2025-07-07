@@ -65,11 +65,11 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     @Before(order = 1)
     public void loginIfNotDone() {
         if (!isLoggedIn) {
-            driver.get("https://www1.faronicsbeta.com/");
+            driver.get(readConfig.getURL());
             DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
-            DeepFreezeSuitePg.enterEmailID("nikhilguravnkil@gmail.com");
+            DeepFreezeSuitePg.enterEmailID(readConfig.getUsername());
             DeepFreezeSuitePg.clickonNextBtn();
-            DeepFreezeSuitePg.enterPass("Aloha@123");
+            DeepFreezeSuitePg.enterPass(readConfig.getPassword());
             DeepFreezeSuitePg.clickonLoginBtn();
 
             isLoggedIn = true;
@@ -176,13 +176,14 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         actions.moveToElement(tagElement).perform();
     	    	  Thread.sleep(2000);
           // 2. Locate the delete icon which becomes visible after hover
-          WebElement deleteIcon = driver.findElement(By.xpath("//ul[@id='Ticket']//li[.//span[normalize-space()='Test1']]//img[@title='Delete']"));
+          WebElement deleteIcon = driver.findElement(By.xpath("//img[@title='Delete' and contains(@id,'deleteImage')]"));
 
           // 3. Click using JavaScript (since Actions.click() fails if hidden earlier)
           JavascriptExecutor js = (JavascriptExecutor) driver;
           js.executeScript("arguments[0].click();", deleteIcon);
 
           System.out.println("✅ Clicked delete icon successfully.");
+          Thread.sleep(3000);
       }
     	  
     	  
