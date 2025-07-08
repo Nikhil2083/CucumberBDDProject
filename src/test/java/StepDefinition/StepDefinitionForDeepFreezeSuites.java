@@ -12,7 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-
 import PageObject.PageObjectForDeepFreezeSuite;
 import Utilities.FileUtils;
 import Utilities.ReadConfig;
@@ -145,6 +144,98 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 
     
     
+    
+    
+    
+    ///////////////////User Management Page/////////////////////////////// 
+    
+    @Then("open email destination: {string}")
+    public void open_email_destination(String string) throws InterruptedException {
+        driver.get("https://www.guerrillamail.com");
+        log.info("Opened URL: https://www.guerrillamail.com");
+        Thread.sleep(2000);
+    }
+    @Then("uncheck Scramble Address option")
+    public void uncheck_scramble_address_option() {
+        DeepFreezeSuitePg.uncheckscambleaddress();
+    }
+    @Then("click on the invitation email from deepfreeze")
+    public void click_on_the_invitation_email_from_deepfreeze() {
+        DeepFreezeSuitePg.clickoninvitelink();
+    }
+    @Then("Click on invite link for password change")
+    public void click_on_invite_link_for_password_change() {
+        
+    }
+    @Then("On Set Password page enter New Password {string}")
+    public void on_set_password_page_enter_new_password(String string) {
+        
+    }
+    @Then("Enter Confirm New Password {string}")
+    public void enter_confirm_new_password(String string) {
+       
+    }
+    @Then("Click on OK")
+    public void click_on_ok() {
+       
+    }
+    @Then("Click on SignIN")
+    public void click_on_sign_in() {
+        
+    }
+    @Then("On My Profile page click on save button")
+    public void on_my_profile_page_click_on_save_button() {
+       
+    }
+    @Then("Verified following user are logged in {string}")
+    public void verified_following_user_are_logged_in(String string) {
+        
+    }
+    
+    
+    
+    
+    
+    @Then("click on current user")
+    public void click_on_current_user() throws InterruptedException{
+        DeepFreezeSuitePg.clickoncurrentuser();
+    }
+    @Then("Click on USER MANAGEMENT")
+    public void click_on_user_management() {
+        DeepFreezeSuitePg.clickonusermanagementbtn();
+    }
+    @Then("on USER MANAGEMENT page click on Add User dropdown and select Add New User")
+    public void on_user_management_page_click_on_add_user_dropdown_and_select_add_new_user() throws InterruptedException {
+        DeepFreezeSuitePg.clickonadduserdropdown();
+        Thread.sleep(2000);
+        DeepFreezeSuitePg.clickonaddnewuser();
+        Thread.sleep(2000);
+    }
+    @Then("On Add User popup window enter First Name:{string}")
+    public void on_add_user_popup_window_enter_first_name(String string) {
+    	DeepFreezeSuitePg.enterfirstname();
+    }
+    @Then("Enter Last Name:{string}")
+    public void enter_last_name(String string) {
+        DeepFreezeSuitePg.enterlastname();
+    }
+      
+    @Then("Enter Email: {string}")
+    public void enter_email(String string) throws InterruptedException {
+    	  DeepFreezeSuitePg.enteremail();
+          Thread.sleep(2000);
+    }
+    @Then("Click OK")
+    public void click_ok() {
+    	 DeepFreezeSuitePg.okbtn();
+         
+    }
+    
+    @Then("New user added successfully")
+    public void new_user_added_successfully() throws InterruptedException {
+        DeepFreezeSuitePg.verifyUserAddedInTable("nikhil@sharklasers.com");
+        Thread.sleep(2000);
+    }
     
    /////////////////////////////// Tags Management Page//////////////////////////////
     
@@ -339,6 +430,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
             log.warn("Page title did not match. Actual: " + actualTitle);
             Assert.fail("Title mismatch");
         }
+        driver.navigate().refresh();
     }
     
     
@@ -624,6 +716,8 @@ public void check_winselect_status_indicator_should_be_grey() {
     Assert.assertTrue("❌ WINSELECT not uninstalled or hover failed.", isUninstalled);
     log.info("✅ WINSELECT status is grey and hover held for 30 seconds.");
 }
+/////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

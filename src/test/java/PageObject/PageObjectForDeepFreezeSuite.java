@@ -4,8 +4,10 @@ package PageObject;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -205,10 +207,107 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//ul[@id='Geography']//li")
    List <WebElement> LocationTagsList;
    
+   @FindBy(xpath = "//a[contains(@id, 'logg_main') and contains(text(), 'nikhilguravnkil@gmail.com')]")
+   WebElement clickonuserbtn;
+   
+   @FindBy(id = "aLogin_User_Management")
+   WebElement clickonUserManagement;
+   
+   @FindBy(xpath = "//button[normalize-space()='Add User']")
+   WebElement clickOnAddUserDropDown;
+   
+   @FindBy(xpath = "//a[normalize-space()='Add New User']")
+   WebElement clickonAddNewUser;
+   
+   @FindBy(xpath = "//input[@id='FirstName']")
+   WebElement enterFirstName;
+   
+   @FindBy(xpath = "//input[@id='LastName']")
+   WebElement enterLastName;
+   
+   @FindBy(xpath = "//input[@id='EMailAddress']")
+   WebElement EnterEmail;
+   
+   @FindBy(xpath = "//input[@id='btnAddCloudUser']")
+   WebElement clickonOKbtn;
+  
+   @FindBy(xpath = "//a[contains(text(),'https://www1.faronicsbeta.com/en/user/Invite?token')]")
+   WebElement clickOninvitelink;
+   
+   @FindBy(xpath = "//input[@id='use-alias']")
+   WebElement uncheckScrambleAddress;
+   
    
    
 ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
    
+   
+   
+   
+   
+   
+   /////////////////////////////User Management Page/////////////////////////////////////////////
+  
+   public void uncheckscambleaddress() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(uncheckScrambleAddress)).click();
+   }
+   
+   public void clickoninvitelink() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+  	 wait.until(ExpectedConditions.elementToBeClickable(clickOninvitelink)).click();
+   }
+   
+   public void verifyUserAddedInTable(String email) {
+	    String xpath = "//td[@aria-label='Column Username, Value " + email + "']";
+	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+	    try {
+	        WebElement userCell = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+	        System.out.println("✅ User found in table: " + email);
+	    } catch (TimeoutException e) {
+	        System.out.println("❌ User NOT found: " + email);
+	        Assert.fail("User not added in table: " + email);
+	    }
+	}
+   
+   public void okbtn() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(clickonOKbtn)).click();
+   }
+   public void enteremail() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(EnterEmail)).sendKeys("nikhil@sharklasers.com");
+   }
+   public void enterlastname() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(enterLastName)).sendKeys("Automation");
+   }
+   
+   public void enterfirstname() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+  	 wait.until(ExpectedConditions.elementToBeClickable(enterFirstName)).sendKeys("Nikhil");
+   }
+   
+   public void clickonaddnewuser() {
+	   clickonAddNewUser.click();
+   }
+   public void clickonadduserdropdown() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+  	 wait.until(ExpectedConditions.elementToBeClickable(clickOnAddUserDropDown)).click();
+   }
+   
+   public void clickonusermanagementbtn() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(clickonUserManagement)).click();
+   }
+   
+   public void clickoncurrentuser() {
+	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(clickonuserbtn));
+	    clickonuserbtn.click();
+	}
+   
+   ///////////////////////////tag management page///////////////////////////////////////////////////
    
    public void verifyLocationTagDeleted() throws InterruptedException {
 	    Thread.sleep(2000); // wait for UI update
