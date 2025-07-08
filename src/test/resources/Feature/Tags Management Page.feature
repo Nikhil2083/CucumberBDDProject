@@ -33,12 +33,18 @@ And Are you sure you wish to delete the tag normal, click on Delete
 Then Check Entered Normal Tag is deleted properly
 
 
-Scenario: C5494622 Add any Location tag in tag management page and make sure tag should be added successfully.
+Scenario: TC005 C5494622 Add any Location tag in tag management page and make sure tag should be added successfully.
 Then Page Title Should be "Deep Freeze Cloud"
 Then Click Tags Management tab
+Then Click on Add Location Tags
+And Enter Location Tag name under Add Location Tag text failed and save- "Test1"
+Then check Location Tag is added successfully.
 
-Scenario: C5494623 Delete added location tag in tag management page and make sure tag should be deleted successfully.
+
+Scenario: TC006 C5494623 Delete added location tag in tag management page and make sure tag should be deleted successfully.
 Then Page Title Should be "Deep Freeze Cloud"
 Then Click Tags Management tab
-
+And click on delete X tab on Location Tag
+And Are you sure you wish to delete the tag Location, click on Delete
+Then Check Entered Location Tag is deleted properly
 

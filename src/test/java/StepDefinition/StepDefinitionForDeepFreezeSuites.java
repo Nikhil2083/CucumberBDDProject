@@ -242,6 +242,50 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void check_entered_normal_tag_is_deleted_properly() throws InterruptedException {
         DeepFreezeSuitePg.verifyNormalTagDeleted();
     }
+    
+    
+    
+    
+    @Then("Click on Add Location Tags")
+    public void click_on_add_location_tags() {
+        DeepFreezeSuitePg.addtaglocationtag();
+    }
+    
+    @Then("Enter Location Tag name under Add Location Tag text failed and save- {string}")
+    public void enter_location_tag_name_under_add_location_tag_text_failed_and_save(String string) throws InterruptedException {
+    		DeepFreezeSuitePg.enterlocationtagname();
+    }
+    
+    @Then("check Location Tag is added successfully.")
+    public void check_location_tag_is_added_successfully() throws InterruptedException {
+        DeepFreezeSuitePg.verifyTagIsAddedSuccessfullyinlocationtag();
+    }
+    
+    @Then("click on delete X tab on Location Tag")
+    public void click_on_delete_x_tab_on_location_tag() throws InterruptedException {
+        Actions actions = new Actions(driver);
+
+        WebElement tagElement = driver.findElement(By.xpath("//span[@class='abstractText']"));
+        actions.moveToElement(tagElement).perform();
+        Thread.sleep(1000); // allow UI to update
+
+        // 2. Locate the delete icon which becomes visible after hover
+        WebElement deleteIcon = driver.findElement(By.xpath("//img[@title='Delete' and contains(@id,'deleteImage')]"));
+
+        // 3. Click using JavaScript (since Actions.click() fails if hidden earlier)
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", deleteIcon);
+
+        System.out.println("✅ Clicked delete icon successfully.");
+    }
+    @Then("Are you sure you wish to delete the tag Location, click on Delete")
+    public void are_you_sure_you_wish_to_delete_the_tag_location_click_on_delete() {
+        DeepFreezeSuitePg.clickondeletelocationtagbutton();
+    }
+    @Then("Check Entered Location Tag is deleted properly")
+    public void check_entered_location_tag_is_deleted_properly() throws InterruptedException {
+        DeepFreezeSuitePg.verifyLocationTagDeleted();
+    }
 
     
   //////////////////////////////launch browser////////////////////////////////////  

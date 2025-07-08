@@ -196,7 +196,66 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//ul[@id='Normal']//li")
    List<WebElement> normalTagsList;
    
+   @FindBy(id = "addTag_Location")
+   WebElement addTagLocationTag;
+   
+   @FindBy(xpath = "//div[@id='Geography']")
+   WebElement addedlocationTag;
+   
+   @FindBy(xpath = "//ul[@id='Geography']//li")
+   List <WebElement> LocationTagsList;
+   
+   
+   
 ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
+   
+   
+   public void verifyLocationTagDeleted() throws InterruptedException {
+	    Thread.sleep(2000); // wait for UI update
+	    if (LocationTagsList.isEmpty()) {
+	        System.out.println("✅ Normal tag deleted successfully. No tags found under tag section.");
+	    } else {
+	        System.out.println("❌ Normal tag deletion failed. Found " + LocationTagsList.size() + " tag(s).");
+	        for (WebElement tag : LocationTagsList) {
+	            System.out.println("Tag still present: " + tag.getText());
+	        }
+	        Assert.fail("Tag still exists under tag section after deletion.");
+	    }
+	    Thread.sleep(3000); 
+	}
+   
+   public void clickondeletelocationtagbutton() {
+	   Deletetickettag.click();
+   }
+   
+   public void verifyTagIsAddedSuccessfullyinlocationtag() throws InterruptedException {
+	    Thread.sleep(2000); // Wait for tag to appear
+
+	    try {
+	        if (addedlocationTag.isDisplayed()) {
+	            System.out.println("✅ Ticket tag added successfully: " + addedlocationTag.getText());
+	        } else {
+	            System.out.println("❌ Ticket tag element is not displayed.");
+	            Assert.fail("Ticket tag was not displayed after adding.");
+	        }
+	    } catch (NoSuchElementException e) {
+	        System.out.println("❌ Ticket tag element not found in DOM.");
+	        Assert.fail("Ticket tag not added or not present in DOM.");
+	    }
+	}
+   
+   public void enterlocationtagname() throws InterruptedException {
+		  WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		 	 wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");  
+		 	 Thread.sleep(2000);
+		 	clickonOK.click();
+		 	Thread.sleep(2000);
+   }
+   
+   public void addtaglocationtag() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+  	 wait.until(ExpectedConditions.elementToBeClickable(addTagLocationTag)).click();
+   }
    
    public void verifyNormalTagDeleted() throws InterruptedException {
 	    Thread.sleep(2000); // wait for UI update
@@ -257,8 +316,7 @@ public class PageObjectForDeepFreezeSuite {
    public void deletetagfromtickettag() {
 	   Deletetickettag.click();
    }
-   
-   
+      
    public void checkTicketTagIsAddedSuccessfully() throws InterruptedException {
 	    Thread.sleep(2000); // Wait for tag to appear
 
