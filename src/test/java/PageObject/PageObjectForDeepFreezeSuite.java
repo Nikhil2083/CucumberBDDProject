@@ -231,14 +231,42 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//input[@id='btnAddCloudUser']")
    WebElement clickonOKbtn;
   
+   @FindBy(xpath = "//td[@class='td2' and contains(text(), 'deepfreezeweb@gmail.com')]")
+   WebElement ClickonInviteMail;
+   
    @FindBy(xpath = "//a[contains(text(),'https://www1.faronicsbeta.com/en/user/Invite?token')]")
    WebElement clickOninvitelink;
+   
    
    @FindBy(xpath = "//input[@id='use-alias']")
    WebElement uncheckScrambleAddress;
    
+   @FindBy(xpath = "//a[@id='forget_button']")
+   WebElement clickonForgetmebtn;
    
+   @FindBy(xpath = "//span[@id='inbox-id']//input[@type='text']")
+   WebElement clickonDomaintxtbox;
    
+   @FindBy(xpath = "//button[normalize-space()='Set']")
+   WebElement ClickOnSetButton;
+   
+   @FindBy(xpath = "//input[@id='txtNewPassword']")
+   WebElement EnterNewPassword;
+   
+   @FindBy(xpath = "//input[@id='txtConfirmPassword']")
+   WebElement EnterConfirmPassword;
+   
+   @FindBy(xpath = "//button[@id='btnresetpassword']")
+   WebElement enterOKbtn;
+   
+   @FindBy(xpath = "//input[@id='ProfileSave']")
+   WebElement onMyProfilePageclickonSave;
+   
+   @FindBy(xpath = "//li[@id='logg_main']//*[contains(text(),'Nikhil@sharklasers.com')]")
+   WebElement loggedInUsername;
+   
+   @FindBy(xpath = "//input[@value='GOT IT']")
+   WebElement onmainpageclickonAdGOTIT;
 ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
    
    
@@ -247,7 +275,58 @@ public class PageObjectForDeepFreezeSuite {
    
    
    /////////////////////////////User Management Page/////////////////////////////////////////////
-  
+   
+   public void onmainpageclickonadgotitbtn() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(onmainpageclickonAdGOTIT)).click();
+	      }
+   
+   public void verifyLoggedInUser() {
+	    String expected = "Nikhil@sharklasers.com";
+	    String actual = loggedInUsername.getText().trim();
+	    Assert.assertEquals(actual, expected, "❌ User login verification failed!");
+	    System.out.println("✅ Logged in as: " + actual);
+	}
+   
+   public void onmyprofilepageclickonsavebtn() {
+	   	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(onMyProfilePageclickonSave)).click();
+   }
+   public void enterokbtn() throws InterruptedException {
+	   Thread.sleep(2000);
+	   enterOKbtn.click();
+	   Thread.sleep(2000); 
+   }
+   
+   public void enterconfirmpassword() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(EnterConfirmPassword)).sendKeys("Aloha@123");
+   }
+   
+   public void enternewpassword() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(EnterNewPassword)).sendKeys("Aloha@123");
+
+   }
+   public void clickoninvitemail() {
+	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+	  	 wait.until(ExpectedConditions.elementToBeClickable(ClickonInviteMail)).click();
+   }
+   
+   public void clickonsetbuttong() throws InterruptedException {
+	   ClickOnSetButton.click();
+	  	 Thread.sleep(10000);
+   }
+   public void clickonforgetmebtn() {
+	  clickonForgetmebtn.click();
+   }
+   public void clickondomaintxtbox() throws InterruptedException {
+	   Thread.sleep(1000);
+	   clickonDomaintxtbox.click();
+	   
+	   clickonDomaintxtbox.sendKeys("Nikhil");
+   }
+ 
    public void uncheckscambleaddress() {
 	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
 	  	 wait.until(ExpectedConditions.elementToBeClickable(uncheckScrambleAddress)).click();

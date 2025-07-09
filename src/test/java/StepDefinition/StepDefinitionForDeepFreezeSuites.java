@@ -1,6 +1,8 @@
 package StepDefinition;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -28,7 +30,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 //child class of base class
 public class StepDefinitionForDeepFreezeSuites extends BaseClass {
-	
+	ArrayList<String> tabs;
 	private static boolean isLoggedIn = false;
 	PageObjectForDeepFreezeSuite df = new PageObjectForDeepFreezeSuite(driver);
 
@@ -150,45 +152,88 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     ///////////////////User Management Page/////////////////////////////// 
     
     @Then("open email destination: {string}")
-    public void open_email_destination(String string) throws InterruptedException {
-        driver.get("https://www.guerrillamail.com");
-        log.info("Opened URL: https://www.guerrillamail.com");
-        Thread.sleep(2000);
+    public void open_email_destination(String url) throws InterruptedException {
+        String originalWindow = driver.getWindowHandle();
+
+        ((JavascriptExecutor) driver).executeScript("window.open();");
+        tabs = new ArrayList<>(driver.getWindowHandles());
+
+        // Switch to GuerrillaMail tab (2nd tab)
+        driver.switchTo().window(tabs.get(1));
+        driver.get(url);
+        log.info("Opened email site: " + url);
+        Thread.sleep(5000); // Ideally use explicit wait
     }
+    
+    @Then("click forget me button on gurrilla page")
+    public void click_forget_me_button_on_gurrilla_page() throws InterruptedException {
+       DeepFreezeSuitePg.clickonforgetmebtn();
+       Thread.sleep(1000); 
+    }
+    @Then("Enter name: {string}")
+    public void enter_name(String Nikhil) throws InterruptedException {
+        DeepFreezeSuitePg.clickondomaintxtbox();
+    }
+    @Then("click on set button")
+    public void click_on_set_button() throws InterruptedException {
+        DeepFreezeSuitePg.clickonsetbuttong();
+    }
+    
     @Then("uncheck Scramble Address option")
     public void uncheck_scramble_address_option() {
         DeepFreezeSuitePg.uncheckscambleaddress();
     }
     @Then("click on the invitation email from deepfreeze")
-    public void click_on_the_invitation_email_from_deepfreeze() {
-        DeepFreezeSuitePg.clickoninvitelink();
+    public void click_on_the_invitation_email_from_deepfreeze() throws InterruptedException {
+        DeepFreezeSuitePg.clickoninvitemail();
+        Thread.sleep(2000); 
     }
     @Then("Click on invite link for password change")
-    public void click_on_invite_link_for_password_change() {
+    public void click_on_invite_link_for_password_change()throws InterruptedException {
         
+    	DeepFreezeSuitePg.clickoninvitelink();
+
+        // After clicking, new tab opens → switch to it (3rd tab)
+        Thread.sleep(3000); // wait for new tab
+        tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(2)); // Set Password window
+        log.info("Switched to Set Password tab");
+        Thread.sleep(2000); 
     }
     @Then("On Set Password page enter New Password {string}")
     public void on_set_password_page_enter_new_password(String string) {
-        
+        DeepFreezeSuitePg.enternewpassword();
     }
     @Then("Enter Confirm New Password {string}")
     public void enter_confirm_new_password(String string) {
-       
+       DeepFreezeSuitePg.enterconfirmpassword();
     }
     @Then("Click on OK")
-    public void click_on_ok() {
-       
+    public void click_on_ok() throws InterruptedException {
+    	DeepFreezeSuitePg.enterokbtn();
+    	Thread.sleep(1000); 
+    	
+                        
+        log.info("Switched back to original Deep Freeze tab");
+        Thread.sleep(1000); 
     }
     @Then("Click on SignIN")
     public void click_on_sign_in() {
-        
+    	 DeepFreezeSuitePg.clickonLoginBtn();
+         log.info("Clicked on SignIN.");
     }
     @Then("On My Profile page click on save button")
-    public void on_my_profile_page_click_on_save_button() {
-       
+    public void on_my_profile_page_click_on_save_button() throws InterruptedException {
+       DeepFreezeSuitePg.onmyprofilepageclickonsavebtn();
+       Thread.sleep(4000); 
+       DeepFreezeSuitePg.onmainpageclickonadgotitbtn();
     }
     @Then("Verified following user are logged in {string}")
     public void verified_following_user_are_logged_in(String string) {
+        DeepFreezeSuitePg.verifyLoggedInUser();
+        // Close Guerrilla tab (2nd tab)
+        driver.switchTo().window(tabs.get(1));
+        driver.close();
         
     }
     
@@ -226,9 +271,9 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
           Thread.sleep(2000);
     }
     @Then("Click OK")
-    public void click_ok() {
+    public void click_ok() throws InterruptedException {
     	 DeepFreezeSuitePg.okbtn();
-         
+    	 Thread.sleep(5000);
     }
     
     @Then("New user added successfully")
