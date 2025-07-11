@@ -326,6 +326,7 @@ public class PageObjectForDeepFreezeSuite {
 	   
 	   clickonDomaintxtbox.sendKeys("Nikhil");
    }
+   
  
    public void uncheckscambleaddress() {
 	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
