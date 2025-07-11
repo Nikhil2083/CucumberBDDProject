@@ -174,8 +174,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void enter_name(String Nikhil) throws InterruptedException {
         DeepFreezeSuitePg.clickondomaintxtbox();
     }
-    
-    @Then("click on set button")
+      @Then("click on set button")
     public void click_on_set_button() throws InterruptedException {
         DeepFreezeSuitePg.clickonsetbuttong();
     }
