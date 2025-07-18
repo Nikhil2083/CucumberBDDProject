@@ -13,6 +13,7 @@ And Click OK
 And New user added successfully
 
 
+
 @test
 Scenario: TC0002 C5494604 Login with newly added Cloud User to DF Cloud and make sure login should be successful.
 Then Page Title Should be "Deep Freeze Cloud"
