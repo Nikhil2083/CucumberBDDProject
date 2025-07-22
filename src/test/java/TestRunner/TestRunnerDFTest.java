@@ -9,7 +9,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 //@RunWith(Cucumber.class)
 @CucumberOptions(
 		features = "src/test/resources/Feature",  
-		glue =  "StepDefinition",
+		glue =  "StepDefinition", 
 		tags= "@test",
 		dryRun = false,
 		monochrome = true,
