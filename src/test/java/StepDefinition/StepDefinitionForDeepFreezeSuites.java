@@ -164,8 +164,8 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         Thread.sleep(5000); // Ideally use explicit wait
     }
     
+
     
-  
     @Then("click forget me button on gurrilla page")
     public void click_forget_me_button_on_gurrilla_page() throws InterruptedException {
        DeepFreezeSuitePg.clickonforgetmebtn();
@@ -179,6 +179,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void click_on_set_button() throws InterruptedException {
         DeepFreezeSuitePg.clickonsetbuttong();
     }
+    
     
     @Then("uncheck Scramble Address option")
     public void uncheck_scramble_address_option() {

@@ -388,6 +388,7 @@ public class PageObjectForDeepFreezeSuite {
    
    ///////////////////////////tag management page///////////////////////////////////////////////////
    
+  
    public void verifyLocationTagDeleted() throws InterruptedException {
 	    Thread.sleep(2000); // wait for UI update
 	    if (LocationTagsList.isEmpty()) {
