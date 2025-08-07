@@ -340,6 +340,7 @@ public class PageObjectForDeepFreezeSuite {
    public void verifyUserAddedInTable(String email) {
 	    String xpath = "//td[@aria-label='Column Username, Value " + email + "']";
 	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+	    
 	    try {
 	        WebElement userCell = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 	        System.out.println("✅ User found in table: " + email);

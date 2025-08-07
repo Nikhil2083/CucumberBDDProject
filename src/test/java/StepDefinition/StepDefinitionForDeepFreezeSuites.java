@@ -267,6 +267,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         DeepFreezeSuitePg.enterlastname();
     }
       
+    
     @Then("Enter Email: {string}")
     public void enter_email(String string) throws InterruptedException {
     	  DeepFreezeSuitePg.enteremail();
