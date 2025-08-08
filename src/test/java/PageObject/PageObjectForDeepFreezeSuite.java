@@ -348,7 +348,7 @@ public class PageObjectForDeepFreezeSuite {
 	        System.out.println("❌ User NOT found: " + email);
 	        Assert.fail("User not added in table: " + email);
 	    }
-	}
+	} 
    
    public void okbtn() {
 	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
