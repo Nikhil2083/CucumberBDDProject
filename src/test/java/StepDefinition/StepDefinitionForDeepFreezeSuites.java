@@ -148,7 +148,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     
     
     
-    ///////////////////User Management Page/////////////////////////////// 
+ ///////////////////User Management Page/////////////////////////////////////////////////
     
     @Then("open email destination: {string}")
     public void open_email_destination(String url) throws InterruptedException {
@@ -163,9 +163,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         log.info("Opened email site: " + url);
         Thread.sleep(5000); // Ideally use explicit wait
     }
-    
-
-    
+ 
     @Then("click forget me button on gurrilla page")
     public void click_forget_me_button_on_gurrilla_page() throws InterruptedException {
        DeepFreezeSuitePg.clickonforgetmebtn();
