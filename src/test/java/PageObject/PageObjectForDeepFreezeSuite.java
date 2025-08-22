@@ -342,14 +342,14 @@ public class PageObjectForDeepFreezeSuite {
 	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 	    
 	    try {
-	        WebElement userCell = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+	      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 	        System.out.println("✅ User found in table: " + email);
 	    } catch (TimeoutException e) {
 	        System.out.println("❌ User NOT found: " + email);
 	        Assert.fail("User not added in table: " + email);
 	    }
 	}  
-   
+    
    public void okbtn() {
 	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 	  	 wait.until(ExpectedConditions.elementToBeClickable(clickonOKbtn)).click();
