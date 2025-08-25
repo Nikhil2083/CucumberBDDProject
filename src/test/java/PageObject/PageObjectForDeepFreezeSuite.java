@@ -262,7 +262,7 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//input[@id='ProfileSave']")
    WebElement onMyProfilePageclickonSave;
    
-   @FindBy(xpath = "//li[@id='logg_main']//*[contains(text(),'Nikhil@sharklasers.com')]")
+   @FindBy(xpath = "//li[contains(@id,'logg_main')]")
    WebElement loggedInUsername;
    
    @FindBy(xpath = "//input[@value='GOT IT']")
@@ -282,7 +282,7 @@ public class PageObjectForDeepFreezeSuite {
 	      }
    
    public void verifyLoggedInUser() {
-	    String expected = "Nikhil@sharklasers.com";
+	    String expected = "nikhil@sharklasers.com";
 	    String actual = loggedInUsername.getText().trim();
 	    Assert.assertEquals(actual, expected, "❌ User login verification failed!");
 	    System.out.println("✅ Logged in as: " + actual);

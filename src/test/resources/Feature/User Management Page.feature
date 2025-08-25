@@ -8,7 +8,7 @@ And Click on USER MANAGEMENT
 And on USER MANAGEMENT page click on Add User dropdown and select Add New User
 Then On Add User popup window enter First Name:"Nikhil"
 And Enter Last Name:"Automation"
-Then Enter Email: "Nikhil@sharklasers.com"
+Then Enter Email: "nikhil@sharklasers.com"
 And Click OK
 And New user added successfully
 
@@ -26,10 +26,10 @@ Then On Set Password page enter New Password "Aloha@123"
 Then Enter Confirm New Password "Aloha@123"
 And Click on OK 
 And Click on NextButton
- And Enter Password as "Aloha@123"
-  And Click on SignIN
-  Then On My Profile page click on save button
-  Then Verified following user are logged in "Nikhil@sharklasers.com"
+And Enter Password as "Aloha@123"
+And Click on SignIN
+Then On My Profile page click on save button
+Then Verified following user are logged in "nikhil@sharklasers.com"
 
 
    
