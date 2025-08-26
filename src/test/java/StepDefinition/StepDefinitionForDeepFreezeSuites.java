@@ -150,11 +150,36 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     
  ///////////////////User Management Page/////////////////////////////////////////////////
     
+    @Then("I click on Search and look for the newly created user")
+    public void i_click_on_search_and_look_for_the_newly_created_user() throws InterruptedException {
+        DeepFreezeSuitePg.SearchNewlyCreatedUser();
+        Thread.sleep(5000);
+    }
+    @Then("I click on Edit button")
+    public void i_click_on_edit_button() {
+    DeepFreezeSuitePg.EditBtn();
+    }
+    @Then("I update the First Name and Last Name")
+    public void i_update_the_first_name_and_last_name() {
+       DeepFreezeSuitePg.EditUser();
+    }
+    @Then("I change the Permission")
+    public void i_change_the_permission() {
+    	DeepFreezeSuitePg.PermissionDropdown();
+    }
+    @Then("I click on the Update button")
+    public void i_click_on_the_update_button() {
+       DeepFreezeSuitePg.UpdateBtn();
+    }
+    @Then("a popup toast message should appear as {string}")
+    public void a_popup_toast_message_should_appear_as(String string) {
+       DeepFreezeSuitePg.UserUpdatedSuccessfullyToastMsg();
+    }
+    
+    
     @Then("open email destination: {string}")
     public void open_email_destination(String url) throws InterruptedException {
-        String originalWindow = driver.getWindowHandle();
-
-        ((JavascriptExecutor) driver).executeScript("window.open();");
+       ((JavascriptExecutor) driver).executeScript("window.open();");
         tabs = new ArrayList<>(driver.getWindowHandles());
 
         // Switch to GuerrillaMail tab (2nd tab)
@@ -167,21 +192,24 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     @Then("click forget me button on gurrilla page")
     public void click_forget_me_button_on_gurrilla_page() throws InterruptedException {
        DeepFreezeSuitePg.clickonforgetmebtn();
-       Thread.sleep(1000); 
+       Thread.sleep(2000); 
     }
     @Then("Enter name: {string}")
     public void enter_name(String Nikhil) throws InterruptedException {
         DeepFreezeSuitePg.clickondomaintxtbox();
+        Thread.sleep(2000);
     }
       @Then("click on set button")
     public void click_on_set_button() throws InterruptedException {
         DeepFreezeSuitePg.clickonsetbuttong();
+        Thread.sleep(2000);
     }
     
     
     @Then("uncheck Scramble Address option")
-    public void uncheck_scramble_address_option() {
+    public void uncheck_scramble_address_option() throws InterruptedException {
         DeepFreezeSuitePg.uncheckscambleaddress();
+        Thread.sleep(2000);
     }
     @Then("click on the invitation email from deepfreeze")
     public void click_on_the_invitation_email_from_deepfreeze() throws InterruptedException {
@@ -232,8 +260,9 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void verified_following_user_are_logged_in(String string) {
         DeepFreezeSuitePg.verifyLoggedInUser();
         // Close Guerrilla tab (2nd tab)
-        driver.switchTo().window(tabs.get(1));
-        driver.close();
+//        driver.switchTo().window(tabs.get(1));
+//        driver.close();
+       
         
     }
     
