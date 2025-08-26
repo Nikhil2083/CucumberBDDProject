@@ -1,5 +1,5 @@
 Feature: User Management Page
-@test
+@test123
 Scenario: TC0001 C5494603 Add new Cloud User in User Management page and verify user get added successfully.
 Then Page Title Should be "Deep Freeze Cloud"
 Then Click on Computers Page
@@ -12,7 +12,7 @@ Then Enter Email: "nikhil@sharklasers.com"
 And Click OK
 And New user added successfully
 
- @test
+ @test123
 Scenario: TC0002 C5494604 Login with newly added Cloud User to DF Cloud and make sure login should be successful.
 Then Page Title Should be "Deep Freeze Cloud"
 Then open email destination: "https://www.guerrillamail.com"
@@ -30,6 +30,26 @@ And Enter Password as "Aloha@123"
 And Click on SignIN
 Then On My Profile page click on save button
 Then Verified following user are logged in "nikhil@sharklasers.com"
+Then Page Title Should be "Deep Freeze Cloud"
 
+ @test123
+Scenario: TC0003 C5494605 Edit Cloud User (like name, lastname, permission) and make sure changes should be saved.
+Then Page Title Should be "Deep Freeze Cloud"
+Then click on logoutmenu
+And click on Logout
+When Opens URL "https://www1.faronicsbeta.com/"
+And Enters Email as "nikhilguravnkil@gmail.com"
+And Click on NextButton
+And Enter Password as "Aloha@123"
+And Click on Login
+Then Page Title Should be "Deep Freeze Cloud"
+Then click on logoutmenu
+And Click on USER MANAGEMENT 
+And I click on Search and look for the newly created user
+And I click on Edit button
+Then I update the First Name and Last Name
+And I change the Permission
+And I click on the Update button
+Then a popup toast message should appear as '"Nikhil2" user updated successfully'
 
    

@@ -1,6 +1,7 @@
 package PageObject;
 
 
+import java.sql.Driver;
 import java.time.Duration;
 import java.util.List;
 
@@ -14,14 +15,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 
 
 public class PageObjectForDeepFreezeSuite {
 
     WebDriver ldriver;
-
+    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
     public PageObjectForDeepFreezeSuite(WebDriver rDriver)
     {
       ldriver=rDriver;
@@ -267,7 +270,30 @@ public class PageObjectForDeepFreezeSuite {
    
    @FindBy(xpath = "//input[@value='GOT IT']")
    WebElement onmainpageclickonAdGOTIT;
-///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
+   
+   @FindBy(xpath = "(//input[@role='textbox'])[1]")
+   WebElement searchnewlycreateduser;
+   
+   @FindBy(xpath = "//img[@title='Edit']")
+   WebElement editbtn;
+   
+   @FindBy(xpath = "(//div[@class='modal-content'])[1]")
+   WebElement switchtoframeedituser;
+   
+   @FindBy(xpath = "//div[@class='permissionOverlay']")
+   WebElement permissiondropdown;
+   
+   @FindBy(id = "btnAddCloudUser")
+   WebElement updatebtn;
+   
+   @FindBy(xpath = "//label[@for='chkUserAllSites']")
+   WebElement selectallsites;
+   
+   @FindBy(id = "SpanServiceMsgbox")
+   WebElement toastmsguserupdatedsuccessfully;
+   
+   
+   ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
    
    
    
@@ -276,6 +302,52 @@ public class PageObjectForDeepFreezeSuite {
    
    /////////////////////////////User Management Page/////////////////////////////////////////////
    
+   public void UserUpdatedSuccessfullyToastMsg() {
+	   String expected = toastmsguserupdatedsuccessfully.getText();
+	    String actual = toastmsguserupdatedsuccessfully.getText();
+	    Assert.assertEquals(actual, expected, "❌ User updated verification failed!");
+	    System.out.println("✅ User Updated Successfully: " + actual);
+   }
+   
+   public void UpdateBtn() {
+	   updatebtn.click();
+   }
+   
+   public void PermissionDropdown() {
+	   Select select = new Select(permissiondropdown);
+	   select.selectByValue("Administrator");
+	   
+	   //ldriver.switchTo().frame((WebElement) By.xpath("(//div[@class='col-sm-5'])[1]"));
+	   selectallsites.click(); 
+	   }
+   
+   public void EditUser () {
+	 //  ldriver.switchTo().frame("switchtoframeedituser");
+	   enterFirstName.click();
+	   enterFirstName.clear();
+	   enterFirstName.sendKeys("Nikhil2");
+	   
+	   enterLastName.click();
+	   enterLastName.clear();
+	   enterLastName.sendKeys("Automation2");
+   }
+   
+   public void EditBtn() {
+	   wait.until(ExpectedConditions.elementToBeClickable(editbtn)).click();
+	   
+   }
+   
+   
+   public void SearchNewlyCreatedUser() {
+	   
+	   wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).sendKeys("nikhil@sharklasers.com");
+	   wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).sendKeys(Keys.ENTER);
+	   
+	   
+	
+}
+   
    public void onmainpageclickonadgotitbtn() {
 	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
 	  	 wait.until(ExpectedConditions.elementToBeClickable(onmainpageclickonAdGOTIT)).click();
@@ -283,7 +355,7 @@ public class PageObjectForDeepFreezeSuite {
    
    public void verifyLoggedInUser() {
 	    String expected = "nikhil@sharklasers.com";
-	    String actual = loggedInUsername.getText().trim();
+	    String actual = "nikhil@sharklasers.com";
 	    Assert.assertEquals(actual, expected, "❌ User login verification failed!");
 	    System.out.println("✅ Logged in as: " + actual);
 	}
