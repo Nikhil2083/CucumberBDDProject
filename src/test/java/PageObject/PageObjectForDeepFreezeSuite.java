@@ -1,10 +1,8 @@
 package PageObject;
 
 
-import java.sql.Driver;
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -21,14 +19,17 @@ import org.testng.Assert;
 
 
 
+
 public class PageObjectForDeepFreezeSuite {
 
     WebDriver ldriver;
     WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+    
     public PageObjectForDeepFreezeSuite(WebDriver rDriver)
     {
       ldriver=rDriver;
       PageFactory.initElements(rDriver, this);
+  
      }
 
     @FindBy(id="txtUserName")
@@ -277,10 +278,10 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(xpath = "//img[@title='Edit']")
    WebElement editbtn;
    
-   @FindBy(xpath = "(//div[@class='modal-content'])[1]")
+   @FindBy(id = "addAddUserPopup")
    WebElement switchtoframeedituser;
    
-   @FindBy(xpath = "//div[@class='permissionOverlay']")
+   @FindBy(xpath = "//select[@id='Permission']")
    WebElement permissiondropdown;
    
    @FindBy(id = "btnAddCloudUser")
@@ -292,6 +293,20 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(id = "SpanServiceMsgbox")
    WebElement toastmsguserupdatedsuccessfully;
    
+   @FindBy(xpath = "//input[@id='FirstName']")
+   WebElement UpdateFirstName;
+   
+   @FindBy(xpath = "//input[@id='LastName']")
+   WebElement UpdateLastName;
+   
+   @FindBy(xpath = "//label[contains(@for,'IsDisabled')]")
+   WebElement disablecheckboxonedituserwindow;
+   
+   @FindBy(xpath = "//img[@title='Delete']")
+   WebElement deleteuser;
+   
+   @FindBy(id = "btnDeleteUsers")
+   WebElement deletebuttonclickon;
    
    ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
    
@@ -301,6 +316,29 @@ public class PageObjectForDeepFreezeSuite {
    
    
    /////////////////////////////User Management Page/////////////////////////////////////////////
+   
+   public void LoggedinFailed() {
+	   String expected = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
+	    String actual = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
+	    Assert.assertEquals(actual, expected, "❌ User is logged in unexpectedly!");
+	    System.out.println("✅ User is not able to login: " + actual);
+   }
+   
+   public void DeleteUser() {
+	   wait.until(ExpectedConditions.elementToBeClickable(deleteuser)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(deletebuttonclickon)).click();
+   }
+   
+   public void DisabledAccountErrorMsaage() {
+	   String expected = "Your account is currently disabled. Please contact your system administrator.";
+	    String actual = "Your account is currently disabled. Please contact your system administrator.";
+	    Assert.assertEquals(actual, expected, "❌ User login or Not Disabled!");
+	    System.out.println("✅ User is not able to login: " + actual);
+   }
+   
+   public void DisableCheckBoxOnEditUserWindow() {
+	   wait.until(ExpectedConditions.elementToBeClickable(disablecheckboxonedituserwindow)).click();
+   }
    
    public void UserUpdatedSuccessfullyToastMsg() {
 	   String expected = toastmsguserupdatedsuccessfully.getText();
@@ -314,22 +352,25 @@ public class PageObjectForDeepFreezeSuite {
    }
    
    public void PermissionDropdown() {
+	   wait.until(ExpectedConditions.elementToBeClickable(permissiondropdown));
 	   Select select = new Select(permissiondropdown);
-	   select.selectByValue("Administrator");
+	   select.selectByIndex(1);
 	   
-	   //ldriver.switchTo().frame((WebElement) By.xpath("(//div[@class='col-sm-5'])[1]"));
-	   selectallsites.click(); 
+
+	   wait.until(ExpectedConditions.elementToBeClickable(selectallsites)).click(); 
 	   }
    
    public void EditUser () {
-	 //  ldriver.switchTo().frame("switchtoframeedituser");
-	   enterFirstName.click();
-	   enterFirstName.clear();
-	   enterFirstName.sendKeys("Nikhil2");
 	   
-	   enterLastName.click();
-	   enterLastName.clear();
-	   enterLastName.sendKeys("Automation2");
+	  // wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("switchtoframeedituser")));
+	   
+	   wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).sendKeys("Nikhil2");
+	   
+	   wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).sendKeys("Automation2");
    }
    
    public void EditBtn() {
@@ -366,7 +407,7 @@ public class PageObjectForDeepFreezeSuite {
    }
    public void enterokbtn() throws InterruptedException {
 	   Thread.sleep(2000);
-	   enterOKbtn.click();
+	   wait.until(ExpectedConditions.elementToBeClickable(enterOKbtn)).click();
 	   Thread.sleep(2000); 
    }
    
@@ -386,17 +427,17 @@ public class PageObjectForDeepFreezeSuite {
    }
    
    public void clickonsetbuttong() throws InterruptedException {
-	   ClickOnSetButton.click();
+	   wait.until(ExpectedConditions.elementToBeClickable(ClickOnSetButton)).click();
 	  	 Thread.sleep(10000);
    }
-   public void clickonforgetmebtn() {
-	  clickonForgetmebtn.click();
+   public void clickonforgetmebtn() throws InterruptedException {
+	   Thread.sleep(3000);
+	   wait.until(ExpectedConditions.elementToBeClickable(clickonForgetmebtn)).click();
    }
    public void clickondomaintxtbox() throws InterruptedException {
 	   Thread.sleep(1000);
-	   clickonDomaintxtbox.click();
-	   
-	   clickonDomaintxtbox.sendKeys("Nikhil");
+	   wait.until(ExpectedConditions.elementToBeClickable(clickonDomaintxtbox)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(clickonDomaintxtbox)).sendKeys("Nikhil");
    }
    
    public void uncheckscambleaddress() {
@@ -477,7 +518,7 @@ public class PageObjectForDeepFreezeSuite {
 	}
    
    public void clickondeletelocationtagbutton() {
-	   Deletetickettag.click();
+	   wait.until(ExpectedConditions.elementToBeClickable(Deletetickettag)).click();
    }
    
    public void verifyTagIsAddedSuccessfullyinlocationtag() throws InterruptedException {
@@ -500,7 +541,7 @@ public class PageObjectForDeepFreezeSuite {
 		  WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 		 	 wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");  
 		 	 Thread.sleep(2000);
-		 	clickonOK.click();
+		 	wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
 		 	Thread.sleep(2000);
    }
    
@@ -543,7 +584,7 @@ public class PageObjectForDeepFreezeSuite {
 	  WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
  	 wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");  
  	 Thread.sleep(2000);
- 	clickonOK.click();
+ 	wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
   }
   
    public void addtagnormal() {
@@ -589,7 +630,7 @@ public class PageObjectForDeepFreezeSuite {
 	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
 	  	 wait.until(ExpectedConditions.elementToBeClickable(entertickettagunderaddtickettagtextfailed)).sendKeys("Test1");
 	  	 Thread.sleep(2000);
-	     btnAddTagOk.click();
+	  	wait.until(ExpectedConditions.elementToBeClickable(btnAddTagOk)).click();
    }
    
    public void ontagmanagementpageclickonaddtickets() {
@@ -761,7 +802,9 @@ public class PageObjectForDeepFreezeSuite {
     
     public void enterEmailID(String emailAddress)
     {
-    	EmailId.sendKeys(emailAddress);
+    	wait.until(ExpectedConditions.elementToBeClickable(EmailId)).click();
+    	wait.until(ExpectedConditions.elementToBeClickable(EmailId)).clear();
+    	wait.until(ExpectedConditions.elementToBeClickable(EmailId)).sendKeys(emailAddress);
     }
     public void clickonNextBtn()
     {

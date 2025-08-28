@@ -150,6 +150,26 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     
  ///////////////////User Management Page/////////////////////////////////////////////////
     
+
+    @Then("I click on delete X button and delete user")
+    public void i_click_on_delete_x_button_and_delete_user() {
+        DeepFreezeSuitePg.DeleteUser();
+    }
+    @When("verified following error message is appeared not able to login {string}")
+    public void verified_following_error_message_is_appeared_not_able_to_login(String string) {
+    	DeepFreezeSuitePg.LoggedinFailed();
+    }
+    
+@When("verified following error message is appeared {string}")
+public void verified_following_error_message_is_appeared(String string) {
+    DeepFreezeSuitePg.DisabledAccountErrorMsaage();
+}
+    
+    @Then("I click on disabled checkbox")
+    public void i_click_on_disabled_checkbox() {
+        DeepFreezeSuitePg.DisableCheckBoxOnEditUserWindow();
+    }
+   
     @Then("I click on Search and look for the newly created user")
     public void i_click_on_search_and_look_for_the_newly_created_user() throws InterruptedException {
         DeepFreezeSuitePg.SearchNewlyCreatedUser();
@@ -160,7 +180,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     DeepFreezeSuitePg.EditBtn();
     }
     @Then("I update the First Name and Last Name")
-    public void i_update_the_first_name_and_last_name() {
+    public void i_update_the_first_name_and_last_name() throws InterruptedException {
        DeepFreezeSuitePg.EditUser();
     }
     @Then("I change the Permission")
@@ -191,7 +211,9 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
    
     @Then("click forget me button on gurrilla page")
     public void click_forget_me_button_on_gurrilla_page() throws InterruptedException {
-       DeepFreezeSuitePg.clickonforgetmebtn();
+       driver.navigate().refresh();
+       Thread.sleep(2000); 
+    	DeepFreezeSuitePg.clickonforgetmebtn();
        Thread.sleep(2000); 
     }
     @Then("Enter name: {string}")
@@ -265,9 +287,6 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
        
         
     }
-    
-    
-    
     
     
     @Then("click on current user")
@@ -497,6 +516,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 
     @Then("Page Title Should be {string}")
     public void page_title_should_be(String expectedTitle) {
+    	driver.navigate().refresh();
         String actualTitle = driver.getTitle();
         if (actualTitle.equals(expectedTitle)) {
             log.info("Page title matched.");

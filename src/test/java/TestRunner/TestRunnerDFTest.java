@@ -10,7 +10,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @CucumberOptions(
 		features = "src/test/resources/Feature",  
 		glue =  "StepDefinition", 
-		tags= "@test123",
+		tags= "@NK",
 		dryRun = false,
 		monochrome = true,
 	  /*  plugin = {
