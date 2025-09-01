@@ -146,11 +146,36 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     
     
     
-    
-    
+  //////////////////My Profile///////////////////////////////////////////////////////////
+  
+    @Then("Set Password")
+    public void set_password() {
+       DeepFreezeSuitePg.ClickOnChangePassword();
+    }
+    @Then("Click on My Profile")
+    public void click_on_my_profile() {
+        DeepFreezeSuitePg.MyProfile();
+    }
+    @Then("Enter First Name and Last Name")
+    public void enter_first_name_and_last_name() {
+        DeepFreezeSuitePg.FNameAndLNameOfMyProfile();
+    }
+    @Then("Enter Job Title")
+    public void enter_job_title() {
+       DeepFreezeSuitePg.JobTitle();
+    }
+    @Then("Enter Company Name and Phone Number")
+    public void enter_company_name_and_phone_number() {
+        DeepFreezeSuitePg.EnterCompanyName();
+    }
+    @Then("Click on Save")
+    public void click_on_save() {
+       DeepFreezeSuitePg.SaveButtonOnMyProfile();
+    }
+
+   
  ///////////////////User Management Page/////////////////////////////////////////////////
     
-
     @Then("I click on delete X button and delete user")
     public void i_click_on_delete_x_button_and_delete_user() {
         DeepFreezeSuitePg.DeleteUser();
@@ -159,17 +184,14 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void verified_following_error_message_is_appeared_not_able_to_login(String string) {
     	DeepFreezeSuitePg.LoggedinFailed();
     }
-    
 @When("verified following error message is appeared {string}")
 public void verified_following_error_message_is_appeared(String string) {
     DeepFreezeSuitePg.DisabledAccountErrorMsaage();
 }
-    
     @Then("I click on disabled checkbox")
     public void i_click_on_disabled_checkbox() {
         DeepFreezeSuitePg.DisableCheckBoxOnEditUserWindow();
     }
-   
     @Then("I click on Search and look for the newly created user")
     public void i_click_on_search_and_look_for_the_newly_created_user() throws InterruptedException {
         DeepFreezeSuitePg.SearchNewlyCreatedUser();
@@ -195,8 +217,6 @@ public void verified_following_error_message_is_appeared(String string) {
     public void a_popup_toast_message_should_appear_as(String string) {
        DeepFreezeSuitePg.UserUpdatedSuccessfullyToastMsg();
     }
-    
-    
     @Then("open email destination: {string}")
     public void open_email_destination(String url) throws InterruptedException {
        ((JavascriptExecutor) driver).executeScript("window.open();");
@@ -208,7 +228,6 @@ public void verified_following_error_message_is_appeared(String string) {
         log.info("Opened email site: " + url);
         Thread.sleep(5000); // Ideally use explicit wait
     }
-   
     @Then("click forget me button on gurrilla page")
     public void click_forget_me_button_on_gurrilla_page() throws InterruptedException {
        driver.navigate().refresh();
@@ -226,8 +245,6 @@ public void verified_following_error_message_is_appeared(String string) {
         DeepFreezeSuitePg.clickonsetbuttong();
         Thread.sleep(2000);
     }
-    
-    
     @Then("uncheck Scramble Address option")
     public void uncheck_scramble_address_option() throws InterruptedException {
         DeepFreezeSuitePg.uncheckscambleaddress();
@@ -240,9 +257,7 @@ public void verified_following_error_message_is_appeared(String string) {
     }
     @Then("Click on invite link for password change")
     public void click_on_invite_link_for_password_change()throws InterruptedException {
-        
     	DeepFreezeSuitePg.clickoninvitelink();
-
         // After clicking, new tab opens → switch to it (3rd tab)
         Thread.sleep(3000); // wait for new tab
         tabs = new ArrayList<>(driver.getWindowHandles());
@@ -262,8 +277,6 @@ public void verified_following_error_message_is_appeared(String string) {
     public void click_on_ok() throws InterruptedException {
     	DeepFreezeSuitePg.enterokbtn();
     	Thread.sleep(1000); 
-    	
-                        
         log.info("Switched back to original Deep Freeze tab");
         Thread.sleep(1000); 
     }

@@ -308,11 +308,95 @@ public class PageObjectForDeepFreezeSuite {
    @FindBy(id = "btnDeleteUsers")
    WebElement deletebuttonclickon;
    
+   ///////////////////////////////////////////////My Profile//////////////////////////////////////////////////////
+   
+   @FindBy(xpath = "//a[@id='aLogin_MyProfile']")
+   WebElement myprofile;
+   
+   @FindBy(id = "txtFirstName")
+   WebElement fnameofmyprofile;
+   
+   @FindBy(id = "txtLastName")
+   WebElement lnameofmyprofile;
+   
+   @FindBy(id = "txtJobTitle")
+   WebElement jobtitle;
+   
+   @FindBy(xpath = "//input[@id='txtCompany']")
+   WebElement companyname;
+   
+   @FindBy(xpath = "//input[@id='txtPhone']")
+   WebElement enterphonenumber;
+   
+   @FindBy(xpath = "//input[@id='ProfileSave']")
+   WebElement savebtnonmyprofile;
+   
+   @FindBy(xpath = "//a[@id='EnabledPass']")
+   WebElement clickonchangepassword;
+   
+   @FindBy(xpath = "//input[@id='OldPassword']")
+   WebElement enteroldpassword;
+   
+   @FindBy(xpath = "//input[@id='NewPassword']")
+   WebElement enternewpassword;
+   
+   @FindBy(xpath = "//input[@id='ReEnterPassword']")
+   WebElement enterreenterpassword;
+   
+   
    ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
    
    
    
    
+  ////////////////////////////////////////////My Profile//////////////////////////////////////////////////////
+   
+
+   public void ClickOnChangePassword() {
+	   wait.until(ExpectedConditions.elementToBeClickable(clickonchangepassword)).click();
+	   
+	   wait.until(ExpectedConditions.elementToBeClickable(enteroldpassword)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(enteroldpassword)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(enteroldpassword)).sendKeys("Aloha@123");
+	   
+		   wait.until(ExpectedConditions.elementToBeClickable(enternewpassword)).click();
+		   wait.until(ExpectedConditions.elementToBeClickable(enternewpassword)).clear();
+		   wait.until(ExpectedConditions.elementToBeClickable(enternewpassword)).sendKeys("Aloha@1234");
+	
+		   wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).click();
+		   wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).clear();
+		   wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).sendKeys("Aloha@1234");
+	
+}
+   public void SaveButtonOnMyProfile() {
+	   wait.until(ExpectedConditions.elementToBeClickable(savebtnonmyprofile)).click();
+}
+   public void EnterCompanyName() {
+	   wait.until(ExpectedConditions.elementToBeClickable(companyname)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(companyname)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(companyname)).sendKeys("Dighi2");
+	   
+	   wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).sendKeys("1234567890");
+}
+   public void JobTitle() {
+	   wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).sendKeys("QA Engineer");
+   }
+   public void FNameAndLNameOfMyProfile() {
+	   wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).sendKeys("Nikhil2");
+	   
+	   wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).click();
+	   wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).clear();
+	   wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).sendKeys("Gurav");
+}
+   public void MyProfile() {
+	wait.until(ExpectedConditions.elementToBeClickable(myprofile)).click();	
+}
    
    
    /////////////////////////////User Management Page/////////////////////////////////////////////
