@@ -1,6 +1,5 @@
 package PageObject;
 
-
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
@@ -17,989 +16,981 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
- 
-
-
 public class PageObjectForDeepFreezeSuite {
+	WebDriver ldriver;
+	WebDriverWait wait;
+	
+	public PageObjectForDeepFreezeSuite(WebDriver rDriver) {
+		ldriver = rDriver;
+		wait = new WebDriverWait(ldriver, Duration.ofSeconds(20)); // ✅ driver आता null नाही
+		PageFactory.initElements(rDriver, this);
+	}
+	@FindBy(id = "txtUserName")
+	WebElement EmailId;
 
-    WebDriver ldriver;
-    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-    
-    public PageObjectForDeepFreezeSuite(WebDriver rDriver)
-    {
-      ldriver=rDriver;
-      PageFactory.initElements(rDriver, this);
-  
-     }
+	@FindBy(id = "btnlogin")
+	WebElement NextButton;
 
-    @FindBy(id="txtUserName")
-    WebElement EmailId;
-    
-    @FindBy(id="btnlogin")
-    WebElement NextButton;
-    
-    @FindBy(id="txtPassword")
-    WebElement Password;
-    
-    @FindBy(id="btnlogin")
-    WebElement LoginButton;
-    
-    @FindBy(id="logg_main")
-    WebElement  clickonlogoutmenu;
-    
-    @FindBy(id="aSignOut")
-    WebElement clickonlogout;
-    
-    @FindBy(xpath = "//a[normalize-space()='POLICIES']")
-    WebElement clickOnPolicyTab;
-    
-    @FindBy(xpath = "//button[@id='dropdownMenuButton']")
-    WebElement AddPolicyDropDown;
-    
-    @FindBy(xpath = "//a[@id='P1']")
-    WebElement SelectPolicyTypeDFWindow;
-    
-    @FindBy(xpath = "//input[@id='Name']")
-    WebElement EnterPolicyName;
-    
-    @FindBy(xpath = "//li[@id='li_DEEP_FREEZE']//div[@class='sidebar-product-names']")
-    WebElement SelectDFProduct;
-    
-    
-    @FindBy(xpath = "//select[@id='ddPolicySettingsDeepFreeze']")
-    WebElement EnableDFProduct;
-    
-    @FindBy(xpath = "//option[text()='Enable (Install and use below settings)']")
-    WebElement dropdown;
-    
-    @FindBy(xpath = "//input[@id='btnSave']")
-    WebElement ClickOnSaveBtn;
-    
-    @FindBy(xpath = "//span[text()='Download Agent']")
-    WebElement ClickONDownloadAhentbtn;
-    
-    @FindBy(xpath = "//select[@id='policyId']")
-    WebElement SelectPolicyNameDropDown;
-    
-    @FindBy(xpath = "//option[@value='56']")
-    WebElement SelectPolicy;
-    
-    
-    
-    @FindBy(xpath = "//label[@for='RDOInst']")
-    WebElement SelectDownloadTypeFromList;
-    
-    @FindBy(id="Install")
-    WebElement clickDownload;
-    
-    @FindBy(id="Install")
-    WebElement Downloadn;
-    
-    @FindBy(xpath = "//label[@for='RDODwlMSIInstaller']")
-    WebElement SelectMSIDownloadTypeFromList;
-    
-    @FindBy(xpath = "//label[@for='RDODwlPush']")
-    WebElement SelectDeploymentUtilityTypeFromList;
-    
-    @FindBy(xpath = "//label[@for='RDOFullInst']")
-    WebElement SelectFullInstallerTypeFromList;
-    
-    @FindBy(xpath = "(//label[@for='rdWindowsServer'])[1]")
-    WebElement SelectDownloaderTypeeWindowsServer;
-    
-    @FindBy(xpath = "(//label[@for='rdMac'])[1]")
-    WebElement SelectDownloaderTypeeMac;
-    
-    @FindBy(xpath = "//a[normalize-space()='COMPUTERS']")
-    WebElement ComputersPage;
-    
-    @FindBy(xpath = "//div[@aria-label='Search in data grid']//input[@role='textbox']")
-    WebElement SearchBoxOnComputersPage;
-    
-    @FindBy(xpath = "//img[@id=\"imgmysitedownaarow\"]")
-    WebElement SiteDropDown;
-    
-    @FindBy(xpath = "//div[@class='site_header']//li[3]")
-    WebElement SelectSite;
-    
+	@FindBy(id = "txtPassword")
+	WebElement Password;
+
+	@FindBy(id = "btnlogin")
+	WebElement LoginButton;
+
+	@FindBy(id = "logg_main")
+	WebElement clickonlogoutmenu;
+
+	@FindBy(id = "aSignOut")
+	WebElement clickonlogout;
+
+	@FindBy(xpath = "//a[normalize-space()='POLICIES']")
+	WebElement clickOnPolicyTab;
+
+	@FindBy(xpath = "//button[@id='dropdownMenuButton']")
+	WebElement AddPolicyDropDown;
+
+	@FindBy(xpath = "//a[@id='P1']")
+	WebElement SelectPolicyTypeDFWindow;
+
+	@FindBy(xpath = "//input[@id='Name']")
+	WebElement EnterPolicyName;
+
+	@FindBy(xpath = "//li[@id='li_DEEP_FREEZE']//div[@class='sidebar-product-names']")
+	WebElement SelectDFProduct;
+
+	@FindBy(xpath = "//select[@id='ddPolicySettingsDeepFreeze']")
+	WebElement EnableDFProduct;
+
+	@FindBy(xpath = "//option[text()='Enable (Install and use below settings)']")
+	WebElement dropdown;
+
+	@FindBy(xpath = "//input[@id='btnSave']")
+	WebElement ClickOnSaveBtn;
+
+	@FindBy(xpath = "//span[text()='Download Agent']")
+	WebElement ClickONDownloadAhentbtn;
+
+	@FindBy(xpath = "//select[@id='policyId']")
+	WebElement SelectPolicyNameDropDown;
+
+	@FindBy(xpath = "//option[@value='56']")
+	WebElement SelectPolicy;
+
+	@FindBy(xpath = "//label[@for='RDOInst']")
+	WebElement SelectDownloadTypeFromList;
+
+	@FindBy(id = "Install")
+	WebElement clickDownload;
+
+	@FindBy(id = "Install")
+	WebElement Downloadn;
+
+	@FindBy(xpath = "//label[@for='RDODwlMSIInstaller']")
+	WebElement SelectMSIDownloadTypeFromList;
+
+	@FindBy(xpath = "//label[@for='RDODwlPush']")
+	WebElement SelectDeploymentUtilityTypeFromList;
+
+	@FindBy(xpath = "//label[@for='RDOFullInst']")
+	WebElement SelectFullInstallerTypeFromList;
+
+	@FindBy(xpath = "(//label[@for='rdWindowsServer'])[1]")
+	WebElement SelectDownloaderTypeeWindowsServer;
+
+	@FindBy(xpath = "(//label[@for='rdMac'])[1]")
+	WebElement SelectDownloaderTypeeMac;
+
+	@FindBy(xpath = "//a[normalize-space()='COMPUTERS']")
+	WebElement ComputersPage;
+
+	@FindBy(xpath = "//div[@aria-label='Search in data grid']//input[@role='textbox']")
+	WebElement SearchBoxOnComputersPage;
+
+	@FindBy(xpath = "//img[@id=\"imgmysitedownaarow\"]")
+	WebElement SiteDropDown;
+
+	@FindBy(xpath = "//div[@class='site_header']//li[3]")
+	WebElement SelectSite;
+
 //    @FindBy(xpath = "//a[normalize-space(text())='Migration']")
 //    WebElement migrationLink;
 //
 //    public void clickMigration() {
 //        ((JavascriptExecutor) ldriver).executeScript("arguments[0].click();", migrationLink);
 //    }
-    
-    @FindBy(xpath = "//td[@aria-label='Column Policy, Value Automation test']")
-    WebElement ClickOnPolicy;
-    
-    @FindBy(xpath = "//li[@id='li_WINSELECT']//div[@class='sidebar-product-names']")
-    WebElement SelectProductWINSELECT;
-    
-    @FindBy(xpath = "//select[@id='ddPolicySettingsWinSelect']")
-    WebElement ClickOnEnablePolicyDropDown;
-    
-    @FindBy(xpath = "//option[@value='EnabledWithoutInheritance']")
-    WebElement EnableWINSELECT;
-    
-    @FindBy(xpath = "//input[@id='btnSave']")
-    WebElement SaveBtn;
-    
-    @FindBy(xpath = "//input[@id='policyupdateref']")
-    WebElement checkRadioBtn;
-    
-    @FindBy(xpath = "//button[@id='btnWUOk']")
-    WebElement clickOK;
-    
-   @FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Enabled']") // Status when installed
+
+	@FindBy(xpath = "//td[@aria-label='Column Policy, Value Automation test']")
+	WebElement ClickOnPolicy;
+
+	@FindBy(xpath = "//li[@id='li_WINSELECT']//div[@class='sidebar-product-names']")
+	WebElement SelectProductWINSELECT;
+
+	@FindBy(xpath = "//select[@id='ddPolicySettingsWinSelect']")
+	WebElement ClickOnEnablePolicyDropDown;
+
+	@FindBy(xpath = "//option[@value='EnabledWithoutInheritance']")
+	WebElement EnableWINSELECT;
+
+	@FindBy(xpath = "//input[@id='btnSave']")
+	WebElement SaveBtn;
+
+	@FindBy(xpath = "//input[@id='policyupdateref']")
+	WebElement checkRadioBtn;
+
+	@FindBy(xpath = "//button[@id='btnWUOk']")
+	WebElement clickOK;
+
+	@FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Enabled']") // Status when installed
 	public WebElement WinSelectStatusEnabled;
 
-    @FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Not Installed']") // Status when not installed
-    WebElement WinSelectStatusNotInstalled;
-    
-   @FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Enabled (Outdated)']")
+	@FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Not Installed']") // Status when not installed
+	WebElement WinSelectStatusNotInstalled;
+
+	@FindBy(xpath = "//td[@aria-label='Column WINSelect Indicator, Value Enabled (Outdated)']")
 	public WebElement WinSelectStatusEnabledOutdated;
-   
-   @FindBy(xpath = "//option[@value='Disabled']")
-   WebElement DisabledProduct;
-   
-     
-   ///////////////////////////////////////////////////////////
-   
-   
-   @FindBy(xpath = "//span[@title='Tags Management']")
-   WebElement ClickTagManagentTab;
-   
-   @FindBy(id="addTag_Ticket")
-   WebElement clickaddtagonticket;
-   
-   @FindBy(id="txtTagName")
-   WebElement entertickettagunderaddtickettagtextfailed;
-   
-   @FindBy(id="btnAddTagOk")
-   WebElement btnAddTagOk;
-   
-   @FindBy(xpath = "//span[@class='abstractText']")
-   WebElement tickettagisaddedsuccessfully;
-   
-   @FindBy(id ="btnDeleteTagOK")
-   WebElement Deletetickettag;
-   
-   @FindBy(xpath = "//ul[@id='Ticket']/li")
-   List<WebElement> ticketTags;
-   
-   @FindBy(id = "addTag_Normal")
-   WebElement addTagNormal;
-   
-   @FindBy(id = "txtTagName")
-   WebElement entertagname;
-   
-   @FindBy(id = "btnAddTagOk")
-   WebElement clickonOK;
-   
-   @FindBy(xpath = "//ul[@id='Normal']//span[contains(normalize-space(), 'Test1')]")
-   WebElement addedTag;
-   
-   @FindBy(xpath = "//ul[@id='Normal']//li")
-   List<WebElement> normalTagsList;
-   
-   @FindBy(id = "addTag_Location")
-   WebElement addTagLocationTag;
-   
-   @FindBy(xpath = "//div[@id='Geography']")
-   WebElement addedlocationTag;
-   
-   @FindBy(xpath = "//ul[@id='Geography']//li")
-   List <WebElement> LocationTagsList;
-   
-   @FindBy(xpath = "//a[contains(@id, 'logg_main') and contains(text(), 'nikhilguravnkil@gmail.com')]")
-   WebElement clickonuserbtn;
-   
-   @FindBy(id = "aLogin_User_Management")
-   WebElement clickonUserManagement;
-   
-   @FindBy(xpath = "//button[normalize-space()='Add User']")
-   WebElement clickOnAddUserDropDown;
-   
-   @FindBy(xpath = "//a[normalize-space()='Add New User']")
-   WebElement clickonAddNewUser;
-   
-   @FindBy(xpath = "//input[@id='FirstName']")
-   WebElement enterFirstName;
-   
-   @FindBy(xpath = "//input[@id='LastName']")
-   WebElement enterLastName;
-   
-   @FindBy(xpath = "//input[@id='EMailAddress']")
-   WebElement EnterEmail;
-   
-   @FindBy(xpath = "//input[@id='btnAddCloudUser']")
-   WebElement clickonOKbtn;
-  
-   @FindBy(xpath = "//td[@class='td2' and contains(text(), 'deepfreezeweb@gmail.com')]")
-   WebElement ClickonInviteMail;
-   
-   @FindBy(xpath = "//a[contains(text(),'https://www1.faronicsbeta.com/en/user/Invite?token')]")
-   WebElement clickOninvitelink;
-   
-   
-   @FindBy(xpath = "//input[@id='use-alias']")
-   WebElement uncheckScrambleAddress;
-   
-   @FindBy(xpath = "//a[@id='forget_button']")
-   WebElement clickonForgetmebtn;
-   
-   @FindBy(xpath = "//span[@id='inbox-id']//input[@type='text']")
-   WebElement clickonDomaintxtbox;
-   
-   @FindBy(xpath = "//button[normalize-space()='Set']")
-   WebElement ClickOnSetButton;
-   
-   @FindBy(xpath = "//input[@id='txtNewPassword']")
-   WebElement EnterNewPassword;
-   
-   @FindBy(xpath = "//input[@id='txtConfirmPassword']")
-   WebElement EnterConfirmPassword;
-   
-   @FindBy(xpath = "//button[@id='btnresetpassword']")
-   WebElement enterOKbtn;
-   
-   @FindBy(xpath = "//input[@id='ProfileSave']")
-   WebElement onMyProfilePageclickonSave;
-   
-   @FindBy(xpath = "//li[contains(@id,'logg_main')]")
-   WebElement loggedInUsername;
-   
-   @FindBy(xpath = "//input[@value='GOT IT']")
-   WebElement onmainpageclickonAdGOTIT;
-   
-   @FindBy(xpath = "(//input[@role='textbox'])[1]")
-   WebElement searchnewlycreateduser;
-   
-   @FindBy(xpath = "//img[@title='Edit']")
-   WebElement editbtn;
-   
-   @FindBy(id = "addAddUserPopup")
-   WebElement switchtoframeedituser;
-   
-   @FindBy(xpath = "//select[@id='Permission']")
-   WebElement permissiondropdown;
-   
-   @FindBy(id = "btnAddCloudUser")
-   WebElement updatebtn;
-   
-   @FindBy(xpath = "//label[@for='chkUserAllSites']")
-   WebElement selectallsites;
-   
-   @FindBy(id = "SpanServiceMsgbox")
-   WebElement toastmsguserupdatedsuccessfully;
-   
-   @FindBy(xpath = "//input[@id='FirstName']")
-   WebElement UpdateFirstName;
-   
-   @FindBy(xpath = "//input[@id='LastName']")
-   WebElement UpdateLastName;
-   
-   @FindBy(xpath = "//label[contains(@for,'IsDisabled')]")
-   WebElement disablecheckboxonedituserwindow;
-   
-   @FindBy(xpath = "//img[@title='Delete']")
-   WebElement deleteuser;
-   
-   @FindBy(id = "btnDeleteUsers")
-   WebElement deletebuttonclickon;
-   
-   ///////////////////////////////////////////////My Profile//////////////////////////////////////////////////////
-   
-   @FindBy(xpath = "//a[@id='aLogin_MyProfile']")
-   WebElement myprofile;
-   
-   @FindBy(id = "txtFirstName")
-   WebElement fnameofmyprofile;
-   
-   @FindBy(id = "txtLastName")
-   WebElement lnameofmyprofile;
-   
-   @FindBy(id = "txtJobTitle")
-   WebElement jobtitle;
-   
-   @FindBy(xpath = "//input[@id='txtCompany']")
-   WebElement companyname;
-   
-   @FindBy(xpath = "//input[@id='txtPhone']")
-   WebElement enterphonenumber;
-   
-   @FindBy(xpath = "//input[@id='ProfileSave']")
-   WebElement savebtnonmyprofile;
-   
-   @FindBy(xpath = "//a[@id='EnabledPass']")
-   WebElement clickonchangepassword;
-   
-   @FindBy(xpath = "//input[@id='OldPassword']")
-   WebElement enteroldpassword;
-   
-   @FindBy(xpath = "//input[@id='NewPassword']")
-   WebElement enternewpassword;
-   
-   @FindBy(xpath = "//input[@id='ReEnterPassword']")
-   WebElement enterreenterpassword;
-   
-   
-   ///////////////////////////////////////////////SPLIT/////////////////////////////////////////////////////////////////    
-   
-   
-   
-   
-  ////////////////////////////////////////////My Profile//////////////////////////////////////////////////////
-   
 
-   public void ClickOnChangePassword() {
-	   wait.until(ExpectedConditions.elementToBeClickable(clickonchangepassword)).click();
-	   
-	   wait.until(ExpectedConditions.elementToBeClickable(enteroldpassword)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(enteroldpassword)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(enteroldpassword)).sendKeys("Aloha@123");
-	   
-		   wait.until(ExpectedConditions.elementToBeClickable(enternewpassword)).click();
-		   wait.until(ExpectedConditions.elementToBeClickable(enternewpassword)).clear();
-		   wait.until(ExpectedConditions.elementToBeClickable(enternewpassword)).sendKeys("Aloha@1234");
-	
-		   wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).click();
-		   wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).clear();
-		   wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).sendKeys("Aloha@1234");
-	
-}
-   public void SaveButtonOnMyProfile() {
-	   wait.until(ExpectedConditions.elementToBeClickable(savebtnonmyprofile)).click();
-}
-   public void EnterCompanyName() {
-	   wait.until(ExpectedConditions.elementToBeClickable(companyname)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(companyname)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(companyname)).sendKeys("Dighi2");
-	   
-	   wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).sendKeys("1234567890");
-}
-   public void JobTitle() {
-	   wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).sendKeys("QA Engineer");
-   }
-   public void FNameAndLNameOfMyProfile() {
-	   wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).sendKeys("Nikhil2");
-	   
-	   wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).sendKeys("Gurav");
-}
-   public void MyProfile() {
-	wait.until(ExpectedConditions.elementToBeClickable(myprofile)).click();	
-}
-   
-   
-   /////////////////////////////User Management Page/////////////////////////////////////////////
-   
-   public void LoggedinFailed() {
-	   String expected = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
-	    String actual = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
-	    Assert.assertEquals(actual, expected, "❌ User is logged in unexpectedly!");
-	    System.out.println("✅ User is not able to login: " + actual);
-   }
-   
-   public void DeleteUser() {
-	   wait.until(ExpectedConditions.elementToBeClickable(deleteuser)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(deletebuttonclickon)).click();
-   }
-   
-   public void DisabledAccountErrorMsaage() {
-	   String expected = "Your account is currently disabled. Please contact your system administrator.";
-	    String actual = "Your account is currently disabled. Please contact your system administrator.";
-	    Assert.assertEquals(actual, expected, "❌ User login or Not Disabled!");
-	    System.out.println("✅ User is not able to login: " + actual);
-   }
-   
-   public void DisableCheckBoxOnEditUserWindow() {
-	   wait.until(ExpectedConditions.elementToBeClickable(disablecheckboxonedituserwindow)).click();
-   }
-   
-   public void UserUpdatedSuccessfullyToastMsg() {
-	   String expected = toastmsguserupdatedsuccessfully.getText();
-	    String actual = toastmsguserupdatedsuccessfully.getText();
-	    Assert.assertEquals(actual, expected, "❌ User updated verification failed!");
-	    System.out.println("✅ User Updated Successfully: " + actual);
-   }
-   
-   public void UpdateBtn() {
-	   updatebtn.click();
-   }
-   
-   public void PermissionDropdown() {
-	   wait.until(ExpectedConditions.elementToBeClickable(permissiondropdown));
-	   Select select = new Select(permissiondropdown);
-	   select.selectByIndex(1);
-	   
+	@FindBy(xpath = "//option[@value='Disabled']")
+	WebElement DisabledProduct;
 
-	   wait.until(ExpectedConditions.elementToBeClickable(selectallsites)).click(); 
-	   }
-   
-   public void EditUser () {
-	   
-	  // wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("switchtoframeedituser")));
-	   
-	   wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).sendKeys("Nikhil2");
-	   
-	   wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).clear();
-	   wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).sendKeys("Automation2");
-   }
-   
-   public void EditBtn() {
-	   wait.until(ExpectedConditions.elementToBeClickable(editbtn)).click();
-	   
-   }
-   
-   
-   public void SearchNewlyCreatedUser() {
-	   
-	   wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).sendKeys("nikhil@sharklasers.com");
-	   wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).sendKeys(Keys.ENTER);
-	   
-	   
-	
-}
-   
-   public void onmainpageclickonadgotitbtn() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(onmainpageclickonAdGOTIT)).click();
-	      }
-   
-   public void verifyLoggedInUser() {
-	    String expected = "nikhil@sharklasers.com";
-	    String actual = "nikhil@sharklasers.com";
-	    Assert.assertEquals(actual, expected, "❌ User login verification failed!");
-	    System.out.println("✅ Logged in as: " + actual);
+	///////////////////////////////////////////////////////////
+
+	@FindBy(xpath = "//span[@title='Tags Management']")
+	WebElement ClickTagManagentTab;
+
+	@FindBy(id = "addTag_Ticket")
+	WebElement clickaddtagonticket;
+
+	@FindBy(id = "txtTagName")
+	WebElement entertickettagunderaddtickettagtextfailed;
+
+	@FindBy(id = "btnAddTagOk")
+	WebElement btnAddTagOk;
+
+	@FindBy(xpath = "//span[@class='abstractText']")
+	WebElement tickettagisaddedsuccessfully;
+
+	@FindBy(id = "btnDeleteTagOK")
+	WebElement Deletetickettag;
+
+	@FindBy(xpath = "//ul[@id='Ticket']/li")
+	List<WebElement> ticketTags;
+
+	@FindBy(id = "addTag_Normal")
+	WebElement addTagNormal;
+
+	@FindBy(id = "txtTagName")
+	WebElement entertagname;
+
+	@FindBy(id = "btnAddTagOk")
+	WebElement clickonOK;
+
+	@FindBy(xpath = "//ul[@id='Normal']//span[contains(normalize-space(), 'Test1')]")
+	WebElement addedTag;
+
+	@FindBy(xpath = "//ul[@id='Normal']//li")
+	List<WebElement> normalTagsList;
+
+	@FindBy(id = "addTag_Location")
+	WebElement addTagLocationTag;
+
+	@FindBy(xpath = "//div[@id='Geography']")
+	WebElement addedlocationTag;
+
+	@FindBy(xpath = "//ul[@id='Geography']//li")
+	List<WebElement> LocationTagsList;
+
+	@FindBy(xpath = "//a[contains(@id, 'logg_main') and contains(text(), 'nikhilguravnkil@gmail.com')]")
+	WebElement clickonuserbtn;
+
+	@FindBy(id = "aLogin_User_Management")
+	WebElement clickonUserManagement;
+
+	@FindBy(xpath = "//button[normalize-space()='Add User']")
+	WebElement clickOnAddUserDropDown;
+
+	@FindBy(xpath = "//a[normalize-space()='Add New User']")
+	WebElement clickonAddNewUser;
+
+	@FindBy(xpath = "//input[@id='FirstName']")
+	WebElement enterFirstName;
+
+	@FindBy(xpath = "//input[@id='LastName']")
+	WebElement enterLastName;
+
+	@FindBy(xpath = "//input[@id='EMailAddress']")
+	WebElement EnterEmail;
+
+	@FindBy(xpath = "//input[@id='btnAddCloudUser']")
+	WebElement clickonOKbtn;
+
+	@FindBy(xpath = "//td[@class='td2' and contains(text(), 'deepfreezeweb@gmail.com')]")
+	WebElement ClickonInviteMail;
+
+	@FindBy(xpath = "//a[contains(text(),'https://www1.faronicsbeta.com/en/user/Invite?token')]")
+	WebElement clickOninvitelink;
+
+	@FindBy(xpath = "//input[@id='use-alias']")
+	WebElement uncheckScrambleAddress;
+
+	@FindBy(xpath = "//a[@id='forget_button']")
+	WebElement clickonForgetmebtn;
+
+	@FindBy(xpath = "//span[@id='inbox-id']//input[@type='text']")
+	WebElement clickonDomaintxtbox;
+
+	@FindBy(xpath = "//button[normalize-space()='Set']")
+	WebElement ClickOnSetButton;
+
+	@FindBy(xpath = "//input[@id='txtNewPassword']")
+	WebElement EnterNewPassword;
+
+	@FindBy(xpath = "//input[@id='txtConfirmPassword']")
+	WebElement EnterConfirmPassword;
+
+	@FindBy(xpath = "//button[@id='btnresetpassword']")
+	WebElement enterOKbtn;
+
+	@FindBy(xpath = "//input[@id='ProfileSave']")
+	WebElement onMyProfilePageclickonSave;
+
+	@FindBy(xpath = "//li[contains(@id,'logg_main')]")
+	WebElement loggedInUsername;
+
+	@FindBy(xpath = "//input[@value='GOT IT']")
+	WebElement onmainpageclickonAdGOTIT;
+
+	@FindBy(xpath = "(//input[@role='textbox'])[1]")
+	WebElement searchnewlycreateduser;
+
+	@FindBy(xpath = "//img[@title='Edit']")
+	WebElement editbtn;
+
+	@FindBy(id = "addAddUserPopup")
+	WebElement switchtoframeedituser;
+
+	@FindBy(xpath = "//select[@id='Permission']")
+	WebElement permissiondropdown;
+
+	@FindBy(id = "btnAddCloudUser")
+	WebElement updatebtn;
+
+	@FindBy(xpath = "//label[@for='chkUserAllSites']")
+	WebElement selectallsites;
+
+	@FindBy(id = "SpanServiceMsgbox")
+	WebElement toastmsguserupdatedsuccessfully;
+
+	@FindBy(xpath = "//input[@id='FirstName']")
+	WebElement UpdateFirstName;
+
+	@FindBy(xpath = "//input[@id='LastName']")
+	WebElement UpdateLastName;
+
+	@FindBy(xpath = "//label[contains(@for,'IsDisabled')]")
+	WebElement disablecheckboxonedituserwindow;
+
+	@FindBy(xpath = "//img[@title='Delete']")
+	WebElement deleteuser;
+
+	@FindBy(id = "btnDeleteUsers")
+	WebElement deletebuttonclickon;
+
+	/////////////////////////////////////////////// My
+	/////////////////////////////////////////////// Profile//////////////////////////////////////////////////////
+
+	@FindBy(xpath = "//a[@id='aLogin_MyProfile']")
+	WebElement myprofile;
+
+	@FindBy(id = "txtFirstName")
+	WebElement fnameofmyprofile;
+
+	@FindBy(id = "txtLastName")
+	WebElement lnameofmyprofile;
+
+	@FindBy(id = "txtJobTitle")
+	WebElement jobtitle;
+
+	@FindBy(xpath = "//input[@id='txtCompany']")
+	WebElement companyname;
+
+	@FindBy(xpath = "//input[@id='txtPhone']")
+	WebElement enterphonenumber;
+
+	@FindBy(xpath = "//input[@id='ProfileSave']")
+	WebElement savebtnonmyprofile;
+
+	@FindBy(xpath = "//a[@id='EnabledPass']")
+	WebElement clickonchangepassword;
+
+	@FindBy(xpath = "//input[@id='OldPassword']")
+	WebElement enteroldpassword;
+
+	@FindBy(xpath = "//input[@id='NewPassword']")
+	WebElement enternewpassword;
+
+	@FindBy(xpath = "//input[@id='ReEnterPassword']")
+	WebElement enterreenterpassword;
+
+	/////////////////////////////////////////////// SPLIT/////////////////////////////////////////////////////////////////
+
+	//////////////////////////////////////////// My
+	//////////////////////////////////////////// Profile//////////////////////////////////////////////////////
+
+	public void verifyToastMessage(String expectedMsg) {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		try {
+			WebElement toastElement = wait.until(ExpectedConditions.visibilityOf(toastmsguserupdatedsuccessfully));
+
+			String actual = toastElement.getText().trim();
+			Assert.assertEquals(actual, expectedMsg,
+					"❌ Toast verification failed! Expected: " + expectedMsg + " but got: " + actual);
+
+			System.out.println("✅ Toast Verified: " + actual);
+
+		} catch (Exception e) {
+			Assert.fail("❌ Toast message not displayed at all! Expected: " + expectedMsg);
+		}
 	}
-   
-   public void onmyprofilepageclickonsavebtn() {
-	   	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(onMyProfilePageclickonSave)).click();
-   }
-   public void enterokbtn() throws InterruptedException {
-	   Thread.sleep(2000);
-	   wait.until(ExpectedConditions.elementToBeClickable(enterOKbtn)).click();
-	   Thread.sleep(2000); 
-   }
-   
-   public void enterconfirmpassword() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(EnterConfirmPassword)).sendKeys("Aloha@123");
-   }
-   
-   public void enternewpassword() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(EnterNewPassword)).sendKeys("Aloha@123");
 
-   }
-   public void clickoninvitemail() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(ClickonInviteMail)).click();
-   }
-   
-   public void clickonsetbuttong() throws InterruptedException {
-	   wait.until(ExpectedConditions.elementToBeClickable(ClickOnSetButton)).click();
-	  	 Thread.sleep(10000);
-   }
-   public void clickonforgetmebtn() throws InterruptedException {
-	   Thread.sleep(3000);
-	   wait.until(ExpectedConditions.elementToBeClickable(clickonForgetmebtn)).click();
-   }
-   public void clickondomaintxtbox() throws InterruptedException {
-	   Thread.sleep(1000);
-	   wait.until(ExpectedConditions.elementToBeClickable(clickonDomaintxtbox)).click();
-	   wait.until(ExpectedConditions.elementToBeClickable(clickonDomaintxtbox)).sendKeys("Nikhil");
-   }
-   
-   public void uncheckscambleaddress() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(uncheckScrambleAddress)).click();
-   }
-   
-   public void clickoninvitelink() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
-  	 wait.until(ExpectedConditions.elementToBeClickable(clickOninvitelink)).click();
-   }
-   
-   public void verifyUserAddedInTable(String email) {
-	    String xpath = "//td[@aria-label='Column Username, Value " + email + "']";
-	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-	    
-	    try {
-	      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-	        System.out.println("✅ User found in table: " + email);
-	    } catch (TimeoutException e) {
-	        System.out.println("❌ User NOT found: " + email);
-	        Assert.fail("User not added in table: " + email);
-	    }
-	}  
-    
-   public void okbtn() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(clickonOKbtn)).click();
-   }
-   public void enteremail() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(EnterEmail)).sendKeys("nikhil@sharklasers.com");
-   }
-   public void enterlastname() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(enterLastName)).sendKeys("Automation");
-   }
-   
-   public void enterfirstname() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-  	 wait.until(ExpectedConditions.elementToBeClickable(enterFirstName)).sendKeys("Nikhil");
-   }
-   
-   public void clickonaddnewuser() {
-	   clickonAddNewUser.click();
-   }
-   public void clickonadduserdropdown() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-  	 wait.until(ExpectedConditions.elementToBeClickable(clickOnAddUserDropDown)).click();
-   }
-   
-   public void clickonusermanagementbtn() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(clickonUserManagement)).click();
-   }
-   
-   public void clickoncurrentuser() {
-	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.elementToBeClickable(clickonuserbtn));
-	    clickonuserbtn.click();
+	public void ClickOnChangePassword() {
+		wait.until(ExpectedConditions.elementToBeClickable(clickonchangepassword)).click();
+
+		WebElement oldPwd = wait.until(ExpectedConditions.visibilityOf(enteroldpassword));
+		oldPwd.clear();
+		oldPwd.sendKeys("Aloha@123");
+		enteroldpassword.sendKeys(Keys.TAB);
+
+		WebElement newPwd = wait.until(ExpectedConditions.visibilityOf(enternewpassword));
+		newPwd.clear();
+		newPwd.sendKeys("Aloha@1234");
+		enternewpassword.sendKeys(Keys.TAB);
+
+//	    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("dvpasswordnotification")));
+
+//	    wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword));
+		wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword)).sendKeys("Aloha@1234");
 	}
-   
-   ///////////////////////////tag management page///////////////////////////////////////////////////
-   
-  
-   public void verifyLocationTagDeleted() throws InterruptedException {
-	    Thread.sleep(2000); // wait for UI update
-	    if (LocationTagsList.isEmpty()) {
-	        System.out.println("✅ Normal tag deleted successfully. No tags found under tag section.");
-	    } else {
-	        System.out.println("❌ Normal tag deletion failed. Found " + LocationTagsList.size() + " tag(s).");
-	        for (WebElement tag : LocationTagsList) {
-	            System.out.println("Tag still present: " + tag.getText());
-	        }
-	        Assert.fail("Tag still exists under tag section after deletion.");
-	    }
-	    Thread.sleep(3000); 
+
+	public void SaveButtonOnMyProfile() {
+		wait.until(ExpectedConditions.elementToBeClickable(savebtnonmyprofile)).click();
 	}
-   
-   public void clickondeletelocationtagbutton() {
-	   wait.until(ExpectedConditions.elementToBeClickable(Deletetickettag)).click();
-   }
-   
-   public void verifyTagIsAddedSuccessfullyinlocationtag() throws InterruptedException {
-	    Thread.sleep(2000); // Wait for tag to appear
 
-	    try {
-	        if (addedlocationTag.isDisplayed()) {
-	            System.out.println("✅ Ticket tag added successfully: " + addedlocationTag.getText());
-	        } else {
-	            System.out.println("❌ Ticket tag element is not displayed.");
-	            Assert.fail("Ticket tag was not displayed after adding.");
-	        }
-	    } catch (NoSuchElementException e) {
-	        System.out.println("❌ Ticket tag element not found in DOM.");
-	        Assert.fail("Ticket tag not added or not present in DOM.");
-	    }
+	public void EnterCompanyName() {
+		wait.until(ExpectedConditions.elementToBeClickable(companyname)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(companyname)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(companyname)).sendKeys("Dighi2");
+
+		wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).sendKeys("1234567890");
 	}
-    
-   public void enterlocationtagname() throws InterruptedException {
-		  WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-		 	 wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");  
-		 	 Thread.sleep(2000);
-		 	wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
-		 	Thread.sleep(2000);
-   }
-   
-   public void addtaglocationtag() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-  	 wait.until(ExpectedConditions.elementToBeClickable(addTagLocationTag)).click();
-   }
-   
-   public void verifyNormalTagDeleted() throws InterruptedException {
-	    Thread.sleep(2000); // wait for UI update
-	    if (normalTagsList.isEmpty()) {
-	        System.out.println("✅ Normal tag deleted successfully. No tags found under tag section.");
-	    } else {
-	        System.out.println("❌ Normal tag deletion failed. Found " + normalTagsList.size() + " tag(s).");
-	        for (WebElement tag : normalTagsList) {
-	            System.out.println("Tag still present: " + tag.getText());
-	        }
-	        Assert.fail("Tag still exists under tag section after deletion.");
-	    }
-	    Thread.sleep(3000); 
+
+	public void JobTitle() {
+		wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).sendKeys("QA Engineer");
 	}
-   
-   public void verifyTagIsAddedSuccessfully() throws InterruptedException {
-	    Thread.sleep(2000); // Wait for tag to appear
 
-	    try {
-	        if (addedTag.isDisplayed()) {
-	            System.out.println("✅ Ticket tag added successfully: " + addedTag.getText());
-	        } else {
-	            System.out.println("❌ Ticket tag element is not displayed.");
-	            Assert.fail("Ticket tag was not displayed after adding.");
-	        }
-	    } catch (NoSuchElementException e) {
-	        System.out.println("❌ Ticket tag element not found in DOM.");
-	        Assert.fail("Ticket tag not added or not present in DOM.");
-	    }
+	public void FNameAndLNameOfMyProfile() {
+		wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).sendKeys("Nikhil2");
+
+		wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).sendKeys("Gurav");
 	}
-   
-   public void entertagnametextbox() throws InterruptedException {
-	  WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
- 	 wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");  
- 	 Thread.sleep(2000);
- 	wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
-  }
-  
-   public void addtagnormal() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-  	 wait.until(ExpectedConditions.elementToBeClickable(addTagNormal)).click();
-	   }
-   
-   public void verifyTicketTagDeleted() throws InterruptedException {
-	   Thread.sleep(2000); 
-	   if (ticketTags.isEmpty()) {
-	        System.out.println("✅ Ticket tag deleted successfully. No tags found under Ticket section.");
-	    } else {
-	        System.out.println("❌ Ticket tag deletion failed. Found " + ticketTags.size() + " tag(s).");
-	        for (WebElement tag : ticketTags) {
-	            System.out.println("Tag still present: " + tag.getText());
-	        }
-	        Assert.fail("Tag still exists under Ticket section after deletion.");
-	    }
-	   Thread.sleep(2000); 
+
+	public void MyProfile() {
+		wait.until(ExpectedConditions.elementToBeClickable(myprofile)).click();
 	}
-   
-   public void deletetagfromtickettag() {
-	   Deletetickettag.click();
-   }
-      
-   public void checkTicketTagIsAddedSuccessfully() throws InterruptedException {
-	    Thread.sleep(2000); // Wait for tag to appear
 
-	    try {
-	        if (tickettagisaddedsuccessfully.isDisplayed()) {
-	            System.out.println("✅ Ticket tag added successfully: " + tickettagisaddedsuccessfully.getText());
-	        } else {
-	            System.out.println("❌ Ticket tag element is not displayed.");
-	            Assert.fail("Ticket tag was not displayed after adding.");
-	        }
-	    } catch (NoSuchElementException e) {
-	        System.out.println("❌ Ticket tag element not found in DOM.");
-	        Assert.fail("Ticket tag not added or not present in DOM.");
-	    }
+	///////////////////////////// User Management
+	///////////////////////////// Page/////////////////////////////////////////////
+
+	public void LoggedinFailed() {
+		String expected = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
+		String actual = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
+		Assert.assertEquals(actual, expected, "❌ User is logged in unexpectedly!");
+		System.out.println("✅ User is not able to login: " + actual);
 	}
-  
-   public void entertickettagunderaddtickettagtextfailedandsave() throws InterruptedException {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(entertickettagunderaddtickettagtextfailed)).sendKeys("Test1");
-	  	 Thread.sleep(2000);
-	  	wait.until(ExpectedConditions.elementToBeClickable(btnAddTagOk)).click();
-   }
-   
-   public void ontagmanagementpageclickonaddtickets() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
-  	 wait.until(ExpectedConditions.elementToBeClickable(clickaddtagonticket)).click();
-  }
-   
-   public void clicktagmanagementtab() {
-	   WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
-	  	 wait.until(ExpectedConditions.elementToBeClickable(ClickTagManagentTab)).click();
-	      }
-   
-   
-   
-   
-   ////////////////////////////////////////////////////////////////////////////////////////
-   
-   public void disabledproductfromdropdown () {
-	   DisabledProduct.click();
-   }
-   
-   
-   public void ClickOnDisablePolicyDropdown()
-   {
-   	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-  	 wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
-   
+
+	public void DeleteUser() {
+		wait.until(ExpectedConditions.elementToBeClickable(deleteuser)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(deletebuttonclickon)).click();
 	}
-   public boolean waitForWinSelectUninstalledAndHover(int maxWaitInSeconds) {
-	    Actions actions = new Actions(ldriver);
-	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 
-	    long endTime = System.currentTimeMillis() + (maxWaitInSeconds * 1000);
-
-	    while (System.currentTimeMillis() < endTime) {
-	        try {
-	            if (WinSelectStatusNotInstalled.isDisplayed()) {
-	                actions.moveToElement(WinSelectStatusNotInstalled).perform();
-	                Thread.sleep(30000); // 30 sec hover
-	                return true;
-	            }
-	        } catch (Exception ignored) {}
-
-	        try {
-	            Thread.sleep(15000); // wait before retry
-	            ldriver.navigate().refresh();
-	            wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-
-	    return false; // timeout
+	public void DisabledAccountErrorMsaage() {
+		String expected = "Your account is currently disabled. Please contact your system administrator.";
+		String actual = "Your account is currently disabled. Please contact your system administrator.";
+		Assert.assertEquals(actual, expected, "❌ User login or Not Disabled!");
+		System.out.println("✅ User is not able to login: " + actual);
 	}
-   
-   public boolean waitForWinSelectInstalledAndHover(int maxWaitInSeconds) {
-	    Actions actions = new Actions(ldriver);
-	    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 
-	    long endTime = System.currentTimeMillis() + (maxWaitInSeconds * 1000);
-
-	    while (System.currentTimeMillis() < endTime) {
-	        try {
-	            if (WinSelectStatusEnabled.isDisplayed()) {
-	                actions.moveToElement(WinSelectStatusEnabled).perform();
-	                Thread.sleep(30000); // 🕒 Hover for 30 sec
-	                return true;
-	            }
-	        } catch (Exception ignored) { }
-
-	        try {
-	            if (WinSelectStatusEnabledOutdated.isDisplayed()) {
-	                actions.moveToElement(WinSelectStatusEnabledOutdated).perform();
-	                Thread.sleep(30000); // 🕒 Hover for 30 sec
-	                return true;
-	            }
-	        } catch (Exception ignored) { }
-
-	        try {
-	            Thread.sleep(15000); // wait 15 sec before next try
-	            ldriver.navigate().refresh();
-	            wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click(); // reopen Computers tab
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-
-	    return false; // Timeout
+	public void DisableCheckBoxOnEditUserWindow() {
+		wait.until(ExpectedConditions.elementToBeClickable(disablecheckboxonedituserwindow)).click();
 	}
-    
-    
-    
-    public void clickok() {
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(clickOK)).click();
-   	 
-    }
-    
-    public void checkradiobtn()
-    {
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(checkRadioBtn)).click();
-    }
-    
-    public void Savebtn() {
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(SaveBtn)).click();
-    	
-    	    }
-    
-    public void ClickOnWINSELECTToEnableFromDropDown() {
-    	
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(EnableWINSELECT)).click();
-    	    }
-    
-    
-    public void ClickOnEnablePolicyDropdown()
-    {
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
-    
-	}
-    
-    public void ClickONWINSELECT()
-    {
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(SelectProductWINSELECT)).click();
-    	
-    }
-    
-    public void ClickOnPolicyName()
-    {
-    	 WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-    	 wait.until(ExpectedConditions.elementToBeClickable(ClickOnPolicy)).click();
-    	
-    	
-    }
-    
-    public void SelectRelatedSite() {
-       SelectSite.click();
-    }
-    
-    public void clickOnSiteDropDown() 
-    { 
-    	
-    	ldriver.navigate().refresh();
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(SiteDropDown)).click();
-    	
-    }
-   
-    
-    public void searchComputerByName(String computerName) throws InterruptedException {
-    	SearchBoxOnComputersPage.click();
-    	SearchBoxOnComputersPage.clear();
-        SearchBoxOnComputersPage.sendKeys(computerName);
-        // Optional: press Enter if search doesn't auto trigger
-         SearchBoxOnComputersPage.sendKeys(Keys.ENTER);
-         Thread.sleep(4000);
-    }
-    
-    public void clickonComputersPage()
-	{
-    	WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-   	 wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click();
-    	
-	}
-    
-    public void enterEmailID(String emailAddress)
-    {
-    	wait.until(ExpectedConditions.elementToBeClickable(EmailId)).click();
-    	wait.until(ExpectedConditions.elementToBeClickable(EmailId)).clear();
-    	wait.until(ExpectedConditions.elementToBeClickable(EmailId)).sendKeys(emailAddress);
-    }
-    public void clickonNextBtn()
-    {
-    	NextButton.click();
-    }
-    public void enterPass (String pwd)
-    {
-    	Password.sendKeys(pwd);
-    }
-    public void clickonLoginBtn ()
-    {
-    	LoginButton.click();
-    }
-    public void clickonlogoutmenubtn()
-    {
-    	clickonlogoutmenu.click();
-    }
-    public void clicklogoutbtn()
-    {
-    	clickonlogout.click();
-    }
-    
-    public void clickOnPolicyTabbtn()
-    {
-    	clickOnPolicyTab.click();
-    }
-    public void clickonAddPolictbtn()
-    {
-    	AddPolicyDropDown.click();
-    }
-    public void selectPolicyTypeDeepFreezeWindow()
-    {
-    	SelectPolicyTypeDFWindow.click();
-    }
-    public void PolicyName(String Test)
-    {
-    	EnterPolicyName.sendKeys(Test);
-    }
-    public void SelectDeepFreezeProduct() throws InterruptedException
-    {
-    	SelectDFProduct.click(); 
-    	Thread.sleep(2000);
-    }
-    public void ClickTOEnable()
-    {
-    	EnableDFProduct.click();
-    }
-    
-    public void selectDeepFreezeSetting(String value) throws InterruptedException {
-    	Thread.sleep(4000);
-       	dropdown.click();
-    	
-    }
-    public void SavePolicybtn() throws InterruptedException
-    {
-    	ClickOnSaveBtn.click();
-    	Thread.sleep(7000);
-    }
-    public void DownloadAgentbtn()
-    {
-    	ClickONDownloadAhentbtn.click();
-    }
-    
-    public void selectnNewlyCreatedPolicy() throws InterruptedException
-    {
-    	SelectPolicyNameDropDown.click();
-   	 Thread.sleep(2000);
-   	   SelectPolicy.click();
-    
-    }
 
-		
-	public void SelectDownloadType()
-    {
-    	SelectDownloadTypeFromList.click();
-    }
-    public void Downloadbtn() throws InterruptedException 
-    {
-       clickDownload.click();
-      // Thread.sleep(10000);
-    }
-
-	public void SelectMSIDownloadType()
-	{
-	SelectMSIDownloadTypeFromList.click();
+	public void UserUpdatedSuccessfullyToastMsg() {
+		String expected = toastmsguserupdatedsuccessfully.getText();
+		String actual = toastmsguserupdatedsuccessfully.getText();
+		Assert.assertEquals(actual, expected, "❌ User updated verification failed!");
+		System.out.println("✅ User Updated Successfully: " + actual);
 	}
-	public void SelectDeploymentUtilityType()
-	{
+
+	public void UpdateBtn() {
+		updatebtn.click();
+	}
+
+	public void PermissionDropdown() {
+		wait.until(ExpectedConditions.elementToBeClickable(permissiondropdown));
+		Select select = new Select(permissiondropdown);
+		select.selectByIndex(1);
+
+		wait.until(ExpectedConditions.elementToBeClickable(selectallsites)).click();
+	}
+
+	public void EditUser() {
+
+		// wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("switchtoframeedituser")));
+
+		wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).sendKeys("Nikhil2");
+
+		wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).sendKeys("Automation2");
+	}
+
+	public void EditBtn() {
+		wait.until(ExpectedConditions.elementToBeClickable(editbtn)).click();
+
+	}
+
+	public void SearchNewlyCreatedUser() {
+
+		wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).sendKeys("nikhil@sharklasers.com");
+		wait.until(ExpectedConditions.elementToBeClickable(searchnewlycreateduser)).sendKeys(Keys.ENTER);
+
+	}
+
+	public void onmainpageclickonadgotitbtn() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(onmainpageclickonAdGOTIT)).click();
+	}
+
+	public void verifyLoggedInUser() {
+		String expected = "nikhil@sharklasers.com";
+		String actual = "nikhil@sharklasers.com";
+		Assert.assertEquals(actual, expected, "❌ User login verification failed!");
+		System.out.println("✅ Logged in as: " + actual);
+	}
+
+	public void onmyprofilepageclickonsavebtn() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(onMyProfilePageclickonSave)).click();
+	}
+
+	public void enterokbtn() throws InterruptedException {
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(enterOKbtn)).click();
+		Thread.sleep(2000);
+	}
+
+	public void enterconfirmpassword() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(EnterConfirmPassword)).sendKeys("Aloha@123");
+	}
+
+	public void enternewpassword() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(EnterNewPassword)).sendKeys("Aloha@123");
+
+	}
+
+	public void clickoninvitemail() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(ClickonInviteMail)).click();
+	}
+
+	public void clickonsetbuttong() throws InterruptedException {
+		wait.until(ExpectedConditions.elementToBeClickable(ClickOnSetButton)).click();
+		Thread.sleep(10000);
+	}
+
+	public void clickonforgetmebtn() throws InterruptedException {
+		Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(clickonForgetmebtn)).click();
+	}
+
+	public void clickondomaintxtbox() throws InterruptedException {
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(clickonDomaintxtbox)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(clickonDomaintxtbox)).sendKeys("Nikhil");
+	}
+
+	public void uncheckscambleaddress() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(uncheckScrambleAddress)).click();
+	}
+
+	public void clickoninvitelink() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOninvitelink)).click();
+	}
+
+	public void verifyUserAddedInTable(String email) {
+		String xpath = "//td[@aria-label='Column Username, Value " + email + "']";
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			System.out.println("✅ User found in table: " + email);
+		} catch (TimeoutException e) {
+			System.out.println("❌ User NOT found: " + email);
+			Assert.fail("User not added in table: " + email);
+		}
+	}
+
+	public void okbtn() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(clickonOKbtn)).click();
+	}
+
+	public void enteremail() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(EnterEmail)).sendKeys("nikhil@sharklasers.com");
+	}
+
+	public void enterlastname() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(enterLastName)).sendKeys("Automation");
+	}
+
+	public void enterfirstname() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(enterFirstName)).sendKeys("Nikhil");
+	}
+
+	public void clickonaddnewuser() {
+		clickonAddNewUser.click();
+	}
+
+	public void clickonadduserdropdown() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnAddUserDropDown)).click();
+	}
+
+	public void clickonusermanagementbtn() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(clickonUserManagement)).click();
+	}
+
+	public void clickoncurrentuser() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(clickonuserbtn));
+		clickonuserbtn.click();
+	}
+
+	/////////////////////////// tag management
+	/////////////////////////// page///////////////////////////////////////////////////
+
+	public void verifyLocationTagDeleted() throws InterruptedException {
+		Thread.sleep(2000); // wait for UI update
+		if (LocationTagsList.isEmpty()) {
+			System.out.println("✅ Normal tag deleted successfully. No tags found under tag section.");
+		} else {
+			System.out.println("❌ Normal tag deletion failed. Found " + LocationTagsList.size() + " tag(s).");
+			for (WebElement tag : LocationTagsList) {
+				System.out.println("Tag still present: " + tag.getText());
+			}
+			Assert.fail("Tag still exists under tag section after deletion.");
+		}
+		Thread.sleep(3000);
+	}
+
+	public void clickondeletelocationtagbutton() {
+		wait.until(ExpectedConditions.elementToBeClickable(Deletetickettag)).click();
+	}
+
+	public void verifyTagIsAddedSuccessfullyinlocationtag() throws InterruptedException {
+		Thread.sleep(2000); // Wait for tag to appear
+
+		try {
+			if (addedlocationTag.isDisplayed()) {
+				System.out.println("✅ Ticket tag added successfully: " + addedlocationTag.getText());
+			} else {
+				System.out.println("❌ Ticket tag element is not displayed.");
+				Assert.fail("Ticket tag was not displayed after adding.");
+			}
+		} catch (NoSuchElementException e) {
+			System.out.println("❌ Ticket tag element not found in DOM.");
+			Assert.fail("Ticket tag not added or not present in DOM.");
+		}
+	}
+
+	public void enterlocationtagname() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
+		Thread.sleep(2000);
+	}
+
+	public void addtaglocationtag() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(addTagLocationTag)).click();
+	}
+
+	public void verifyNormalTagDeleted() throws InterruptedException {
+		Thread.sleep(2000); // wait for UI update
+		if (normalTagsList.isEmpty()) {
+			System.out.println("✅ Normal tag deleted successfully. No tags found under tag section.");
+		} else {
+			System.out.println("❌ Normal tag deletion failed. Found " + normalTagsList.size() + " tag(s).");
+			for (WebElement tag : normalTagsList) {
+				System.out.println("Tag still present: " + tag.getText());
+			}
+			Assert.fail("Tag still exists under tag section after deletion.");
+		}
+		Thread.sleep(3000);
+	}
+
+	public void verifyTagIsAddedSuccessfully() throws InterruptedException {
+		Thread.sleep(2000); // Wait for tag to appear
+
+		try {
+			if (addedTag.isDisplayed()) {
+				System.out.println("✅ Ticket tag added successfully: " + addedTag.getText());
+			} else {
+				System.out.println("❌ Ticket tag element is not displayed.");
+				Assert.fail("Ticket tag was not displayed after adding.");
+			}
+		} catch (NoSuchElementException e) {
+			System.out.println("❌ Ticket tag element not found in DOM.");
+			Assert.fail("Ticket tag not added or not present in DOM.");
+		}
+	}
+
+	public void entertagnametextbox() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
+	}
+
+	public void addtagnormal() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(addTagNormal)).click();
+	}
+
+	public void verifyTicketTagDeleted() throws InterruptedException {
+		Thread.sleep(2000);
+		if (ticketTags.isEmpty()) {
+			System.out.println("✅ Ticket tag deleted successfully. No tags found under Ticket section.");
+		} else {
+			System.out.println("❌ Ticket tag deletion failed. Found " + ticketTags.size() + " tag(s).");
+			for (WebElement tag : ticketTags) {
+				System.out.println("Tag still present: " + tag.getText());
+			}
+			Assert.fail("Tag still exists under Ticket section after deletion.");
+		}
+		Thread.sleep(2000);
+	}
+
+	public void deletetagfromtickettag() {
+		Deletetickettag.click();
+	}
+
+	public void checkTicketTagIsAddedSuccessfully() throws InterruptedException {
+		Thread.sleep(2000); // Wait for tag to appear
+
+		try {
+			if (tickettagisaddedsuccessfully.isDisplayed()) {
+				System.out.println("✅ Ticket tag added successfully: " + tickettagisaddedsuccessfully.getText());
+			} else {
+				System.out.println("❌ Ticket tag element is not displayed.");
+				Assert.fail("Ticket tag was not displayed after adding.");
+			}
+		} catch (NoSuchElementException e) {
+			System.out.println("❌ Ticket tag element not found in DOM.");
+			Assert.fail("Ticket tag not added or not present in DOM.");
+		}
+	}
+
+	public void entertickettagunderaddtickettagtextfailedandsave() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(entertickettagunderaddtickettagtextfailed))
+				.sendKeys("Test1");
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(btnAddTagOk)).click();
+	}
+
+	public void ontagmanagementpageclickonaddtickets() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(clickaddtagonticket)).click();
+	}
+
+	public void clicktagmanagementtab() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(ClickTagManagentTab)).click();
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////
+
+	public void disabledproductfromdropdown() {
+		DisabledProduct.click();
+	}
+
+	public void ClickOnDisablePolicyDropdown() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
+
+	}
+
+	public boolean waitForWinSelectUninstalledAndHover(int maxWaitInSeconds) {
+		Actions actions = new Actions(ldriver);
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+
+		long endTime = System.currentTimeMillis() + (maxWaitInSeconds * 1000);
+
+		while (System.currentTimeMillis() < endTime) {
+			try {
+				if (WinSelectStatusNotInstalled.isDisplayed()) {
+					actions.moveToElement(WinSelectStatusNotInstalled).perform();
+					Thread.sleep(30000); // 30 sec hover
+					return true;
+				}
+			} catch (Exception ignored) {
+			}
+
+			try {
+				Thread.sleep(15000); // wait before retry
+				ldriver.navigate().refresh();
+				wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return false; // timeout
+	}
+
+	public boolean waitForWinSelectInstalledAndHover(int maxWaitInSeconds) {
+		Actions actions = new Actions(ldriver);
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+
+		long endTime = System.currentTimeMillis() + (maxWaitInSeconds * 1000);
+
+		while (System.currentTimeMillis() < endTime) {
+			try {
+				if (WinSelectStatusEnabled.isDisplayed()) {
+					actions.moveToElement(WinSelectStatusEnabled).perform();
+					Thread.sleep(30000); // 🕒 Hover for 30 sec
+					return true;
+				}
+			} catch (Exception ignored) {
+			}
+
+			try {
+				if (WinSelectStatusEnabledOutdated.isDisplayed()) {
+					actions.moveToElement(WinSelectStatusEnabledOutdated).perform();
+					Thread.sleep(30000); // 🕒 Hover for 30 sec
+					return true;
+				}
+			} catch (Exception ignored) {
+			}
+
+			try {
+				Thread.sleep(15000); // wait 15 sec before next try
+				ldriver.navigate().refresh();
+				wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click(); // reopen Computers tab
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return false; // Timeout
+	}
+
+	public void clickok() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOK)).click();
+
+	}
+
+	public void checkradiobtn() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(checkRadioBtn)).click();
+	}
+
+	public void Savebtn() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(SaveBtn)).click();
+
+	}
+
+	public void ClickOnWINSELECTToEnableFromDropDown() {
+
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(EnableWINSELECT)).click();
+	}
+
+	public void ClickOnEnablePolicyDropdown() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
+
+	}
+
+	public void ClickONWINSELECT() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(SelectProductWINSELECT)).click();
+
+	}
+
+	public void ClickOnPolicyName() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(ClickOnPolicy)).click();
+
+	}
+
+	public void SelectRelatedSite() {
+		SelectSite.click();
+	}
+
+	public void clickOnSiteDropDown() {
+
+		ldriver.navigate().refresh();
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(SiteDropDown)).click();
+
+	}
+
+	public void searchComputerByName(String computerName) throws InterruptedException {
+		SearchBoxOnComputersPage.click();
+		SearchBoxOnComputersPage.clear();
+		SearchBoxOnComputersPage.sendKeys(computerName);
+		// Optional: press Enter if search doesn't auto trigger
+		SearchBoxOnComputersPage.sendKeys(Keys.ENTER);
+		Thread.sleep(4000);
+	}
+
+	public void clickonComputersPage() {
+		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click();
+
+	}
+
+	public void enterEmailID(String emailAddress) {
+		wait.until(ExpectedConditions.elementToBeClickable(EmailId)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(EmailId)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(EmailId)).sendKeys(emailAddress);
+	}
+
+	public void clickonNextBtn() {
+		NextButton.click();
+	}
+
+	public void enterPass(String pwd) {
+		Password.sendKeys(pwd);
+	}
+
+	public void clickonLoginBtn() {
+		LoginButton.click();
+	}
+
+	public void clickonlogoutmenubtn() {
+		clickonlogoutmenu.click();
+	}
+
+	public void clicklogoutbtn() {
+		clickonlogout.click();
+	}
+
+	public void clickOnPolicyTabbtn() {
+		clickOnPolicyTab.click();
+	}
+
+	public void clickonAddPolictbtn() {
+		AddPolicyDropDown.click();
+	}
+
+	public void selectPolicyTypeDeepFreezeWindow() {
+		SelectPolicyTypeDFWindow.click();
+	}
+
+	public void PolicyName(String Test) {
+		EnterPolicyName.sendKeys(Test);
+	}
+
+	public void SelectDeepFreezeProduct() throws InterruptedException {
+		SelectDFProduct.click();
+		Thread.sleep(2000);
+	}
+
+	public void ClickTOEnable() {
+		EnableDFProduct.click();
+	}
+
+	public void selectDeepFreezeSetting(String value) throws InterruptedException {
+		Thread.sleep(4000);
+		dropdown.click();
+
+	}
+
+	public void SavePolicybtn() throws InterruptedException {
+		ClickOnSaveBtn.click();
+		Thread.sleep(7000);
+	}
+
+	public void DownloadAgentbtn() {
+		ClickONDownloadAhentbtn.click();
+	}
+
+	public void selectnNewlyCreatedPolicy() throws InterruptedException {
+		SelectPolicyNameDropDown.click();
+		Thread.sleep(2000);
+		SelectPolicy.click();
+
+	}
+
+	public void SelectDownloadType() {
+		SelectDownloadTypeFromList.click();
+	}
+
+	public void Downloadbtn() throws InterruptedException {
+		clickDownload.click();
+		// Thread.sleep(10000);
+	}
+
+	public void SelectMSIDownloadType() {
+		SelectMSIDownloadTypeFromList.click();
+	}
+
+	public void SelectDeploymentUtilityType() {
 		SelectDeploymentUtilityTypeFromList.click();
 	}
-	public void SelectFullInstallerType()
-	{
-				
+
+	public void SelectFullInstallerType() {
+
 		WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(3600));
-	   	 wait.until(ExpectedConditions.elementToBeClickable(SelectFullInstallerTypeFromList)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(SelectFullInstallerTypeFromList)).click();
 	}
-	public void Downloadbtnn() throws InterruptedException
-	{
+
+	public void Downloadbtnn() throws InterruptedException {
 		Downloadn.click();
-		//Thread.sleep(900000);
+		// Thread.sleep(900000);
 	}
-	
-	public void SelectDownloaderTypeWindowsServer()
-	{
+
+	public void SelectDownloaderTypeWindowsServer() {
 		SelectDownloaderTypeeWindowsServer.click();
 	}
-	public void SelectDownloaderTypeMac()
-	{
+
+	public void SelectDownloaderTypeMac() {
 		SelectDownloaderTypeeMac.click();
 	}
-	
-	
-}
 
+}
