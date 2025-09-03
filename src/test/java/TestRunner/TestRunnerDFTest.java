@@ -1,6 +1,9 @@
 package TestRunner;
 
 import io.cucumber.testng.CucumberOptions;
+
+import org.testng.annotations.DataProvider;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 //import org.junit.runner.RunWith;
 //import io.cucumber.junit.Cucumber;
@@ -12,13 +15,20 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 				tags = "@test", 
 				dryRun = false, 
 				monochrome = true,
+						publish = true
 		/*
 		 * plugin = { "pretty", "html:target/CucumberReports/test1 report.html", //
 		 * "json:target/CucumberReports/test report.json", //
 		 * "junit:target/CucumberReports/test report.xml" }
 		 */
-		plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" })
+		//plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }
+						
+		)
 
 public class TestRunnerDFTest extends AbstractTestNGCucumberTests {
-
+	  @Override
+	    @DataProvider(parallel = false)   
+	  public Object[][] scenarios() {
+	        return super.scenarios();
 }
+	  }

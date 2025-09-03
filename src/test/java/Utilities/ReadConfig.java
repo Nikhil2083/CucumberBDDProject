@@ -3,65 +3,60 @@ package Utilities;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-
 public class ReadConfig {
 
-	Properties properties;
-	
-	String path = "D:\\Automation\\DeepFreezeTC\\Config.properties";
-	
-	//constructor
-	public ReadConfig() {
-		
-		try {
-			properties = new Properties();
-			
-			
-			//to open config.properties file in input mode and load the file
-			FileInputStream fis = new FileInputStream(path);
-			properties.load(fis);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		
-	}
-	
-	public String getBrowser()
-	{
-		String value = properties.getProperty("browser");
-		
-		if(value!= null)
-			return value;
-		else
-			throw new RuntimeException("url not specified in config file.");
-		
-			
-	}
+    Properties properties;
 
-	public String getUsername() {
-		String value = properties.getProperty("username");
-		if(value!= null)
-			return value;
-		else
-			throw new RuntimeException("user not specified in config file.");
-	}
-	
-	public String getPassword() {
-		String value = properties.getProperty("password");
-		if(value!= null)
-			return value;
-		else
-			throw new RuntimeException("user password not specified in config file.");
-	}
-	
-	public String getURL() {
-		String value = properties.getProperty("baseURL");
-		if(value!= null)
-			return value;
-		else
-			throw new RuntimeException("url not specified in config file.");
-	}
-	
+    String path = "D:\\Automation\\DeepFreezeTC\\Config.properties";
+
+    // constructor
+    public ReadConfig() {
+        try {
+            properties = new Properties();
+            FileInputStream fis = new FileInputStream(path);
+            properties.load(fis);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getBrowser() {
+        return properties.getProperty("browser");
+    }
+
+    public String getUsername() {
+        return properties.getProperty("username");
+    }
+
+    public String getPassword() {
+        return properties.getProperty("password");
+    }
+
+    public String getURL() {
+        return properties.getProperty("baseURL");
+    }
+
+    public String getDownloadPath() {
+        return System.getProperty("user.dir") + "\\" + properties.getProperty("downloadPath");
+    }
+
+    public String getReportPath() {
+        return System.getProperty("user.dir") + "\\" + properties.getProperty("reportPath");
+    }
+
+    public String getEnvironment() {
+        return properties.getProperty("environment");
+    }
+
+    public String getHeadless() {
+        return properties.getProperty("headless");
+    }
+
+    public int getImplicitWait() {
+        return Integer.parseInt(properties.getProperty("implicitWait"));
+    }
+
+    public int getPageLoadTimeout() {
+        return Integer.parseInt(properties.getProperty("pageLoadTimeout"));
+    }
 }

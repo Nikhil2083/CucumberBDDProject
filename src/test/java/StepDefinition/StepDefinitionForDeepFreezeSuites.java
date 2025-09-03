@@ -131,7 +131,53 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	//////////////////////// step definition code from
 	//////////////////////// till///////////////////////////////////
 
+/////////////////////////MY Site //////////////////////////////////////////////////////////// 
+	@Then("Select newly created site")
+	public void select_newly_created_site() {
+			DeepFreezeSuitePg.SelectNewlyCreatedSite();
+	}
+	@Then("verified cloud should be switched to the new site.")
+	public void verified_cloud_should_be_switched_to_the_new_site() {
+	   
+	}
+	
+	@Then("Search newly added site name under search field and click on delete site option")
+	public void search_newly_added_site_name_under_search_field_and_click_on_delete_site_option() {
+	 
+	}
+	@Then("Verified site is deleted successfully")
+	public void verified_site_is_deleted_successfully() {
 
+	}
+	
+	@Then("Search newly added site name under search field and click on Edit site option")
+	public void search_newly_added_site_name_under_search_field_and_click_on_edit_site_option() {
+	    DeepFreezeSuitePg.SearchNewlyAddedSiteNameAndClickOnEdit();
+	}
+	@Then("Update Site Name and verified toast message: {string}")
+	public void update_site_name_and_verified_toast_message(String string) {
+	    DeepFreezeSuitePg.UpdateSiteNameAndVerifywithToastMsg();
+	    
+	}
+	
+	@Then("select My sites option from dropdown")
+	public void select_my_sites_option_from_dropdown() {
+	   DeepFreezeSuitePg.ClickOnMySiteOption();
+	}
+	@Then("click on Add site button")
+	public void click_on_add_site_button() {
+	   DeepFreezeSuitePg.ClickOnAddSiteButton();
+	}
+	@Then("Enter Site Name and save")
+	public void enter_site_name_and_save() {
+	   DeepFreezeSuitePg.EnterSiteNameUnderTXTField();
+	}
+	@Then("Verified New Site added successfully using toast message {string}")
+	public void verified_new_site_added_successfully_using_toast_message(String string) {
+	  DeepFreezeSuitePg.NewSiteAddedSuccessfullyToastMsg();
+	}
+	
+	
 	////////////////// My Profile///////////////////////////////////////////////////////////
 
 	@Then("a popup toast message should appear as a {string}")
@@ -571,6 +617,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 
 	@Then("Close browser")
 	public void close_browser() {
+		driver.close();
 		log.info("Close browser step executed but browser will close only after all scenarios.");
 	}
 

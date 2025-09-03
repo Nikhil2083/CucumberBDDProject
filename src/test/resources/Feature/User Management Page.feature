@@ -1,5 +1,5 @@
 Feature: User Management Page
-@NK
+
 Scenario: TC0001 C5494603 Add new Cloud User in User Management page and verify user get added successfully.
 Then Page Title Should be "Deep Freeze Cloud"
 Then Click on Computers Page
@@ -12,7 +12,7 @@ Then Enter Email: "nikhil@sharklasers.com"
 And Click OK
 And New user added successfully
 
-@NK
+
 Scenario: TC0002 C5494604 Login with newly added Cloud User to DF Cloud and make sure login should be successful.
 Then Page Title Should be "Deep Freeze Cloud"
 Then open email destination: "https://www.guerrillamail.com"
@@ -32,7 +32,7 @@ Then On My Profile page click on save button
 Then Verified following user are logged in "nikhil@sharklasers.com"
 Then Page Title Should be "Deep Freeze Cloud"
 
-@NK
+
 Scenario: TC0003 C5494605 Edit Cloud User (like name, lastname, permission) and make sure changes should be saved.
 Then Page Title Should be "Deep Freeze Cloud"
 Then click on logoutmenu
@@ -52,7 +52,7 @@ And I change the Permission
 And I click on the Update button
 Then a popup toast message should appear as '"Nikhil2" user updated successfully'
 
-@NK
+
 Scenario: TC0004 C5494606 Disable Cloud User and make sure cloud login for disabled cloud user should be fail.
 Then Page Title Should be "Deep Freeze Cloud"
 Then click on logoutmenu
@@ -72,7 +72,7 @@ And Enter Password as "Aloha@123"
 And Click on Login
 And verified following error message is appeared "Your account is currently disabled. Please contact your system administrator."
 
-@NK
+
 Scenario: TC0005 C5494607 Delete Cloud User and make sure cloud login for deleted user should be fail.
 When Opens URL "https://www1.faronicsbeta.com/"
 And Enters Email as "nikhilguravnkil@gmail.com"

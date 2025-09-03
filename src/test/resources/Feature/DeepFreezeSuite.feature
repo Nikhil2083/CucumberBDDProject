@@ -12,7 +12,7 @@ Feature: DeepFreezeSuite
     And click on Logout
     And Close browser
     
-    
+
      Scenario Outline: TC002 Successful Login with Valid Credentials DDT
     Given Launch Chrome Browser
     When Opens URL "https://www1.faronicsbeta.com/"

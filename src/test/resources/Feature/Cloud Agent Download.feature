@@ -63,7 +63,7 @@ Feature: Home Page(Download Cloud Agent)
   Then Select downloader type- Mac
   Then Click on Download button
   And Mac Installer downloaded successfully
- #Then  Close browser
+Then  Close browser
  
  
  
