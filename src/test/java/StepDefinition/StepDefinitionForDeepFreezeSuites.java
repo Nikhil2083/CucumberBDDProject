@@ -134,51 +134,57 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 /////////////////////////MY Site //////////////////////////////////////////////////////////// 
 	@Then("Select newly created site")
 	public void select_newly_created_site() {
-			DeepFreezeSuitePg.SelectNewlyCreatedSite();
+		DeepFreezeSuitePg.SelectNewlyCreatedSite();
 	}
+
 	@Then("verified cloud should be switched to the new site.")
 	public void verified_cloud_should_be_switched_to_the_new_site() {
-	   
+		DeepFreezeSuitePg.VerifySiteSwitchedToNewlyCreatedSite();
 	}
-	
+
 	@Then("Search newly added site name under search field and click on delete site option")
 	public void search_newly_added_site_name_under_search_field_and_click_on_delete_site_option() {
-	 
+		DeepFreezeSuitePg.SearchNewlyCreatedSiteAndClickOnDelete();
 	}
+
 	@Then("Verified site is deleted successfully")
 	public void verified_site_is_deleted_successfully() {
-
+		DeepFreezeSuitePg.VerifySiteisDeletedProperlyusingToastMsg();
 	}
-	
+
 	@Then("Search newly added site name under search field and click on Edit site option")
 	public void search_newly_added_site_name_under_search_field_and_click_on_edit_site_option() {
-	    DeepFreezeSuitePg.SearchNewlyAddedSiteNameAndClickOnEdit();
+		DeepFreezeSuitePg.SearchNewlyAddedSiteNameAndClickOnEdit();
 	}
+
 	@Then("Update Site Name and verified toast message: {string}")
 	public void update_site_name_and_verified_toast_message(String string) {
-	    DeepFreezeSuitePg.UpdateSiteNameAndVerifywithToastMsg();
-	    
+		DeepFreezeSuitePg.UpdateSiteNameAndVerifywithToastMsg();
+
 	}
-	
+
 	@Then("select My sites option from dropdown")
 	public void select_my_sites_option_from_dropdown() {
-	   DeepFreezeSuitePg.ClickOnMySiteOption();
+		DeepFreezeSuitePg.ClickOnMySiteOption();
 	}
+
 	@Then("click on Add site button")
 	public void click_on_add_site_button() {
-	   DeepFreezeSuitePg.ClickOnAddSiteButton();
+		DeepFreezeSuitePg.ClickOnAddSiteButton();
 	}
+
 	@Then("Enter Site Name and save")
 	public void enter_site_name_and_save() {
-	   DeepFreezeSuitePg.EnterSiteNameUnderTXTField();
+		DeepFreezeSuitePg.EnterSiteNameUnderTXTField();
 	}
+
 	@Then("Verified New Site added successfully using toast message {string}")
 	public void verified_new_site_added_successfully_using_toast_message(String string) {
-	  DeepFreezeSuitePg.NewSiteAddedSuccessfullyToastMsg();
+		DeepFreezeSuitePg.NewSiteAddedSuccessfullyToastMsg();
 	}
-	
-	
-	////////////////// My Profile///////////////////////////////////////////////////////////
+
+	////////////////// My
+	////////////////// Profile///////////////////////////////////////////////////////////
 
 	@Then("a popup toast message should appear as a {string}")
 	public void a_popup_toast_message_should_appear_as_a(String string) {

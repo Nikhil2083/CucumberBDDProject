@@ -12,16 +12,16 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 //@RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Feature", 
 				glue = "StepDefinition", 
-				tags = "@test", 
+				tags = "@alltest", 
 				dryRun = false, 
 				monochrome = true,
-						publish = true
+						publish = true,
 		/*
 		 * plugin = { "pretty", "html:target/CucumberReports/test1 report.html", //
 		 * "json:target/CucumberReports/test report.json", //
 		 * "junit:target/CucumberReports/test report.xml" }
 		 */
-		//plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }
+		plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }
 						
 		)
 
