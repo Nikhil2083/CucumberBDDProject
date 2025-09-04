@@ -1,3 +1,4 @@
+@alltest
 Feature: My Profile Page
 
 

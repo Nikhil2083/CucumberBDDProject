@@ -573,7 +573,7 @@ public class PageObjectForDeepFreezeSuite {
 			// Enter New Password
 			WebElement newPwd = wait.until(ExpectedConditions.visibilityOf(enternewpassword));
 			newPwd.clear();
-			newPwd.sendKeys("Aloha@123");
+			newPwd.sendKeys("Aloha@1234");
 			newPwd.sendKeys(Keys.TAB);
 			System.out.println("✅ Entered new password");
 

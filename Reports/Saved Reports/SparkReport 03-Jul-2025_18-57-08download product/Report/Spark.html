@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>DeepFreeze Automation Report</title>
+<link rel="apple-touch-icon" href="spark/logo.png">
+<link rel="shortcut icon" href="spark/logo.png">
+<link rel="stylesheet" href="spark/spark-style.css">
+<link rel="stylesheet" href="spark/font-awesome.min.css">
+<script src="spark/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa bdd-report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('spark/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">DeepFreeze Web UI – Automation Test Summary</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Jul 3, 2025 06:57:04 PM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@test</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="pass" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Products install and uninstall using policy</p>
+            <p class="text-sm">
+              <span>6:58:05 PM</span> / <span>00:19:35:172</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Products install and uninstall using policy</h5>
+<span class='badge badge-success'>07.03.2025 6:58:05 PM</span>
+<span class='badge badge-danger'>07.03.2025 7:17:40 PM</span>
+<span class='badge badge-default'>00:19:35:172</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>C5494491 Enable WINSelect in assigned policy to the wksn and make sure that product installed on wksn and status updated on computers page.</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.page_title_should_be(java.lang.String)">
+                <span>Then Page Title Should be "Deep Freeze Cloud"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.goto_switch_site_option()">
+                <span>And Goto Switch site option</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.select_related_site()">
+                <span>And Select Related Site</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_computers_page()">
+                <span>Then Click on Computers Page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.search_computer_name(java.lang.String)">
+                <span>Then Search Computer Name "WINDOWS-10-22H2"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_assigned_policy_name()">
+                <span>And click on assigned policy name</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_deep_freeze_product_winselect()">
+                <span>Then Click on DeepFreeze Product- WINSELECT</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_enable_product_dropdown()">
+                <span>Then Click on Enable product dropdown</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.enable_deep_freeze_product_winselect()">
+                <span>And Enable DeepFreeze Product- WINSELECT</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_save_button()">
+                <span>Then Click on Save button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.on_policy_update_preference_window_select_notify_the_user_immediately_when_the_computer_checks_in_and_restart_after_minutes(java.lang.Integer)">
+                <span>And On Policy Update Preference window select- Notify the user immediately when the computer checks-in and restart after 2 minutes.</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.on_policy_update_preference_window_click_ok()">
+                <span>And On Policy Update Preference window click OK</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_computers_page()">
+                <span>Then Click on Computers Page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.check_winselect_status_indicator_should_be_green()">
+                <span>And check WINSELECT status indicator should be green</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.mouse_hover_on_the_winselect_status_indicator()">
+                <span>And Mouse hover on the WINSELECT status indicator</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="36"><span class="badge log pass-bg mr-2">Pass</span>C5494474 Disable WINSelect product in assigned policy to the wksn and make sure that WINSelect is uninstalled on workstation and status updated on computers page.</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.page_title_should_be(java.lang.String)">
+                <span>Then Page Title Should be "Deep Freeze Cloud"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_computers_page()">
+                <span>Then Click on Computers Page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.search_computer_name(java.lang.String)">
+                <span>Then Search Computer Name "WINDOWS-10-22H2"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_assigned_policy_name()">
+                <span>And click on assigned policy name</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_deep_freeze_product_winselect()">
+                <span>Then Click on DeepFreeze Product- WINSELECT</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_product_dropdown()">
+                <span>Then Click on product dropdown</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.disable_deep_freeze_product_winselect()">
+                <span>And Disable DeepFreeze Product- WINSELECT</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_save_button()">
+                <span>Then Click on Save button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.on_policy_update_preference_window_select_notify_the_user_immediately_when_the_computer_checks_in_and_restart_after_minutes(java.lang.Integer)">
+                <span>And On Policy Update Preference window select- Notify the user immediately when the computer checks-in and restart after 2 minutes.</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.on_policy_update_preference_window_click_ok()">
+                <span>And On Policy Update Preference window click OK</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.click_on_computers_page()">
+                <span>Then Click on Computers Page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.check_winselect_status_indicator_should_be_grey()">
+                <span>And check WINSELECT status indicator should be grey</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefinition.StepDefinitionForDeepFreezeSuites.mouse_hover_on_the_winselect_status_indicator()">
+                <span>And Mouse hover on the WINSELECT status indicator</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>2</span>
+</span>
+<p class="name">@test</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@test</h4>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>18:58:05 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>C5494491 Enable WINSelect in assigned policy to the wksn and make sure that product installed on wksn and status updated on computers page.</a>
+<div class="">
+<span class="badge badge-default">Products install and uninstall using policy.C5494491 Enable WINSelect in assigned policy to the wksn and make sure that product installed on wksn and status updated on computers page.</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:07:44 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='36'>C5494474 Disable WINSelect product in assigned policy to the wksn and make sure that WINSelect is uninstalled on workstation and status updated on computers page.</a>
+<div class="">
+<span class="badge badge-default">Products install and uninstall using policy.C5494474 Disable WINSelect product in assigned policy to the wksn and make sure that WINSelect is uninstalled on workstation and status updated on computers page.</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Jul 3, 2025 06:57:04 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Jul 3, 2025 07:17:41 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>1</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>0</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'>
+<b>1</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='0%'><b>0</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>2</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>28</b> steps passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> steps failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"Products install and uninstall using policy":1175.172
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@test</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>AppName</td>
+<td>DeepFreeze</td>
+</tr>
+<tr>
+<td>ExecutionMode</td>
+<td>Cloud</td>
+</tr>
+<tr>
+<td>Team</td>
+<td>QA Automation</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>QA</td>
+</tr>
+<tr>
+<td>user</td>
+<td>Nikhil Gurav</td>
+</tr>
+<tr>
+<td>Framework</td>
+<td>Cucumber + Selenium + TestNG</td>
+</tr>
+<tr>
+<td>ReportGeneratedBy</td>
+<td>ExtentReports</td>
+</tr>
+<tr>
+<td>build</td>
+<td>v1.25.0610</td>
+</tr>
+<tr>
+<td>JavaVersion</td>
+<td>24</td>
+</tr>
+<tr>
+<td>ExecutionDate</td>
+<td>25-Jun-2025</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Windows 10</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 1,
+failParent: 0,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 2,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 28,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="spark/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

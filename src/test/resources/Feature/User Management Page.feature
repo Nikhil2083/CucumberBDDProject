@@ -1,3 +1,4 @@
+@alltest
 Feature: User Management Page
 
 Scenario: TC0001 C5494603 Add new Cloud User in User Management page and verify user get added successfully.

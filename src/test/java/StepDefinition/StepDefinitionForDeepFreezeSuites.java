@@ -1,7 +1,10 @@
 package StepDefinition;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -25,108 +28,120 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import Utilities.CustomReportListener;
+import Utilities.CustomTestResult;
 
-//child class of base class
 public class StepDefinitionForDeepFreezeSuites extends BaseClass {
-	ArrayList<String> tabs;
-	private static boolean isLoggedIn = false;
-	PageObjectForDeepFreezeSuite df = new PageObjectForDeepFreezeSuite(driver);
 
-	//////////////////////// before/////////////////////////////////////////
+    ArrayList<String> tabs;
+    private static boolean isLoggedIn = false;
+    PageObjectForDeepFreezeSuite df = new PageObjectForDeepFreezeSuite(driver);
 
-	@BeforeAll
-	public static void setUp() {
-		readConfig = new ReadConfig();
-		String browser = readConfig.getBrowser();
-		switch (browser.toLowerCase()) {
-		case "chrome":
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(getChromeOptions());
-			break;
-		case "msedge":
-			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-			break;
-		case "firefox":
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-			break;
-		default:
-			throw new RuntimeException("Unsupported browser in config: " + browser);
-		}
-		driver.manage().window().maximize();
-		log = LogManager.getLogger("StepDefinitionForDeepFreezeSuites");
-		log.info("✅ Browser launched once before all scenarios.");
-	}
+    private static List<CustomTestResult> allResults = new ArrayList<>();
+    private static int passed = 0, failed = 0, skipped = 0;
 
-	@Before(order = 1)
-	public void loginIfNotDone() {
-		if (!isLoggedIn) {
-			driver.get(readConfig.getURL());
-			DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
-			DeepFreezeSuitePg.enterEmailID(readConfig.getUsername());
-			DeepFreezeSuitePg.clickonNextBtn();
-			DeepFreezeSuitePg.enterPass(readConfig.getPassword());
-			DeepFreezeSuitePg.clickonLoginBtn();
-			isLoggedIn = true;
-			log.info("🔐 Login performed once before all scenarios.");
-		}
-	}
+    // ---------------- BEFORE HOOKS ---------------- //
 
-	@Before(order = 2)
-	public void initPageObjects() {
-		if (DeepFreezeSuitePg == null) {
-			DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
-			log.info("📄 PageObject initialized.");
-		}
-	}
+    @BeforeAll
+    public static void setUp() {
+        readConfig = new ReadConfig();
+        String browser = readConfig.getBrowser();
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver(getChromeOptions());
+                break;
+            case "msedge":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            default:
+                throw new RuntimeException("Unsupported browser in config: " + browser);
+        }
+        driver.manage().window().maximize();
+        log = LogManager.getLogger("StepDefinitionForDeepFreezeSuites");
+        log.info("✅ Browser launched once before all scenarios.");
+    }
 
-	///////////////////// after///////////////////////////////////
+    @Before(order = 1)
+    public void loginIfNotDone() {
+        if (!isLoggedIn) {
+            driver.get(readConfig.getURL());
+            DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
+            DeepFreezeSuitePg.enterEmailID(readConfig.getUsername());
+            DeepFreezeSuitePg.clickonNextBtn();
+            DeepFreezeSuitePg.enterPass(readConfig.getPassword());
+            DeepFreezeSuitePg.clickonLoginBtn();
+            isLoggedIn = true;
+            log.info("🔐 Login performed once before all scenarios.");
+        }
+    }
 
-	@AfterStep
-	public void addScreenshotOnFailure(Scenario scenario) {
-		if (scenario.isFailed()) {
-			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-			scenario.attach(screenshot, "image/png", scenario.getName());
-		}
-	}
+    @Before(order = 2)
+    public void initPageObjects() {
+        if (DeepFreezeSuitePg == null) {
+            DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
+            log.info("📄 PageObject initialized.");
+        }
+    }
 
-	@After
-	public void captureScreenshot(Scenario scenario) throws InterruptedException {
-		if (scenario.isFailed()) {
-			Thread.sleep(1000);
-			ScreenshotUtil.capture(driver, scenario.getName());
-			Thread.sleep(20000);
-		}
-	}
+    // ---------------- AFTER HOOKS ---------------- //
 
-	@AfterAll
-	public static void tearDownAfterAll() {
-		if (driver != null) {
-			driver.quit();
-			log.info("🛑 Browser closed after all scenarios.");
-		}
-	}
+    @AfterStep
+    public void addScreenshotOnFailure(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
+    }
 
-//@After(order = 2)
-//public void end2()
-//{
-//	driver.quit();
-//	System.out.println("End Method Executed...");
-//}
-//
-//@BeforeStep
-//public void beforeStepMethosDemo()
-//{
-//	System.out.println("this is before step...");
-//}
-//
-//
-//@AfterStep
-//public void afterStepMethodDemo()
-//{
-//	System.out.println("this is after step...");
-//}
+    @After
+    public void captureScenarioResult(Scenario scenario) throws InterruptedException {
+        // Screenshot if failed
+        if (scenario.isFailed()) {
+            Thread.sleep(1000);
+            ScreenshotUtil.capture(driver, scenario.getName());
+            Thread.sleep(2000);
+        }
+
+        // Collect results
+        String status;
+        if (scenario.isFailed()) {
+            status = "FAIL";
+            failed++;
+        } else if (scenario.getStatus().toString().equalsIgnoreCase("SKIPPED")) {
+            status = "SKIP";
+            skipped++;
+        } else {
+            status = "PASS";
+            passed++;
+        }
+        allResults.add(new CustomTestResult(scenario.getName(), List.of(status)));
+    }
+
+    @AfterAll
+    public static void tearDownAfterAll() {
+        if (driver != null) {
+            driver.quit();
+            log.info("🛑 Browser closed after all scenarios.");
+        }
+
+        try {
+            CustomReportListener.generateReport(
+                "DeepFreeze Suite",   // $SUITE_NAME
+                "Regression Run",     // $TEST_NAME
+                passed, failed, skipped,
+                allResults
+            );
+            log.info("📊 Custom HTML report generated in target/custom-reports/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 	//////////////////////// step definition code from
 	//////////////////////// till///////////////////////////////////

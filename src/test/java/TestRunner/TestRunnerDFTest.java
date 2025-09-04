@@ -21,7 +21,13 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 		 * "json:target/CucumberReports/test report.json", //
 		 * "junit:target/CucumberReports/test report.xml" }
 		 */
-		plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }
+		plugin = { "pretty",
+		        // ✅ Extent Report Adapter
+		        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+		        // Optional default Cucumber reports
+		        "html:target/CucumberReports/HTMLReport.html",
+		        "json:target/CucumberReports/JSONReport.json",
+		        "junit:target/CucumberReports/XMLReport.xml"}
 						
 		)
 
