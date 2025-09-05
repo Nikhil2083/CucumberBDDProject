@@ -3,6 +3,7 @@
 <suite name="Suite">
 	<listeners>
 		<listener class-name="Utilities.CustomReportListener" />
+		<listener class-name="Utilities.ExtentTestListener" />
 	</listeners>
 	<test name="Test">
 		<classes>

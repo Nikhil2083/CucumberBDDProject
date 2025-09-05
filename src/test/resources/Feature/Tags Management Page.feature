@@ -1,4 +1,4 @@
-@alltest
+@alltest1
 Feature: Tags Management Page
 
 Scenario: TC0001 C5494618 Add Tickets tag in Tag Management page and make sure ticket tag should be added successfully.
@@ -11,7 +11,7 @@ Then Click on Computers Page
 
 
 Scenario: TC0002 C5494619 Delete added ticket tag in tag management page and make sure ticket tag should be deleted successfully.
-Then Click Tags Management tab
+#Then Click Tags Management tab
 Then check ticket tag is added successfully.
 And click on delete X tab
 And Are you sure you wish to delete the tag, click on Delete
