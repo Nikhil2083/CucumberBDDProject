@@ -6,7 +6,7 @@ Feature: DeepFreezeSuite
     When Opens URL "https://www1.faronicsbeta.com/"
     And Enters Email as "nikhilg@alohatechnologydev.com"
     And Click on NextButton
-    And Enter Password as "Aloha@123"
+   And Enter Password as "Aloha@123"
     And Click on Login
     Then Page Title Should be "Deep Freeze Cloud"
     Then click on logoutmenu

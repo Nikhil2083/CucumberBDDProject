@@ -12,10 +12,10 @@
     <protocol>https</protocol>
 
     <!-- Title of the document (browser tab name) -->
-    <documentTitle>DeepFreeze Automation Report</documentTitle>
+    <documentTitle>faronics-Deep Freeze Cloud Automation Report</documentTitle>
 
     <!-- Report name displayed in the top navigation -->
-    <reportName>DeepFreeze Web UI – Automation Test Summary</reportName>
+    <reportName>faronics-Deep Freeze Cloud Web UI – Automation Test Summary</reportName>
 
     <!-- Global date format override -->
     <dateFormat>dd-MMM-yyyy</dateFormat>
@@ -32,7 +32,7 @@
     <!-- Show Category View (like tags/modules) -->
     <categoryViewVisible>true</categoryViewVisible>
 
-    <!-- Logo support: optional
+    <!-- Logo support: optional 
     <logo>path/to/logo.png</logo>
     -->
 

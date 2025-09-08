@@ -1,6 +1,8 @@
 package StepDefinition;
 
 import org.apache.logging.log4j.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,9 +10,12 @@ import PageObject.PageObjectForDeepFreezeSuite;
 import Utilities.ReadConfig;
 
 public class BaseClass {
-
+	ArrayList<String> tabs;
+	
     public static WebDriver driver;
     public PageObjectForDeepFreezeSuite DeepFreezeSuitePg;
+    //public StepDefinitionForDeepFreezeSuites HooksConcept;
+    
     public static ReadConfig readConfig = new ReadConfig();
 
     // Logger initialized statically
