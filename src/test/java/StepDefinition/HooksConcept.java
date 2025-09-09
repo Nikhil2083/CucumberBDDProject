@@ -1,6 +1,6 @@
 package StepDefinition;
 
-// ---------------- BEFORE HOOKS ---------------- //
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +30,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import PageObject.PageObjectForDeepFreezeSuite;
+import PageObject.UtilitiesPagePOM;
 import Utilities.CustomReportListener;
 import Utilities.CustomTestResult;
 import Utilities.ReadConfig;
@@ -50,6 +51,8 @@ public class HooksConcept extends BaseClass{
     private static List<CustomTestResult> allResults = new ArrayList<>();
     private static int passed = 0, failed = 0, skipped = 0;
 
+    
+ // ---------------- BEFORE HOOKS ---------------- //
 @BeforeAll
     public static void setUp() {
         readConfig = new ReadConfig();
@@ -72,29 +75,34 @@ public class HooksConcept extends BaseClass{
         }
         driver.manage().window().maximize();
         log = LogManager.getLogger("StepDefinitionForDeepFreezeSuites");
+        log = LogManager.getLogger("StepDefinitionForDeepFreezeSuites");
+        
         log.info("✅ Browser launched once before all scenarios.");
     }
     
-    @Before(order = 1)
-    public void loginIfNotDone() {
-        if (!isLoggedIn) {
-            driver.get(readConfig.getURL());
-            DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
-            DeepFreezeSuitePg.enterEmailID(readConfig.getUsername());
-            DeepFreezeSuitePg.clickonNextBtn();
-            DeepFreezeSuitePg.enterPass(readConfig.getPassword());
-            DeepFreezeSuitePg.clickonLoginBtn();
-            isLoggedIn = true;
-            log.info("🔐 Login performed once before all scenarios.");
-        }
+@Before(order = 1)
+public void loginIfNotDone() {
+    if (!isLoggedIn) {
+        driver.get(readConfig.getURL());
+
+        DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
+        UtilitiesPagePg = new UtilitiesPagePOM(driver);
+
+        DeepFreezeSuitePg.enterEmailID(readConfig.getUsername());
+        DeepFreezeSuitePg.clickonNextBtn();
+        DeepFreezeSuitePg.enterPass(readConfig.getPassword());
+        DeepFreezeSuitePg.clickonLoginBtn();
+
+        isLoggedIn = true;
+        log.info("🔐 Login completed");
     }
+}
 
     @Before(order = 2)
     public void initPageObjects() {
-        if (DeepFreezeSuitePg == null) {
-            DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
-            log.info("📄 PageObject initialized.");
-        }
+        if (DeepFreezeSuitePg == null) DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
+        if (UtilitiesPagePg == null) UtilitiesPagePg = new UtilitiesPagePOM(driver);
+        log.info("📄 All PageObjects initialized");
     }
 
     // ---------------- AFTER HOOKS ---------------- //

@@ -20,11 +20,10 @@ public class PageObjectForDeepFreezeSuite {
 	WebDriver ldriver;
 	WebDriverWait wait;
     
-	
+	//Constructor
 	public PageObjectForDeepFreezeSuite(WebDriver rDriver) {
 		ldriver = rDriver;
 		wait = new WebDriverWait(ldriver, Duration.ofSeconds(50));
-		
 		PageFactory.initElements(rDriver, this);
 		
 	}

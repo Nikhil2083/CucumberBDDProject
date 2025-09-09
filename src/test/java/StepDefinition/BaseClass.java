@@ -7,21 +7,21 @@ import java.util.HashMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import PageObject.PageObjectForDeepFreezeSuite;
+import PageObject.UtilitiesPagePOM;
 import Utilities.ReadConfig;
 
 public class BaseClass {
 	ArrayList<String> tabs;
 	
-    public static WebDriver driver;
-    public PageObjectForDeepFreezeSuite DeepFreezeSuitePg;
-    //public StepDefinitionForDeepFreezeSuites HooksConcept;
-    
-    public static ReadConfig readConfig = new ReadConfig();
+	  public static WebDriver driver;
+	    public static ReadConfig readConfig = new ReadConfig();
+	    public static Logger log = LogManager.getLogger(BaseClass.class);
 
-    // Logger initialized statically
-    public static Logger log = LogManager.getLogger(BaseClass.class);
+	    // Static PageObjects
+	    public static PageObjectForDeepFreezeSuite DeepFreezeSuitePg;
+	    public static UtilitiesPagePOM UtilitiesPagePg;
 
-    /**
+	 /**
      * ChromeOptions for automatic download & bypassing protection
      */
     public static ChromeOptions getChromeOptions() {

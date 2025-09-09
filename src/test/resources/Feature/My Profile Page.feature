@@ -1,6 +1,5 @@
-@alltest
+@allTC
 Feature: My Profile Page
-
 
 Scenario: TC0001 C5494572 Open My profile and update some fields (e.g. name, compnay name, job title, phone no. ) and save settings.
 Then Page Title Should be "Deep Freeze Cloud"
@@ -13,7 +12,6 @@ And Enter Company Name and Phone Number
 Then Click on Save
 Then a popup toast message should appear as a 'Profile updated successfully'
 
-
 Scenario: TC0002 C5494573 Open My profile and change password and save settings.
 Then Page Title Should be "Deep Freeze Cloud"
 Then Click on Computers Page
@@ -22,7 +20,6 @@ And Click on My Profile
 And Set Password
 Then Click on Save
 Then a popup toast message should appear as 'Profile updated successfully'
-
 
 Scenario: TC0003 C5494574 After password is changed logout and login with new password and make sure login should be successful.
 Then Page Title Should be "Deep Freeze Cloud"
