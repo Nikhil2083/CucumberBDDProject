@@ -97,13 +97,21 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         ExtentReportManager.logStep(Status.INFO, "Verified popup toast message: " + string);
     }
 
-    @Then("Set Password")
-    public void set_password() {
+    @Then("Set Password{string}")
+    public void set_password(String string) {
         DeepFreezeSuitePg.ClickOnChangePassword();
         log.info("Set password initiated.");
         ExtentReportManager.logStep(Status.INFO, "Set password initiated.");
     }
 
+    @Then("Set Password old {string}")
+    public void set_password_old(String string) {
+        DeepFreezeSuitePg.ClickOnChangePassword2();
+        log.info("Set password initiated.");
+        ExtentReportManager.logStep(Status.INFO, "Set password initiated.");
+    }
+
+    
     @Then("Click on My Profile")
     public void click_on_my_profile() {
         DeepFreezeSuitePg.MyProfile();

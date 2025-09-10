@@ -361,7 +361,7 @@ public class PageObjectForDeepFreezeSuite {
 	@FindBy(xpath = "//span[@id='spanSiteName']")
 	WebElement verifySiteName;
 
-	@FindBy(xpath = "//i[@class='fa-solid fa-xmark']")
+	@FindBy(xpath = "//i[@class='fa-solid fa-xmark'][1]")
 	WebElement deletenewlycreatedsite;
 
 	@FindBy(xpath = "//input[@id='chkdeletemsg']")
@@ -407,8 +407,10 @@ public class PageObjectForDeepFreezeSuite {
 			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(checkboxfordeletion)).click();
 			System.out.println("✅ Clicked on check box for Delete");
+			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(confirmationofdeletesite)).click();
 			System.out.println("✅ Clicked on Confirmation of Delete Button");
+			
 
 		} catch (Exception e) {
 			System.err.println("❌ Failed to Search and Delete New Site Name: " + e.getMessage());
@@ -580,6 +582,38 @@ public class PageObjectForDeepFreezeSuite {
 			WebElement reEnterPwd = wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword));
 			reEnterPwd.clear();
 			reEnterPwd.sendKeys("Aloha@1234");
+			System.out.println("✅ Re-entered new password");
+
+		} catch (Exception e) {
+			System.err.println("❌ Failed to change password: " + e.getMessage());
+			throw e; // Optional: Fail the test if password change fails
+		}
+	}
+	
+	public void ClickOnChangePassword2() {
+		try {
+			// Click on Change Password button
+			wait.until(ExpectedConditions.elementToBeClickable(clickonchangepassword)).click();
+			System.out.println("✅ Clicked on 'Change Password'");
+
+			// Enter Old Password
+			WebElement oldPwd = wait.until(ExpectedConditions.visibilityOf(enteroldpassword));
+			oldPwd.clear();
+			oldPwd.sendKeys("Aloha@1234");
+			oldPwd.sendKeys(Keys.TAB);
+			System.out.println("✅ Entered old password");
+
+			// Enter New Password
+			WebElement newPwd = wait.until(ExpectedConditions.visibilityOf(enternewpassword));
+			newPwd.clear();
+			newPwd.sendKeys("Aloha@123");
+			newPwd.sendKeys(Keys.TAB);
+			System.out.println("✅ Entered new password");
+
+			// Re-enter New Password
+			WebElement reEnterPwd = wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword));
+			reEnterPwd.clear();
+			reEnterPwd.sendKeys("Aloha@123");
 			System.out.println("✅ Re-entered new password");
 
 		} catch (Exception e) {

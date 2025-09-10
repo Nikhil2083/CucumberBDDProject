@@ -4,7 +4,7 @@ Feature: DeepFreezeSuite
   Scenario: TC001 Successful Login with Valid Credentials
     Given Launch Chrome Browser
     When Opens URL "https://www1.faronicsbeta.com/"
-    And Enters Email as "nikhilg@alohatechnologydev.com"
+    And Enters Email as "nikhilguravnkil@gmail.com"
     And Click on NextButton
    And Enter Password as "Aloha@123"
     And Click on Login

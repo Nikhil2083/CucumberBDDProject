@@ -52,5 +52,6 @@ Then Click Tags Management tab
 And click on delete X tab on Location Tag
 And Are you sure you wish to delete the tag Location, click on Delete
 Then Check Entered Location Tag is deleted properly
+Then Click on Computers Page
 
 

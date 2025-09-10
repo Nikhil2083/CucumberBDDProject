@@ -1,4 +1,4 @@
-@allTC
+
 Feature: Home Page(Download Cloud Agent)
 
 #Background: Common Steps for all scenarios
@@ -51,7 +51,7 @@ Feature: Home Page(Download Cloud Agent)
   Then Select downloader type- Mac
   Then Click on Download button
   And Mac Installer downloaded successfully
-Then  Close browser
+
  
  
  

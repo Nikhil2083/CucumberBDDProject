@@ -17,7 +17,7 @@ Then Page Title Should be "Deep Freeze Cloud"
 Then Click on Computers Page
 Then click on logoutmenu
 And Click on My Profile
-And Set Password
+And Set Password"Aloha@1234"
 Then Click on Save
 Then a popup toast message should appear as 'Profile updated successfully'
 
@@ -28,8 +28,15 @@ And click on Logout
 When Opens URL "https://www1.faronicsbeta.com/"
 And Enters Email as "nikhilguravnkil@gmail.com"
 And Click on NextButton
-And Enter Password as "Aloha@123"
+And Enter Password as "Aloha@1234"
 And Click on Login
 Then Page Title Should be "Deep Freeze Cloud"
+Then Click on Computers Page
+Then click on logoutmenu
+And Click on My Profile
+And Set Password old "Aloha@123"
+Then Click on Save
+Then a popup toast message should appear as 'Profile updated successfully'
+Then Click on Computers Page
 
 
