@@ -589,7 +589,7 @@ public class PageObjectForDeepFreezeSuite {
 			throw e; // Optional: Fail the test if password change fails
 		}
 	}
-	
+	 
 	public void ClickOnChangePassword2() {
 		try {
 			// Click on Change Password button

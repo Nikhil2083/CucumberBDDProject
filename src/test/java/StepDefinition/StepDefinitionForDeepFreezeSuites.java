@@ -110,7 +110,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         log.info("Set password initiated.");
         ExtentReportManager.logStep(Status.INFO, "Set password initiated.");
     }
-
+ 
     
     @Then("Click on My Profile")
     public void click_on_my_profile() {

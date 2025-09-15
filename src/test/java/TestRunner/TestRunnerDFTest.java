@@ -17,7 +17,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 				monochrome = true,
 						publish = true,
 		/*
-		 * plugin = { "pretty", "html:target/CucumberReports/test1 report.html", //
+		 * plugin = { "pretty", "html:target/CucumberReports/test1 report.html", // 
 		 * "json:target/CucumberReports/test report.json", //
 		 * "junit:target/CucumberReports/test report.xml" }
 		 */
