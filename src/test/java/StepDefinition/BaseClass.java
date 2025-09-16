@@ -1,11 +1,12 @@
 package StepDefinition;
 
 import org.apache.logging.log4j.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import PageObject.DFOnDemandPagePOM;
 import PageObject.PageObjectForDeepFreezeSuite;
 import PageObject.UtilitiesPagePOM;
 import Utilities.ReadConfig;
@@ -20,6 +21,7 @@ public class BaseClass {
 	    // Static PageObjects
 	    public static PageObjectForDeepFreezeSuite DeepFreezeSuitePg;
 	    public static UtilitiesPagePOM UtilitiesPagePg;
+	    public static DFOnDemandPagePOM DFOnDemandPagePg;
 
 	 /**
      * ChromeOptions for automatic download & bypassing protection

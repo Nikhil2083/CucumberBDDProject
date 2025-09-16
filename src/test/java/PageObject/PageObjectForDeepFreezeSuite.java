@@ -27,7 +27,7 @@ public class PageObjectForDeepFreezeSuite {
 		PageFactory.initElements(rDriver, this);
 		
 	}
-
+ 
 	@FindBy(id = "txtUserName")
 	WebElement EmailId;
 

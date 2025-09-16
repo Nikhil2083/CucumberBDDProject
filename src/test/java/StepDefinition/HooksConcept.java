@@ -3,7 +3,6 @@ package StepDefinition;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
+import PageObject.DFOnDemandPagePOM;
 import PageObject.PageObjectForDeepFreezeSuite;
 import PageObject.UtilitiesPagePOM;
 import Utilities.CustomReportListener;
@@ -39,6 +38,7 @@ public class HooksConcept extends BaseClass {
         readConfig = new ReadConfig();
         log = LogManager.getLogger("StepDefinitionForDeepFreezeSuites");
         log = LogManager.getLogger("UtilitiesPageStepDefinition");
+        log = LogManager.getLogger("DFOnDemandPageStepDefinition");
         log.info("⚙️ Global setup done once before all scenarios.");
     }
 
@@ -101,6 +101,7 @@ public class HooksConcept extends BaseClass {
     public void initPageObjects() {
         if (DeepFreezeSuitePg == null) DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
         if (UtilitiesPagePg == null) UtilitiesPagePg = new UtilitiesPagePOM(driver);
+        if (DFOnDemandPagePg == null) DFOnDemandPagePg = new DFOnDemandPagePOM(driver);
         log.info("📄 All PageObjects initialized.");
     }
 
