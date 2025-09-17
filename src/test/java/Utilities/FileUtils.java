@@ -5,8 +5,8 @@ import java.io.File;
 public class FileUtils {
 
     public static boolean isFileDownloaded(String downloadDir, String fileName, int timeoutInSeconds) {
-        File dir = new File(downloadDir);
-        File file = new File(downloadDir + File.separator + fileName);
+        //File dir = new File(downloadDir);
+        File dir = new File(downloadDir + File.separator + fileName);
         int waited = 0;
 
         while (waited < timeoutInSeconds) {
