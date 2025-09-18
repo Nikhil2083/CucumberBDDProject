@@ -22,7 +22,7 @@ public class DFOnDemandPageStepDefinition extends BaseClass{
 	}
 	@Then("Verified selected machine is restarted properly on Task Status Page")
 	public void verified_selected_machine_is_restarted_properly_on_task_status_page_w() {
-		DFOnDemandPagePg.verifiedTaskExecutedProperly();
+		DFOnDemandPagePg.verifyTaskExecutedOrFailed();
 		log.info("Verified Machine is Restared.");
 	}
 

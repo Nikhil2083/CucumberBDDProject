@@ -1,15 +1,15 @@
 package PageObject;
 
 import java.time.Duration;
-
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 
 public class DFOnDemandPagePOM {
@@ -32,7 +32,7 @@ public class DFOnDemandPagePOM {
 	@FindBy(xpath = "//input[contains(@id,'SearchDeepFreeze')]")
 	WebElement SearchboxofDFODpage;
 
-	@FindBy(xpath = "//label[contains(@for,'w-212')]")
+	@FindBy(css = "label[for='w-212']")
 	WebElement SelectComputerCheckBox;
 
 	@FindBy(xpath = "//span[contains(@title,'Restart')]")
@@ -88,12 +88,14 @@ public class DFOnDemandPagePOM {
 			System.out.println("✅ Selected computer");
 		} catch (Exception e) {
 			System.err.println("❌ Failed to select computer: " + e.getMessage());
+			Assert.fail("❌ Test failed because computer was not selected!");
 		}
 	}
 
 	public void clickonrestartbtnandgototaskstatuspage() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(RestartbtnonDFODpage)).click();
+			Thread.sleep(2000);
 			System.out.println("✅ Clicked on Restart Button");
 		} catch (Exception e) {
 			System.err.println("❌ Failed to click restart button: " + e.getMessage());
@@ -107,52 +109,64 @@ public class DFOnDemandPagePOM {
 		}
 	}
 
-	public void verifiedTaskExecutedProperly() {
-		
-		try {
-			WebElement searchboxoftaskstatuspage = wait.until(ExpectedConditions.elementToBeClickable(SearchBoxofTaskStatusPage));
-			searchboxoftaskstatuspage.click();
-			searchboxoftaskstatuspage.clear();
-			System.out.println("✅ Searching Computer on Task Status Page");
-			searchboxoftaskstatuspage.sendKeys("WINDOWS-10-22H2");
-			searchboxoftaskstatuspage.sendKeys(Keys.ENTER);
-		}catch(Exception e){
-				System.err.println("❌ Failed to Search Computer");
-			}
-			
-		try {
-			
-			WebElement statusElement = Longwait.until(ExpectedConditions.visibilityOf(ontaskstatuspagecheckassignedtaskstatus));
+	 public void verifyTaskExecutedOrFailed() {
+	        boolean statusVerified = false;
+	        long startTime = System.currentTimeMillis();
+	        long maxWaitTime = 15 * 60 * 1000; // 15 minutes
 
-			String actualStatus = statusElement.getText().trim();
-			System.out.println("🔎 Task Status found: " + actualStatus);
+	        try {
+	            // Search computer on task status page
+	            wait.until(ExpectedConditions.elementToBeClickable(SearchBoxofTaskStatusPage)).sendKeys("WINDOWS-10-22H2", Keys.ENTER);
+	            System.out.println("✅ Searching Computer on Task Status Page");
+	        } catch (Exception e) {
+	            System.err.println("❌ Failed to search computer: " + e.getMessage());
+	        }
 
-			if ("Executed".equalsIgnoreCase(actualStatus)) {
-				System.out.println("✅ Task executed successfully!");
-			} else if (actualStatus.toLowerCase().contains("failed")) {
-				System.out.println("❌ Task failed!");
-			} else {
-				System.out.println("⚠️ Unexpected Task Status: " + actualStatus);
-			}
+	        while ((System.currentTimeMillis() - startTime) < maxWaitTime) {
+	            try {
+	                String actualStatus = ontaskstatuspagecheckassignedtaskstatus.getText().trim();
+	                System.out.println("🔎 Current Status: " + actualStatus);
 
-		} catch (TimeoutException te) {
-			System.err.println("⏳ Timed out waiting for task status element!");
-		} catch (Exception e) {
-			System.err.println("❌ Could not verify task status: " + e.getMessage());
-		}
-		
-		try {
-			wait.until(ExpectedConditions.elementToBeClickable(DeepFreezeOnDemandPage)).click();
+	                if (actualStatus.equalsIgnoreCase("Executed")) {
+	                    System.out.println("✅ Task executed successfully!");
+	                    statusVerified = true;
+	                    break;
 
-			System.out.println("✅ Clicked back to on DFOD Page");
+	                } else if (actualStatus.startsWith("Failed")) {
+	                    // Extract reason inside brackets
+	                    String reason = "";
+	                    if (actualStatus.contains("(") && actualStatus.contains(")")) {
+	                        reason = actualStatus.substring(
+	                                actualStatus.indexOf("(") + 1,
+	                                actualStatus.indexOf(")")
+	                        );
+	                    }
+	                    System.out.println("❌ Task failed! Reason: " + reason);
+	                    statusVerified = true;
+	                    break;
 
-		} catch (Exception e) {
-			System.err.println("❌ Failed to Click back to on DFOD Page: " + e.getMessage());
-		}
+	                } else {
+	                    System.out.println("⏳ Still waiting... refreshing in 5 sec");
+	                    Thread.sleep(5000);
+	                   ldriver.navigate().refresh();
+	                   WebElement searchboxofTaskStatusPage = wait.until(ExpectedConditions.elementToBeClickable(SearchBoxofTaskStatusPage));
+	                   searchboxofTaskStatusPage.clear();
+	                   searchboxofTaskStatusPage.click();
+	                   searchboxofTaskStatusPage.sendKeys("WINDOWS-10-22H2", Keys.ENTER);
+	                }
+
+	            } catch (Exception e) {
+	                System.out.println("⚠️ Error while checking status: " + e.getMessage());
+	            }
+	        }
+
+	        if (!statusVerified) {
+	            System.out.println("⏳ Timeout: Task did not complete within 15 minutes!");
+	        }
+	    }
 	
 
-	}
-	
+
  public void switchtorelatedsite() {
 	try {
 		Thread.sleep(3000);
@@ -163,6 +177,7 @@ public class DFOnDemandPagePOM {
 		System.out.println("✅ Switched to related site successfully!");
 	}catch(Exception e) {
 		System.err.println("❌ Failed to switch related site");
+		
 	}
 }
 	

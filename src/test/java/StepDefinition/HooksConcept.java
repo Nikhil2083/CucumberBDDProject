@@ -100,9 +100,11 @@ public class HooksConcept extends BaseClass {
     @Before(order = 1)
     public void initPageObjects() {
         if (DeepFreezeSuitePg == null) DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
+        log.info("📄 DeepFreezeSuitePOM PageObjects initialized.");
         if (UtilitiesPagePg == null) UtilitiesPagePg = new UtilitiesPagePOM(driver);
+        log.info("📄 UtilitiesPagePOM PageObjects initialized.");
         if (DFOnDemandPagePg == null) DFOnDemandPagePg = new DFOnDemandPagePOM(driver);
-        log.info("📄 All PageObjects initialized.");
+        log.info("📄 DFOnDemandPagePOM PageObjects initialized.");
     }
 
     // ---------------- AFTER HOOKS ---------------- //
