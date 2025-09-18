@@ -182,7 +182,8 @@ public class DFOnDemandPagePOM {
 }
 	
 
-
+@FindBy (xpath = "//div[@class='dfodthawed-ico']")
+WebElement DFThawedIcon;
 
 
 
