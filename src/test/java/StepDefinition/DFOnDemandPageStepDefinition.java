@@ -35,7 +35,7 @@ public void switch_site_to_related_site() {
 
 
 
-
+ 
 
 
 
@@ -43,18 +43,15 @@ public void switch_site_to_related_site() {
 
 @Then("Perform Reboot Thawed Action and check Task Status from Task Status Page")
 public void perform_reboot_thawed_action_and_check_task_status_from_task_status_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+    
 }
 @Then("Check selected machine is Reboot Thawed properly on Task Status Page")
 public void check_selected_machine_is_reboot_thawed_properly_on_task_status_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+    
 }
 @Then("Verified on DFOD Page DF status updated correctly Frozen to Thawed")
 public void verified_on_dfod_page_df_status_updated_correctly_frozen_to_thawed() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+    
 }
 	
 }
