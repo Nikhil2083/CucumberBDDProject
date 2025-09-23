@@ -14,7 +14,7 @@ public class DFOnDemandPageStepDefinition extends BaseClass{
 	public void search_computer_name_by_there_name_and_select_it() {
 		DFOnDemandPagePg.searchcomputerbytherenameandselectit();
 		log.info("Searched computer name and selected workstation");
-	}
+	} 
 	@Then("Perform Restart action and check Task Status from Task Status Page")
 	public void perform_restart_action_and_check_task_status_from_task_status_page() {
 		DFOnDemandPagePg.clickonrestartbtnandgototaskstatuspage();

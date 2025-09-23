@@ -115,7 +115,7 @@ public class HooksConcept extends BaseClass {
             scenario.attach(screenshot, "image/png", scenario.getName());
             log.info("📸 Screenshot attached for failed step: " + scenario.getName());
         }
-    }
+    } 
 
     @After
     public void captureScenarioResult(Scenario scenario) {

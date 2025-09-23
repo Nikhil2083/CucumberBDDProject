@@ -88,7 +88,7 @@ public class DFOnDemandPagePOM {
 			System.out.println("✅ Selected computer");
 		} catch (Exception e) {
 			System.err.println("❌ Failed to select computer: " + e.getMessage());
-			Assert.fail("❌ Test failed because computer was not selected!");
+			Assert.fail("❌ Test failed because computer was not selected!"); 
 		}
 	}
 

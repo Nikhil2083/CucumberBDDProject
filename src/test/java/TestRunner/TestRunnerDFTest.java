@@ -13,7 +13,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @CucumberOptions(features = "src/test/resources/Feature", 
 				glue = "StepDefinition", 
 				tags = "@TC", 
-				dryRun = false, 
+				dryRun = false,   
 				monochrome = true,
 						publish = true,
 		/*
