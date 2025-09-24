@@ -231,7 +231,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         ExtentReportManager.logStep(Status.INFO, "Opened email site: " + url);
         Thread.sleep(5000); // Ideally use explicit wait
     }
-
+ 
     @Then("click forget me button on gurrilla page")
     public void click_forget_me_button_on_gurrilla_page() throws InterruptedException {
         driver.navigate().refresh();
