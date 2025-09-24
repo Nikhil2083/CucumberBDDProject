@@ -1,4 +1,5 @@
 @allTC
+@Regression
 Feature: My Profile Page
 
 Scenario: TC0001 C5494572 Open My profile and update some fields (e.g. name, compnay name, job title, phone no. ) and save settings.

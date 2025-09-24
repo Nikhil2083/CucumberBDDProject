@@ -1,4 +1,5 @@
 @allTC
+@Regression
 Feature: Sites Management Page
 
 Scenario: TC0001 C5494460 Add new Cloud Site to the cloud and make sure that new site should be added

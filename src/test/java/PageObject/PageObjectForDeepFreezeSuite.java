@@ -122,10 +122,10 @@ public class PageObjectForDeepFreezeSuite {
 //        ((JavascriptExecutor) ldriver).executeScript("arguments[0].click();", migrationLink);
 //    }
 
-	@FindBy(xpath = "//td[@aria-label='Column Policy, Value Automation test']")
+	@FindBy(xpath = "//a[@title='Automation test']")
 	WebElement ClickOnPolicy;
 
-	@FindBy(id = "WINSELECT_a")
+	@FindBy(xpath =  "//li[@id='li_WINSELECT']")
 	WebElement SelectProductWINSELECT;
 
 	@FindBy(id = "ddPolicySettingsWinSelect")
@@ -1290,7 +1290,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void disabledproductfromdropdown() {
 		try {
-			DisabledProduct.click();
+			wait.until(ExpectedConditions.elementToBeClickable(DisabledProduct)).click();
 			System.out.println("✅ Disabled product clicked from dropdown.");
 		} catch (Exception e) {
 			System.err.println("❌ Failed to click on disabled product: " + e.getMessage());
@@ -1300,7 +1300,10 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void ClickOnDisablePolicyDropdown() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(SelectProductWINSELECT)).click();
+			System.out.println("✅ Clicked on WINSELECT product.");
+			
+				
 			wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
 			System.out.println("✅ Clicked on Disable Policy dropdown successfully.");
 		} catch (Exception e) {
@@ -1427,31 +1430,20 @@ public class PageObjectForDeepFreezeSuite {
 		}
 	}
 
-	public void ClickOnWINSELECTToEnableFromDropDown() {
-		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.elementToBeClickable(EnableWINSELECT)).click();
-			System.out.println("✅ Clicked on WINSELECT to enable from dropdown.");
-		} catch (Exception e) {
-			System.err.println("❌ Failed to click on WINSELECT from dropdown: " + e.getMessage());
-		}
-	}
-
-	public void ClickOnEnablePolicyDropdown() {
-		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
-			System.out.println("✅ Clicked on Enable Policy dropdown.");
-		} catch (Exception e) {
-			System.err.println("❌ Failed to click on Enable Policy dropdown: " + e.getMessage());
-		}
-	}
+	
 
 	public void ClickONWINSELECT() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(SelectProductWINSELECT)).click();
 			System.out.println("✅ Clicked on WINSELECT product.");
+			
+			wait.until(ExpectedConditions.elementToBeClickable(ClickOnEnablePolicyDropDown)).click();
+			System.out.println("✅ Clicked on Enable Policy dropdown.");
+			
+			wait.until(ExpectedConditions.elementToBeClickable(EnableWINSELECT)).click();
+			System.out.println("✅ Clicked on WINSELECT to enable from dropdown.");
+			
 		} catch (Exception e) {
 			System.err.println("❌ Failed to click on WINSELECT product: " + e.getMessage());
 		}
@@ -1459,7 +1451,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void ClickOnPolicyName() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(ClickOnPolicy)).click();
 			System.out.println("✅ Clicked on policy name.");
 		} catch (Exception e) {

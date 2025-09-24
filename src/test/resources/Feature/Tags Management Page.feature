@@ -1,4 +1,5 @@
 @allTC
+@Regression
 Feature: Tags Management Page
 
 Scenario: TC0001 C5494618 Add Tickets tag in Tag Management page and make sure ticket tag should be added successfully.
