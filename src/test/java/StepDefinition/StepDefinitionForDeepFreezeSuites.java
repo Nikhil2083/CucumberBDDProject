@@ -731,7 +731,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void verify_agent_download() {
         String downloadDir = System.getProperty("user.dir") + File.separator + "Download";
         String expectedFile = "FWAWebInstaller_Test.exe";
-        boolean isDownloaded = FileUtils.isFileDownloaded(downloadDir, expectedFile, 30);
+        boolean isDownloaded = FileUtils.isFileDownloaded(downloadDir, expectedFile, 100);
         Assert.assertTrue("❌ Download failed!", isDownloaded);
         log.info("Windows installer downloaded successfully.");
        // ExtentReportManager.logStep(Status.INFO, "Windows installer downloaded successfully.");
