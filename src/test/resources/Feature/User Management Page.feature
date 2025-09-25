@@ -97,6 +97,13 @@ And Click on Login
 And verified following error message is appeared not able to login "Your login attempt has failed. The username or password may be incorrect. Please contact us at "
 
 
+Scenario: TC0006 C5494607 Login with existing user to DF Cloud and make sure login should be successful.
+When Opens URL "https://www1.faronicsbeta.com/"
+And Enters Email as "nikhilguravnkil@gmail.com"
+And Click on NextButton
+And Enter Password as "Aloha@123"
+And Click on Login
+Then Page Title Should be "Deep Freeze Cloud"
 
  
 

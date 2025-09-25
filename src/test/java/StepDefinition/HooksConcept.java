@@ -32,7 +32,7 @@ public class HooksConcept extends BaseClass {
 
     // ---------------- BEFORE HOOKS ---------------- //
 
-    // हे फक्त एकदाच चालेल (suite सुरू होण्याआधी)
+    
     @BeforeAll
     public static void setUpOnce() {
         readConfig = new ReadConfig();
@@ -42,14 +42,14 @@ public class HooksConcept extends BaseClass {
         log.info("⚙️ Global setup done once before all scenarios.");
     }
 
-    // हे प्रत्येक scenario सुरू होण्याआधी चालेल
+
     @Before(order = 0)
     public void ensureBrowserAndLogin() {
         try {
             boolean browserNotRunning = (driver == null || ((RemoteWebDriver) driver).getSessionId() == null);
 
             if (browserNotRunning) {
-                // Browser बंद आहे → नवीन browser सुरू करा
+               
                 log.info("🌐 Browser not running. Launching new browser instance...");
                 String browser = readConfig.getBrowser();
                 switch (browser.toLowerCase()) {
@@ -73,7 +73,7 @@ public class HooksConcept extends BaseClass {
             }
 
             if (!isLoggedIn) {
-                // Browser चालू आहे पण login झालेला नाही → login करा
+                
                 log.info("🔐 Performing login...");
                 driver.get(readConfig.getURL());
 
@@ -110,12 +110,22 @@ public class HooksConcept extends BaseClass {
     // ---------------- AFTER HOOKS ---------------- //
     @AfterStep
     public void addScreenshotOnFailure(Scenario scenario) {
-        if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", scenario.getName());
-            log.info("📸 Screenshot attached for failed step: " + scenario.getName());
+        try {
+            if (scenario.isFailed() && driver != null) {
+                // Check if browser session is still active
+                if (((RemoteWebDriver) driver).getSessionId() != null && driver.getWindowHandles().size() > 0) {
+                    final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                    scenario.attach(screenshot, "image/png", scenario.getName());
+                    log.info("📸 Screenshot attached for failed step: " + scenario.getName());
+                } else {
+                    log.warn("⚠️ Cannot capture screenshot: Browser window already closed for " + scenario.getName());
+                }
+            }
+        } catch (Exception e) {
+            log.error("❌ Failed to capture screenshot for scenario: " + scenario.getName() + " | Reason: " + e.getMessage());
         }
-    } 
+    }
+
 
     @After
     public void captureScenarioResult(Scenario scenario) {

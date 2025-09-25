@@ -166,20 +166,20 @@ public class DFOnDemandPagePOM {
 	    }
 	
 
-
- public void switchtorelatedsite() {
-	try {
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(switchsitedropdown)).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(clickonmigrationsite)).click();
-		Thread.sleep(3000);
-		System.out.println("✅ Switched to related site successfully!");
-	}catch(Exception e) {
-		System.err.println("❌ Failed to switch related site");
-		
-	}
-}
+//
+// public void switchtorelatedsite() {
+//	try {
+//		Thread.sleep(3000);
+//		wait.until(ExpectedConditions.elementToBeClickable(switchsitedropdown)).click();
+//		Thread.sleep(3000);
+//		wait.until(ExpectedConditions.elementToBeClickable(clickonmigrationsite)).click();
+//		Thread.sleep(3000);
+//		System.out.println("✅ Switched to related site successfully!");
+//	}catch(Exception e) {
+//		System.err.println("❌ Failed to switch related site");
+//		
+//	}
+//}
 	
 
 @FindBy (xpath = "//div[@class='dfodthawed-ico']")

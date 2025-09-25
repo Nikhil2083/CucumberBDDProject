@@ -26,11 +26,7 @@ public class DFOnDemandPageStepDefinition extends BaseClass{
 		log.info("Verified Machine is Restared.");
 	}
 
-@Then("Switch site to related site")
-public void switch_site_to_related_site() {
-	DFOnDemandPagePg.switchtorelatedsite();
-	log.info("Switched to related site");
-}
+
 
 
 

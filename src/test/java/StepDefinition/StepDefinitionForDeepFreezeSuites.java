@@ -18,13 +18,20 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     //////////////////////// step definition code from
     //////////////////////// till///////////////////////////////////
     /////////////////////////MY Site ////////////////////////////////////////////////////////////  
-    @Then("Select newly created site")
-    public void select_newly_created_site() {
-        DeepFreezeSuitePg.SelectNewlyCreatedSite();
-        log.info("Selected newly created site.");
-       // ExtentReportManager.logStep(Status.INFO, "Selected newly created site.");
-    }
-
+    
+	@Then("Switch site to newly created site")
+	public void switch_site_to_newly_created_site() {
+	    DeepFreezeSuitePg.SwitchToSelectNewlyCreatedSite();
+	}
+	
+	@Then("Switch site to default site")
+	public void switch_site_to_default_site() {
+	    DeepFreezeSuitePg.SwitchToDefaultSite();
+	}
+	
+	
+	
+	
     @Then("verified cloud should be switched to the new site.")
     public void verified_cloud_should_be_switched_to_the_new_site() {
         DeepFreezeSuitePg.VerifySiteSwitchedToNewlyCreatedSite();
@@ -160,6 +167,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     public void verified_following_error_message_is_appeared_not_able_to_login(String string) {
         DeepFreezeSuitePg.LoggedinFailed();
         log.info("Verified login error message: " + string);
+      //  driver.quit();
       ///  ExtentReportManager.logStep(Status.INFO, "Verified login error message: " + string);
     }
 
@@ -841,19 +849,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
        // ExtentReportManager.logStep(Status.INFO, "Clicked on Computers Page.");
     }
 
-    @Then("Goto Switch site option")
-    public void goto_switch_site_option() throws InterruptedException {
-        DeepFreezeSuitePg.clickOnSiteDropDown();
-        log.info("Went to Switch site option.");
-     //   ExtentReportManager.logStep(Status.INFO, "Went to Switch site option.");
-    }
-
-    @Then("Select Related Site")
-    public void select_related_site() {
-        DeepFreezeSuitePg.SelectRelatedSite();
-        log.info("Selected related site.");
-       // ExtentReportManager.logStep(Status.INFO, "Selected related site.");
-    }
+    
 
     @Then("Search Computer Name {string}")
     public void search_computer_name(String computerName) throws InterruptedException {

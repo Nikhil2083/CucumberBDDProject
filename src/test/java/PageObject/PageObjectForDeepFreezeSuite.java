@@ -19,11 +19,13 @@ import org.testng.Assert;
 public class PageObjectForDeepFreezeSuite {
 	WebDriver ldriver;
 	WebDriverWait wait;
+	WebDriverWait Longwait;
     
 	//Constructor
 	public PageObjectForDeepFreezeSuite(WebDriver rDriver) { 
 		ldriver = rDriver;
 		wait = new WebDriverWait(ldriver, Duration.ofSeconds(50));
+		Longwait = new WebDriverWait(ldriver, Duration.ofMinutes(15));
 		PageFactory.initElements(rDriver, this);
 		
 	}
@@ -355,8 +357,7 @@ public class PageObjectForDeepFreezeSuite {
 	@FindBy(xpath = "//i[@class='fa-solid fa-pen']")
 	WebElement clickoneditbutton;
 
-	@FindBy(xpath = "//a[@title=' Automation ']")
-	WebElement selectnewlycreatedsite;
+	
 
 	@FindBy(xpath = "//span[@id='spanSiteName']")
 	WebElement verifySiteName;
@@ -372,11 +373,43 @@ public class PageObjectForDeepFreezeSuite {
 	
 	@FindBy(id = "editSite_ok")
 	WebElement clickonupdatesite;
+	
+	@FindBy(xpath = "//ul[@id='subMenuSites']//a[starts-with(@title,' Automation')]")
+	WebElement switchtoselectnewlycreatedsite;
+	
+	@FindBy(xpath = "//ul[@id='subMenuSites']//a[starts-with(@title,' Migration')]")
+	WebElement switchtodefaultsite;
 	/////////////////////////////////////////////// SPLIT/////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////// My Site
 	//////////////////////////////////////////// ///////////////////////////////////////////////////////////////
 
+	public void SwitchToDefaultSite() {
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(SiteDropDown)).click();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions.elementToBeClickable(switchtodefaultsite)).click();
+
+			System.out.println("✅ Select newly created Site for switching cloud");
+
+		} catch (Exception e) {
+			System.err.println("❌ Failed to switch Site: " + e.getMessage());
+		}
+	}
+	
+	public void SwitchToSelectNewlyCreatedSite() {
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(SiteDropDown)).click();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions.elementToBeClickable(switchtoselectnewlycreatedsite)).click();
+
+			System.out.println("✅ Select newly created Site for switching cloud");
+
+		} catch (Exception e) {
+			System.err.println("❌ Failed to switch Site: " + e.getMessage());
+		}
+	}
+	
 	public void VerifySiteisDeletedProperlyusingToastMsg() {
 		try {
 			WebElement toastmsguserupdatedsuccessfully = wait.until(ExpectedConditions.visibilityOf(Toastmsguserupdatedsuccessfully));
@@ -436,16 +469,7 @@ public class PageObjectForDeepFreezeSuite {
 		}
 	}
 
-	public void SelectNewlyCreatedSite() {
-		try {
-			wait.until(ExpectedConditions.elementToBeClickable(selectnewlycreatedsite)).click();
-
-			System.out.println("✅ Select newly created Site for switching cloud");
-
-		} catch (Exception e) {
-			System.err.println("❌ Failed to switch Site: " + e.getMessage());
-		}
-	}
+	
 
 	public void UpdateSiteNameAndVerifywithToastMsg() {
 		try {
@@ -805,7 +829,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void onmainpageclickonadgotitbtn() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(onmainpageclickonAdGOTIT)).click();
 			System.out.println("✅ Clicked on 'Got it' button from welcome banner");
 		} catch (Exception e) {
@@ -826,7 +850,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void onmyprofilepageclickonsavebtn() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(onMyProfilePageclickonSave)).click();
 			System.out.println("✅ Clicked on save button on My Profile page");
 		} catch (Exception e) {
@@ -850,7 +874,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void enterconfirmpassword() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(EnterConfirmPassword)).sendKeys("Aloha@123");
 			System.out.println("✅ enter confirm password");
 
@@ -861,7 +885,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void enternewpassword() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(EnterNewPassword)).sendKeys("Aloha@123");
 			System.out.println("✅ enter new password");
 		} catch (Exception e) {
@@ -871,7 +895,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clickoninvitemail() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(ClickonInviteMail)).click();
 			System.out.println("✅ Clicked on Invite Mail button");
 		} catch (Exception e) {
@@ -923,7 +947,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void uncheckscambleaddress() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(uncheckScrambleAddress)).click();
 			System.out.println("✅ Successfully unchecked 'Scramble Address'");
 		} catch (Exception e) {
@@ -933,7 +957,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clickoninvitelink() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(20));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(clickOninvitelink)).click();
 			System.out.println("✅ Clicked on invite link successfully");
 		} catch (Exception e) {
@@ -956,7 +980,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void okbtn() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(clickonOKbtn)).click();
 			System.out.println("✅ Clicked on OK button successfully");
 		} catch (Exception e) {
@@ -966,7 +990,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void enteremail() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(EnterEmail)).sendKeys("nikhil@sharklasers.com");
 			System.out.println("✅ Entered email successfully");
 		} catch (Exception e) {
@@ -976,7 +1000,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void enterlastname() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(enterLastName)).sendKeys("Automation");
 			System.out.println("✅ Entered last name successfully");
 		} catch (Exception e) {
@@ -986,7 +1010,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void enterfirstname() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(enterFirstName)).sendKeys("Nikhil");
 			System.out.println("✅ Entered first name successfully");
 		} catch (Exception e) {
@@ -1005,7 +1029,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clickonadduserdropdown() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(clickOnAddUserDropDown)).click();
 			System.out.println("✅ Clicked on Add User dropdown");
 		} catch (Exception e) {
@@ -1015,7 +1039,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clickonusermanagementbtn() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(clickonUserManagement)).click();
 			System.out.println("✅ Clicked on User Management button");
 		} catch (Exception e) {
@@ -1025,7 +1049,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clickoncurrentuser() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(clickonuserbtn));
 			clickonuserbtn.click();
 			System.out.println("✅ Clicked on Current User button");
@@ -1094,7 +1118,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void enterlocationtagname() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
@@ -1110,7 +1134,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void addtaglocationtag() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(addTagLocationTag)).click();
 			System.out.println("✅ Clicked on add tag location button");
 		} catch (Exception e) {
@@ -1167,7 +1191,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void entertagnametextbox() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+		
 			wait.until(ExpectedConditions.elementToBeClickable(entertagname)).sendKeys("Test1");
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(clickonOK)).click();
@@ -1184,7 +1208,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void addtagnormal() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(addTagNormal)).click();
 			System.out.println("✅ Clicked on 'Add Normal Tag' button successfully.");
 		} catch (Exception e) {
@@ -1249,7 +1273,7 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void entertickettagunderaddtickettagtextfailedandsave() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
+			
 			wait.until(ExpectedConditions.elementToBeClickable(entertickettagunderaddtickettagtextfailed))
 					.sendKeys("Test1");
 			Thread.sleep(2000);
@@ -1266,8 +1290,8 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void ontagmanagementpageclickonaddtickets() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
-			wait.until(ExpectedConditions.elementToBeClickable(clickaddtagonticket)).click();
+			
+			Longwait.until(ExpectedConditions.elementToBeClickable(clickaddtagonticket)).click();
 			System.out.println("✅ Clicked on 'Add Tickets' on Tag Management page.");
 		} catch (Exception e) {
 			System.err.println("❌ Failed to click on 'Add Tickets': " + e.getMessage());
@@ -1277,8 +1301,8 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clicktagmanagementtab() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(100));
-			wait.until(ExpectedConditions.elementToBeClickable(ClickTagManagentTab)).click();
+			
+			Longwait.until(ExpectedConditions.elementToBeClickable(ClickTagManagentTab)).click();
 			System.out.println("✅ Clicked on Tag Management tab successfully.");
 		} catch (Exception e) {
 			System.err.println("❌ Failed to click on Tag Management tab: " + e.getMessage());
@@ -1402,7 +1426,6 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clickok() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(clickOK)).click();
 			System.out.println("✅ Clicked on OK button.");
 		} catch (Exception e) {
@@ -1412,7 +1435,6 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void checkradiobtn() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(checkRadioBtn)).click();
 			System.out.println("✅ Radio button checked successfully.");
 		} catch (Exception e) {
@@ -1422,7 +1444,6 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void Savebtn() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(SaveBtn)).click();
 			System.out.println("✅ Clicked on Save button successfully.");
 		} catch (Exception e) {
@@ -1472,7 +1493,6 @@ public class PageObjectForDeepFreezeSuite {
 	public void clickOnSiteDropDown() {
 		try {
 			ldriver.navigate().refresh();
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(SiteDropDown)).click();
 			System.out.println("✅ Clicked on site dropdown.");
 		} catch (Exception e) {
@@ -1499,7 +1519,6 @@ public class PageObjectForDeepFreezeSuite {
 
 	public void clickonComputersPage() {
 		try {
-			WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(ComputersPage)).click();
 			System.out.println("✅ Clicked on Computers page tab.");
 		} catch (Exception e) {
