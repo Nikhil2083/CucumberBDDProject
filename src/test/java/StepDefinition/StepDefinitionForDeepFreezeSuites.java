@@ -170,7 +170,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
       //  driver.quit();
       ///  ExtentReportManager.logStep(Status.INFO, "Verified login error message: " + string);
     }
-
+ 
     @When("verified following error message is appeared {string}")
     public void verified_following_error_message_is_appeared(String string) {
         DeepFreezeSuitePg.DisabledAccountErrorMsaage();

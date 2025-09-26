@@ -9,7 +9,7 @@ Then On Tag Management page click on Add Tickets
 And Enter Ticket Tag under Add Ticket Tag text failed and save- "Test1"
 Then check ticket tag is added successfully.
 
-
+ 
 Scenario: TC0002 C5494619 Delete added ticket tag in tag management page and make sure ticket tag should be deleted successfully.
 Then Click Tags Management tab
 Then check ticket tag is added successfully.

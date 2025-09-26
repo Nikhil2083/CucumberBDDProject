@@ -720,7 +720,7 @@ public class PageObjectForDeepFreezeSuite {
 			System.err.println(e.getMessage());
 		}
 	}
-
+ 
 	public void DeleteUser() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(deleteuser)).click();
