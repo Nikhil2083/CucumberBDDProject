@@ -38,6 +38,7 @@ public class BaseClass {
         prefs.put("safebrowsing.disable_download_protection", true);
 
         ChromeOptions options = new ChromeOptions();
+        
         options.setExperimentalOption("prefs", prefs);
 
         // Headless mode check
