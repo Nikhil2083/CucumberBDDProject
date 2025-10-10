@@ -19,7 +19,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
     //////////////////////// till///////////////////////////////////
     /////////////////////////MY Site ////////////////////////////////////////////////////////////  
     
-	@Then("Switch site to newly created site")
+	@Then("Switch site to newly created site") 
 	public void switch_site_to_newly_created_site() {
 	    DeepFreezeSuitePg.SwitchToSelectNewlyCreatedSite();
 	}

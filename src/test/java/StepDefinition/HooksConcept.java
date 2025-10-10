@@ -147,7 +147,7 @@ public class HooksConcept extends BaseClass {
     }
 
     @AfterAll
-    public static void tearDownAfterAll() {
+    public static void tearDownAfterAll() { 
         if (driver != null) {
             driver.quit();
             log.info("🛑 Browser closed after all scenarios.");

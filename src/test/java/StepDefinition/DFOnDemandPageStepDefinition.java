@@ -11,7 +11,7 @@ public class DFOnDemandPageStepDefinition extends BaseClass{
 		log.info("Clicked on DFOD Page");
 	}
 	@Then("Search Computer Name by there name and select it")
-	public void search_computer_name_by_there_name_and_select_it() {
+	public void search_computer_name_by_there_name_and_select_it() { 
 		DFOnDemandPagePg.searchcomputerbytherenameandselectit();
 		log.info("Searched computer name and selected workstation");
 	} 
