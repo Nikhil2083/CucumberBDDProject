@@ -50,7 +50,7 @@ public class HooksConcept extends BaseClass {
 
             if (browserNotRunning) {
                
-                log.info("🌐 Browser not running. Launching new browser instance...");
+                log.info("Browser not running. Launching new browser instance...");
                 String browser = readConfig.getBrowser();
                 switch (browser.toLowerCase()) {
                     case "chrome":
@@ -74,7 +74,7 @@ public class HooksConcept extends BaseClass {
 
             if (!isLoggedIn) {
                 
-                log.info("🔐 Performing login...");
+                log.info("Performing login...");
                 driver.get(readConfig.getURL());
 
                 DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
@@ -86,13 +86,13 @@ public class HooksConcept extends BaseClass {
                 DeepFreezeSuitePg.clickonLoginBtn();
 
                 isLoggedIn = true;
-                log.info("✅ Login completed successfully.");
+                log.info("Login completed successfully.");
             } else {
-                log.info("🔄 Already logged in. Continuing with existing session.");
+                log.info("Already logged in. Continuing with existing session.");
             }
 
         } catch (Exception e) {
-            log.error("❌ Error in ensureBrowserAndLogin: " + e.getMessage());
+            log.error("Error in ensureBrowserAndLogin: " + e.getMessage());
             throw new RuntimeException("Failed to ensure browser/login state", e);
         }
     }
@@ -100,11 +100,11 @@ public class HooksConcept extends BaseClass {
     @Before(order = 1)
     public void initPageObjects() {
         if (DeepFreezeSuitePg == null) DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
-        log.info("📄 DeepFreezeSuitePOM PageObjects initialized.");
+        log.info("DeepFreezeSuitePOM PageObjects initialized.");
         if (UtilitiesPagePg == null) UtilitiesPagePg = new UtilitiesPagePOM(driver);
-        log.info("📄 UtilitiesPagePOM PageObjects initialized.");
+        log.info("UtilitiesPagePOM PageObjects initialized.");
         if (DFOnDemandPagePg == null) DFOnDemandPagePg = new DFOnDemandPagePOM(driver);
-        log.info("📄 DFOnDemandPagePOM PageObjects initialized.");
+        log.info("DFOnDemandPagePOM PageObjects initialized.");
     }
 
     // ---------------- AFTER HOOKS ---------------- //
@@ -116,13 +116,13 @@ public class HooksConcept extends BaseClass {
                 if (((RemoteWebDriver) driver).getSessionId() != null && driver.getWindowHandles().size() > 0) {
                     final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
                     scenario.attach(screenshot, "image/png", scenario.getName());
-                    log.info("📸 Screenshot attached for failed step: " + scenario.getName());
+                    log.info("Screenshot attached for failed step: " + scenario.getName());
                 } else {
-                    log.warn("⚠️ Cannot capture screenshot: Browser window already closed for " + scenario.getName());
+                    log.warn("Cannot capture screenshot: Browser window already closed for " + scenario.getName());
                 }
             }
         } catch (Exception e) {
-            log.error("❌ Failed to capture screenshot for scenario: " + scenario.getName() + " | Reason: " + e.getMessage());
+            log.error("Failed to capture screenshot for scenario: " + scenario.getName() + " | Reason: " + e.getMessage());
         }
     }
 
@@ -133,15 +133,15 @@ public class HooksConcept extends BaseClass {
         if (scenario.isFailed()) {
             status = "FAIL";
             failed++;
-            log.info("❌ Scenario failed: " + scenario.getName());
+            log.info("Scenario failed: " + scenario.getName());
         } else if (scenario.getStatus().toString().equalsIgnoreCase("SKIPPED")) {
             status = "SKIP";
             skipped++;
-            log.info("⏭️ Scenario skipped: " + scenario.getName());
+            log.info("Scenario skipped: " + scenario.getName());
         } else {
             status = "PASS";
             passed++;
-            log.info("✅ Scenario passed: " + scenario.getName());
+            log.info("Scenario passed: " + scenario.getName());
         }
         allResults.add(new CustomTestResult(scenario.getName(), List.of(status)));
     }
@@ -150,7 +150,7 @@ public class HooksConcept extends BaseClass {
     public static void tearDownAfterAll() { 
         if (driver != null) {
             driver.quit();
-            log.info("🛑 Browser closed after all scenarios.");
+            log.info("Browser closed after all scenarios.");
         }
         try {
             CustomReportListener.generateReport(
@@ -159,9 +159,9 @@ public class HooksConcept extends BaseClass {
                 passed, failed, skipped,
                 allResults
             );
-            log.info("📊 Custom HTML report generated in target/custom-reports/");
+            log.info("Custom HTML report generated in target/custom-reports/");
         } catch (IOException e) {
-            log.error("❌ Error generating custom report: " + e.getMessage());
+            log.error("Error generating custom report: " + e.getMessage());
         }
     }
 }
