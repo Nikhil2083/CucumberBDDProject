@@ -31,8 +31,8 @@ Then Click on Computers Page
 And check WINSELECT status indicator should be grey
 And Mouse hover on the WINSELECT status indicator
 
-
-
+ 
+ 
 
 
 
