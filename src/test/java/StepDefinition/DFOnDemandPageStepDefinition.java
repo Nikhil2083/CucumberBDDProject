@@ -26,10 +26,6 @@ public class DFOnDemandPageStepDefinition extends BaseClass{
 		log.info("Verified Machine is Restared.");
 	}
 
-
-
-
-
 @Then("Perform Reboot Thawed Action and check Task Status from Task Status Page")
 public void perform_reboot_thawed_action_and_check_task_status_from_task_status_page() {
     
