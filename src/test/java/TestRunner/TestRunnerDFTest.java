@@ -14,7 +14,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 				glue = "StepDefinition", 
 				tags = "@Regression",
 				dryRun = false,  
-				monochrome = true,
+				monochrome = true, 
 						publish = true,
 		/* 
 		 * plugin = { "pretty", "html:target/CucumberReports/test1 report.html", // 
