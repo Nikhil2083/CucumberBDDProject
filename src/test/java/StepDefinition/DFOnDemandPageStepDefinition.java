@@ -28,7 +28,7 @@ public class DFOnDemandPageStepDefinition extends BaseClass{
 
 @Then("Perform Reboot Thawed Action and check Task Status from Task Status Page")
 public void perform_reboot_thawed_action_and_check_task_status_from_task_status_page() {
-     
+      
 }
 @Then("Check selected machine is Reboot Thawed properly on Task Status Page")
 public void check_selected_machine_is_reboot_thawed_properly_on_task_status_page() {
