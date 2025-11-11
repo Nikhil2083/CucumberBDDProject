@@ -71,7 +71,7 @@ public class HooksConcept extends BaseClass {
                 driver.manage().window().maximize();
                 isLoggedIn = false; // fresh session => login required
             }
- 
+  
             if (!isLoggedIn) {
                 
                 log.info("Performing login...");
