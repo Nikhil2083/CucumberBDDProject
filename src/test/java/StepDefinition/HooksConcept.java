@@ -39,7 +39,7 @@ public class HooksConcept extends BaseClass {
         log = LogManager.getLogger("StepDefinitionForDeepFreezeSuites");
         log = LogManager.getLogger("UtilitiesPageStepDefinition");
         log = LogManager.getLogger("DFOnDemandPageStepDefinition");
-        log.info("⚙️ Global setup done once before all scenarios.");
+        log.info("Global setup done once before all scenarios.");
     }
 
 
