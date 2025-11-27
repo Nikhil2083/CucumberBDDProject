@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-
+ 
 public class DFOnDemandPagePOM {
 	WebDriver ldriver;
 	WebDriverWait wait;
@@ -23,7 +23,6 @@ public class DFOnDemandPagePOM {
 		wait = new WebDriverWait(ldriver, Duration.ofSeconds(50));
 		Longwait = new WebDriverWait(ldriver, Duration.ofMinutes(15));
 		PageFactory.initElements(rDriver, this);
-
 	}
 	   
    
