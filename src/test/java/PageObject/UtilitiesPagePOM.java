@@ -2,7 +2,6 @@ package PageObject;
 
 import java.sql.Driver;
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
