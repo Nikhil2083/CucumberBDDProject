@@ -29,7 +29,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	    DeepFreezeSuitePg.SwitchToDefaultSite();
 	}
 	
-	
+	 
 	
 	
     @Then("verified cloud should be switched to the new site.")
