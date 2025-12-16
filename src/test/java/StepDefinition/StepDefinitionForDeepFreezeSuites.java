@@ -28,7 +28,6 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	public void switch_site_to_default_site() {
 	    DeepFreezeSuitePg.SwitchToDefaultSite();
 	}
-	
 	 
 	
 	
