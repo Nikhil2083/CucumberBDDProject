@@ -13,7 +13,7 @@ import Utilities.ReadConfig;
 
 public class BaseClass {
 	ArrayList<String> tabs;
-	
+	 
 	  public static WebDriver driver;
 	    public static ReadConfig readConfig = new ReadConfig();
 	    public static Logger log = LogManager.getLogger(BaseClass.class);
@@ -23,7 +23,7 @@ public class BaseClass {
 	    public static UtilitiesPagePOM UtilitiesPagePg;
 	    public static DFOnDemandPagePOM DFOnDemandPagePg;
 
-	 /**
+	 /** 
      * ChromeOptions for automatic download & bypassing protection
      */
     public static ChromeOptions getChromeOptions() {
