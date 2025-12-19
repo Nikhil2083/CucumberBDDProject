@@ -31,6 +31,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
 	 
 	
 	
+	
     @Then("verified cloud should be switched to the new site.")
     public void verified_cloud_should_be_switched_to_the_new_site() {
         DeepFreezeSuitePg.VerifySiteSwitchedToNewlyCreatedSite();
