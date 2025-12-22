@@ -12,6 +12,7 @@ And Enter Site Name and save
 And Verified New Site added successfully using toast message "Site added successfully."
 
     
+    
 Scenario: TC0002 C5494461 Edit cloud site name and make sure that site name should be updated correctly
 Then Page Title Should be "Deep Freeze Cloud"
 Then Click on Computers Page
