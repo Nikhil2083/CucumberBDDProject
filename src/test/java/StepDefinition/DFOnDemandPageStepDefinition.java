@@ -8,7 +8,7 @@ public class DFOnDemandPageStepDefinition extends BaseClass{
 	@Then("Click On DF On Demand Page") 
 	public void click_on_df_on_demand_page() {
 		DFOnDemandPagePg.clickondeepfreezeondemandpage();
-		log.info("Clicked on DFOD Page");  
+		log.info("Clicked on DFOD Page");   
 	}
 	@Then("Search Computer Name by there name and select it")
 	public void search_computer_name_by_there_name_and_select_it() { 
