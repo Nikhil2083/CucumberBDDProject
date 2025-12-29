@@ -7,8 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import PageObject.DFOnDemandPagePOM;
+import PageObject.ManageGroupsPOM;
 import PageObject.PageObjectForDeepFreezeSuite;
 import PageObject.UtilitiesPagePOM;
+import PageObject.ManageGroupsPOM;
 import Utilities.ReadConfig;
 
 public class BaseClass {
@@ -22,6 +24,7 @@ public class BaseClass {
 	    public static PageObjectForDeepFreezeSuite DeepFreezeSuitePg;
 	    public static UtilitiesPagePOM UtilitiesPagePg;
 	    public static DFOnDemandPagePOM DFOnDemandPagePg;
+	    public static ManageGroupsPOM ManageGroupspg;
 
 	 /** 
      * ChromeOptions for automatic download & bypassing protection

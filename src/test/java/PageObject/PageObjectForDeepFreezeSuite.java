@@ -390,10 +390,10 @@ public class PageObjectForDeepFreezeSuite {
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(switchtodefaultsite)).click();
 
-			System.out.println("✅ Select newly created Site for switching cloud");
+			System.out.println("Select newly created Site for switching cloud");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to switch Site: " + e.getMessage());
+			System.err.println("Failed to switch Site: " + e.getMessage());
 		}
 	}
 	
@@ -403,10 +403,10 @@ public class PageObjectForDeepFreezeSuite {
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(switchtoselectnewlycreatedsite)).click();
 
-			System.out.println("✅ Select newly created Site for switching cloud");
+			System.out.println("Select newly created Site for switching cloud");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to switch Site: " + e.getMessage());
+			System.err.println("Failed to switch Site: " + e.getMessage());
 		}
 	}
 	
@@ -416,10 +416,10 @@ public class PageObjectForDeepFreezeSuite {
 			String expected = toastmsguserupdatedsuccessfully.getText();
 			String actual = toastmsguserupdatedsuccessfully.getText();
 			Assert.assertEquals(actual, expected, "❌ Not able to Delete Site!");
-			System.out.println("✅ Site is Deleted successfully.: " + actual);
+			System.out.println("Site is Deleted successfully.: " + actual);
 
 		} catch (Exception e) {
-			System.err.println("❌ Not able to Delete Site!: " + e.getMessage());
+			System.err.println("Not able to Delete Site!: " + e.getMessage());
 		}
 	}
 
@@ -432,21 +432,21 @@ public class PageObjectForDeepFreezeSuite {
 			searchSiteName.clear();
 			searchSiteName.sendKeys("Automation");
 			searchSiteName.sendKeys(Keys.ENTER);
-			System.out.println("✅ searching complete New Site Name");
+			System.out.println("searching complete New Site Name");
 			Thread.sleep(5000);
 
 			wait.until(ExpectedConditions.elementToBeClickable(deletenewlycreatedsite)).click();
-			System.out.println("✅ Clicked on Delete Button");
+			System.out.println("Clicked on Delete Button");
 			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(checkboxfordeletion)).click();
-			System.out.println("✅ Clicked on check box for Delete");
+			System.out.println("Clicked on check box for Delete");
 			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(confirmationofdeletesite)).click();
-			System.out.println("✅ Clicked on Confirmation of Delete Button");
+			System.out.println("Clicked on Confirmation of Delete Button");
 			
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to Search and Delete New Site Name: " + e.getMessage());
+			System.err.println("Failed to Search and Delete New Site Name: " + e.getMessage());
 		}
 	}
 
@@ -459,13 +459,13 @@ public class PageObjectForDeepFreezeSuite {
 			String actualText = siteName.getText().trim();
 			String expectedText = "Automation";
 
-			Assert.assertEquals(actualText, expectedText, "❌ Site name text mismatch!");
-			System.out.println("✅ Site name verified successfully: " + actualText);
+			Assert.assertEquals(actualText, expectedText, "Site name text mismatch!");
+			System.out.println("Site name verified successfully: " + actualText);
 
 		} catch (TimeoutException te) {
-			Assert.fail("❌ Site name element not visible within timeout!");
+			Assert.fail("Site name element not visible within timeout!");
 		} catch (Exception e) {
-			Assert.fail("❌ Unexpected error while verifying site name: " + e.getMessage());
+			Assert.fail("Unexpected error while verifying site name: " + e.getMessage());
 		}
 	}
 
@@ -478,20 +478,20 @@ public class PageObjectForDeepFreezeSuite {
 			updatesitename.clear();
 			updatesitename.sendKeys("Automation");
 			updatesitename.sendKeys(Keys.ENTER);
-			System.out.println("✅ Site Name Entered");
+			System.out.println("Site Name Entered");
 
 			wait.until(ExpectedConditions.elementToBeClickable(clickonupdatesite)).click();
-			System.out.println("✅ Clicked on Update Button");
+			System.out.println("Clicked on Update Button");
 			
 								
 			WebElement toastmsguserupdatedsuccessfully = wait.until(ExpectedConditions.visibilityOf(Toastmsguserupdatedsuccessfully));
 			String expected = toastmsguserupdatedsuccessfully.getText();
 			String actual = toastmsguserupdatedsuccessfully.getText();
 			Assert.assertEquals(actual, expected, "❌ Not able to Update Site Name!");
-			System.out.println("✅ Site Name is Updated successfully.: " + actual);
+			System.out.println("Site Name is Updated successfully.: " + actual);
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to update Site Name: " + e.getMessage());
+			System.err.println("Failed to update Site Name: " + e.getMessage());
 		}
 	}
 
@@ -503,14 +503,14 @@ public class PageObjectForDeepFreezeSuite {
 			searchSiteName.sendKeys("Automation test");
 			searchSiteName.sendKeys(Keys.ENTER);
 			
-			System.out.println("✅ searching complete New Site Name");
+			System.out.println("searching complete New Site Name");
 			Thread.sleep(3000);
 			
 			wait.until(ExpectedConditions.elementToBeClickable(clickoneditbutton)).click();
-			System.out.println("✅ Clicked on Edit Button");
+			System.out.println("Clicked on Edit Button");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to Search New Site Name: " + e.getMessage());
+			System.err.println("Failed to Search New Site Name: " + e.getMessage());
 		}
 	}
 
@@ -520,9 +520,9 @@ public class PageObjectForDeepFreezeSuite {
 			String expected = toastmsguserupdatedsuccessfully.getText();
 			String actual = toastmsguserupdatedsuccessfully.getText();
 			Assert.assertEquals(actual, expected, "❌ Not able to Add Site!");
-			System.out.println("✅ Site added successfully.: " + actual);
+			System.out.println("Site added successfully.: " + actual);
 		} catch (AssertionError e) {
-			System.err.println("❌ Not able to Add Site!" + e.getMessage());
+			System.err.println("Not able to Add Site!" + e.getMessage());
 		}
 	}
 
@@ -532,22 +532,22 @@ public class PageObjectForDeepFreezeSuite {
 			entersitename.click();
 			entersitename.clear();
 			entersitename.sendKeys("Automation test");
-			System.out.println("✅ Entered New Site Name");
+			System.out.println("Entered New Site Name");
 
 			wait.until(ExpectedConditions.elementToBeClickable(addnewsiteokbtn)).click();
-			System.out.println("✅ Clicked on OK Button");
+			System.out.println("Clicked on OK Button");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to Enter New Site Name: " + e.getMessage());
+			System.err.println("Failed to Enter New Site Name: " + e.getMessage());
 		}
 	}
 
 	public void ClickOnAddSiteButton() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(clickonaddsitebutton)).click();
-			System.out.println("✅ Clicked on Add Site Button");
+			System.out.println("Clicked on Add Site Button");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click on Add Site Button: " + e.getMessage());
+			System.err.println("Failed to click on Add Site Button: " + e.getMessage());
 		}
 
 	}
@@ -555,10 +555,10 @@ public class PageObjectForDeepFreezeSuite {
 	public void ClickOnMySiteOption() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(clickonmysiteoption)).click();
-			System.out.println("✅ Clicked on My Site Option");
+			System.out.println("Clicked on My Site Option");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click on My Site Option: " + e.getMessage());
+			System.err.println("Failed to click on My Site Option: " + e.getMessage());
 		}
 
 	}
@@ -575,10 +575,10 @@ public class PageObjectForDeepFreezeSuite {
 			Assert.assertEquals(actual, expectedMsg,
 					"❌ Toast verification failed! Expected: " + expectedMsg + " but got: " + actual);
 
-			System.out.println("✅ Toast message Verified: " + actual);
+			System.out.println("Toast message Verified: " + actual);
 
 		} catch (Exception e) {
-			Assert.fail("❌ Toast message not displayed at all! Expected: " + expectedMsg);
+			Assert.fail("Toast message not displayed at all! Expected: " + expectedMsg);
 		}
 	}
 
@@ -586,30 +586,30 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			// Click on Change Password button
 			wait.until(ExpectedConditions.elementToBeClickable(clickonchangepassword)).click();
-			System.out.println("✅ Clicked on 'Change Password'");
+			System.out.println("Clicked on 'Change Password'");
 
 			// Enter Old Password
 			WebElement oldPwd = wait.until(ExpectedConditions.visibilityOf(enteroldpassword));
 			oldPwd.clear();
 			oldPwd.sendKeys("Aloha@123");
 			oldPwd.sendKeys(Keys.TAB);
-			System.out.println("✅ Entered old password");
+			System.out.println("Entered old password");
 
 			// Enter New Password
 			WebElement newPwd = wait.until(ExpectedConditions.visibilityOf(enternewpassword));
 			newPwd.clear();
 			newPwd.sendKeys("Aloha@1234");
 			newPwd.sendKeys(Keys.TAB);
-			System.out.println("✅ Entered new password");
+			System.out.println("Entered new password");
 
 			// Re-enter New Password
 			WebElement reEnterPwd = wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword));
 			reEnterPwd.clear();
 			reEnterPwd.sendKeys("Aloha@1234");
-			System.out.println("✅ Re-entered new password");
+			System.out.println("Re-entered new password");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to change password: " + e.getMessage());
+			System.err.println("Failed to change password: " + e.getMessage());
 			throw e; // Optional: Fail the test if password change fails
 		}
 	}
@@ -618,30 +618,30 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			// Click on Change Password button
 			wait.until(ExpectedConditions.elementToBeClickable(clickonchangepassword)).click();
-			System.out.println("✅ Clicked on 'Change Password'");
+			System.out.println("Clicked on 'Change Password'");
 
 			// Enter Old Password
 			WebElement oldPwd = wait.until(ExpectedConditions.visibilityOf(enteroldpassword));
 			oldPwd.clear();
 			oldPwd.sendKeys("Aloha@1234");
 			oldPwd.sendKeys(Keys.TAB);
-			System.out.println("✅ Entered old password");
+			System.out.println("Entered old password");
 
 			// Enter New Password
 			WebElement newPwd = wait.until(ExpectedConditions.visibilityOf(enternewpassword));
 			newPwd.clear();
 			newPwd.sendKeys("Aloha@123");
 			newPwd.sendKeys(Keys.TAB);
-			System.out.println("✅ Entered new password");
+			System.out.println("Entered new password");
 
 			// Re-enter New Password
 			WebElement reEnterPwd = wait.until(ExpectedConditions.elementToBeClickable(enterreenterpassword));
 			reEnterPwd.clear();
 			reEnterPwd.sendKeys("Aloha@123");
-			System.out.println("✅ Re-entered new password");
+			System.out.println("Re-entered new password");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to change password: " + e.getMessage());
+			System.err.println("Failed to change password: " + e.getMessage());
 			throw e; // Optional: Fail the test if password change fails
 		}
 	}
@@ -649,9 +649,9 @@ public class PageObjectForDeepFreezeSuite {
 	public void SaveButtonOnMyProfile() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(savebtnonmyprofile)).click();
-			System.out.println("✅ Clicked on save button on My Profile page");
+			System.out.println("Clicked on save button on My Profile page");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click on Save button: " + e.getMessage());
+			System.err.println("Failed to click on Save button: " + e.getMessage());
 		}
 	}
 
@@ -660,14 +660,14 @@ public class PageObjectForDeepFreezeSuite {
 			wait.until(ExpectedConditions.elementToBeClickable(companyname)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(companyname)).clear();
 			wait.until(ExpectedConditions.elementToBeClickable(companyname)).sendKeys("Dighi2");
-			System.out.println("✅ Entered company name on My Profile page");
+			System.out.println("Entered company name on My Profile page");
 
 			wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).clear();
 			wait.until(ExpectedConditions.elementToBeClickable(enterphonenumber)).sendKeys("1234567890");
-			System.out.println("✅ Entered phone number on My Profile page");
+			System.out.println("Entered phone number on My Profile page");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to enter company name or phone number: " + e.getMessage());
+			System.err.println("Failed to enter company name or phone number: " + e.getMessage());
 		}
 	}
 
@@ -676,9 +676,9 @@ public class PageObjectForDeepFreezeSuite {
 			wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).clear();
 			wait.until(ExpectedConditions.elementToBeClickable(jobtitle)).sendKeys("QA Engineer");
-			System.out.println("✅ Entered Job Title on My Profile page");
+			System.out.println("Entered Job Title on My Profile page");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to enter Job Title: " + e.getMessage());
+			System.err.println("Failed to enter Job Title: " + e.getMessage());
 		}
 	}
 
@@ -687,23 +687,23 @@ public class PageObjectForDeepFreezeSuite {
 			wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).clear();
 			wait.until(ExpectedConditions.elementToBeClickable(fnameofmyprofile)).sendKeys("Nikhil2");
-			System.out.println("✅ Entered First Name on My Profile page");
+			System.out.println("Entered First Name on My Profile page");
 
 			wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).clear();
 			wait.until(ExpectedConditions.elementToBeClickable(lnameofmyprofile)).sendKeys("Gurav");
-			System.out.println("✅ Entered Last Name on My Profile page");
+			System.out.println("Entered Last Name on My Profile page");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to enter First or Last Name: " + e.getMessage());
+			System.err.println("Failed to enter First or Last Name: " + e.getMessage());
 		}
 	}
 
 	public void MyProfile() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(myprofile)).click();
-			System.out.println("✅ Clicked on My Profile option from logout drop-down");
+			System.out.println("Clicked on My Profile option from logout drop-down");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click on My Profile: " + e.getMessage());
+			System.err.println("Failed to click on My Profile: " + e.getMessage());
 		}
 	}
 
@@ -715,7 +715,7 @@ public class PageObjectForDeepFreezeSuite {
 			String expected = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
 			String actual = "Your login attempt has failed. The username or password may be incorrect. Please contact us at ";
 			Assert.assertEquals(actual, expected, "❌ User is logged in unexpectedly!");
-			System.out.println("✅ User is not able to login: " + actual);
+			System.out.println("User is not able to login: " + actual);
 		} catch (AssertionError e) {
 			System.err.println(e.getMessage());
 		}
@@ -725,9 +725,9 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(deleteuser)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(deletebuttonclickon)).click();
-			System.out.println("✅ Clicked on delete user button");
+			System.out.println("Clicked on delete user button");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to delete user: " + e.getMessage());
+			System.err.println("Failed to delete user: " + e.getMessage());
 		}
 	}
 
@@ -735,8 +735,8 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			String expected = "Your account is currently disabled. Please contact your system administrator.";
 			String actual = "Your account is currently disabled. Please contact your system administrator.";
-			Assert.assertEquals(actual, expected, "❌ User login or Not Disabled!");
-			System.out.println("✅ User is not able to login: " + actual);
+			Assert.assertEquals(actual, expected, "User login or Not Disabled!");
+			System.out.println("User is not able to login: " + actual);
 		} catch (AssertionError e) {
 			System.err.println(e.getMessage());
 		}
@@ -745,9 +745,9 @@ public class PageObjectForDeepFreezeSuite {
 	public void DisableCheckBoxOnEditUserWindow() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(disablecheckboxonedituserwindow)).click();
-			System.out.println("✅ Clicked on disabled checkbox (Disable user)");
+			System.out.println("Clicked on disabled checkbox (Disable user)");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click disabled checkbox: " + e.getMessage());
+			System.err.println("Failed to click disabled checkbox: " + e.getMessage());
 		}
 	}
 
@@ -757,7 +757,7 @@ public class PageObjectForDeepFreezeSuite {
 			String expected = toastmsguserupdatedsuccessfully.getText();
 			String actual = toastmsguserupdatedsuccessfully.getText();
 			Assert.assertEquals(actual, expected, "❌ User updated verification failed!");
-			System.out.println("✅ User Updated Successfully: " + actual);
+			System.out.println("User Updated Successfully: " + actual);
 		} catch (AssertionError e) {
 			System.err.println(e.getMessage());
 		}
@@ -766,9 +766,9 @@ public class PageObjectForDeepFreezeSuite {
 	public void UpdateBtn() {
 		try {
 			updatebtn.click();
-			System.out.println("✅ Clicked on update button");
+			System.out.println("Clicked on update button");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click update button: " + e.getMessage());
+			System.err.println("Failed to click update button: " + e.getMessage());
 		}
 	}
 
@@ -777,12 +777,12 @@ public class PageObjectForDeepFreezeSuite {
 			wait.until(ExpectedConditions.elementToBeClickable(permissiondropdown));
 			Select select = new Select(permissiondropdown);
 			select.selectByIndex(1);
-			System.out.println("✅ Selected 1st option from permission drop-down (Administrator)");
+			System.out.println("Selected 1st option from permission drop-down (Administrator)");
 
 			wait.until(ExpectedConditions.elementToBeClickable(selectallsites)).click();
-			System.out.println("✅ All sites selected properly");
+			System.out.println("All sites selected properly");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to select permission or sites: " + e.getMessage());
+			System.err.println("Failed to select permission or sites: " + e.getMessage());
 		}
 	}
 
@@ -791,14 +791,14 @@ public class PageObjectForDeepFreezeSuite {
 			wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).clear();
 			wait.until(ExpectedConditions.elementToBeClickable(UpdateFirstName)).sendKeys("Nikhil");
-			System.out.println("✅ Updated First name from Edit user page");
+			System.out.println("Updated First name from Edit user page");
 
 			wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).clear();
 			wait.until(ExpectedConditions.elementToBeClickable(UpdateLastName)).sendKeys("Gurav");
-			System.out.println("✅ Updated Last name from Edit user page");
+			System.out.println("Updated Last name from Edit user page");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to edit user: " + e.getMessage());
+			System.err.println("Failed to edit user: " + e.getMessage());
 		}
 	}
 
@@ -806,12 +806,12 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			if (editbtn.isDisplayed() && editbtn.isEnabled()) {
 				wait.until(ExpectedConditions.elementToBeClickable(editbtn)).click();
-				System.out.println("✅ Clicked on Edit button");
+				System.out.println("Clicked on Edit button");
 			} else {
-				System.err.println("❌ Edit button is either not visible or not enabled");
+				System.err.println("Edit button is either not visible or not enabled");
 			}
 		} catch (Exception e) {
-			System.err.println("❌ Edit button not found or click failed: " + e.getMessage());
+			System.err.println("Edit button not found or click failed: " + e.getMessage());
 		}
 	}
 
@@ -821,9 +821,9 @@ public class PageObjectForDeepFreezeSuite {
 			searchBox.clear();
 			searchBox.sendKeys("nikhil@sharklasers.com");
 			searchBox.sendKeys(Keys.ENTER);
-			System.out.println("✅ Searched user on user management page successfully");
+			System.out.println("Searched user on user management page successfully");
 		} catch (Exception e) {
-			System.err.println("❌ User search failed: " + e.getMessage());
+			System.err.println("User search failed: " + e.getMessage());
 		}
 	}
 
@@ -831,9 +831,9 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			
 			wait.until(ExpectedConditions.elementToBeClickable(onmainpageclickonAdGOTIT)).click();
-			System.out.println("✅ Clicked on 'Got it' button from welcome banner");
+			System.out.println("Clicked on 'Got it' button from welcome banner");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click 'Got it' button: " + e.getMessage());
+			System.err.println("Failed to click 'Got it' button: " + e.getMessage());
 		}
 	}
 
@@ -841,8 +841,8 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			String expected = "nikhil@sharklasers.com";
 			String actual = "nikhil@sharklasers.com";
-			Assert.assertEquals(actual, expected, "❌ User login verification failed!");
-			System.out.println("✅ Logged in as: " + actual);
+			Assert.assertEquals(actual, expected, "User login verification failed!");
+			System.out.println("Logged in as: " + actual);
 		} catch (AssertionError e) {
 			System.err.println(e.getMessage());
 		}
@@ -852,9 +852,9 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			
 			wait.until(ExpectedConditions.elementToBeClickable(onMyProfilePageclickonSave)).click();
-			System.out.println("✅ Clicked on save button on My Profile page");
+			System.out.println("Clicked on save button on My Profile page");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click save button on My Profile page: " + e.getMessage());
+			System.err.println("Failed to click save button on My Profile page: " + e.getMessage());
 		}
 	}
 
@@ -862,13 +862,13 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(enterOKbtn)).click();
-			System.out.println("✅ Clicked on OK button");
+			System.out.println("Clicked on OK button");
 			Thread.sleep(2000);
 		} catch (InterruptedException ie) {
 			Thread.currentThread().interrupt();
-			System.err.println("❌ Thread interrupted: " + ie.getMessage());
+			System.err.println("Thread interrupted: " + ie.getMessage());
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click OK button: " + e.getMessage());
+			System.err.println("Failed to click OK button: " + e.getMessage());
 		}
 	}
 
@@ -876,10 +876,10 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			
 			wait.until(ExpectedConditions.elementToBeClickable(EnterConfirmPassword)).sendKeys("Aloha@123");
-			System.out.println("✅ enter confirm password");
+			System.out.println("enter confirm password");
 
 		} catch (Exception e) {
-			System.err.println("❌ Failed to enter confirm password: " + e.getMessage());
+			System.err.println("Failed to enter confirm password: " + e.getMessage());
 		}
 	}
 
@@ -887,9 +887,9 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			
 			wait.until(ExpectedConditions.elementToBeClickable(EnterNewPassword)).sendKeys("Aloha@123");
-			System.out.println("✅ enter new password");
+			System.out.println("enter new password");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to enter new password: " + e.getMessage());
+			System.err.println("Failed to enter new password: " + e.getMessage());
 		}
 	}
 
@@ -897,22 +897,22 @@ public class PageObjectForDeepFreezeSuite {
 		try {
 			
 			wait.until(ExpectedConditions.elementToBeClickable(ClickonInviteMail)).click();
-			System.out.println("✅ Clicked on Invite Mail button");
+			System.out.println("Clicked on Invite Mail button");
 		} catch (Exception e) {
-			System.err.println("❌ Failed to click on Invite Mail button: " + e.getMessage());
+			System.err.println("Failed to click on Invite Mail button: " + e.getMessage());
 		}
 	}
 
 	public void clickonsetbuttong() {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(ClickOnSetButton)).click();
-			System.out.println("✅ Clicked on Set button");
+			System.out.println("Clicked on Set button");
 
 			// Optional wait after click
 			Thread.sleep(10000);
 		} catch (InterruptedException ie) {
 			Thread.currentThread().interrupt();
-			System.err.println("❌ Thread interrupted during wait: " + ie.getMessage());
+			System.err.println("Thread interrupted during wait: " + ie.getMessage());
 		} catch (Exception e) {
 			System.err.println("❌ Failed to click on Set button: " + e.getMessage());
 		}

@@ -11,6 +11,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import PageObject.DFOnDemandPagePOM;
+import PageObject.ManageGroupsPOM;
 import PageObject.PageObjectForDeepFreezeSuite;
 import PageObject.UtilitiesPagePOM;
 import Utilities.CustomReportListener;
@@ -79,6 +80,7 @@ public class HooksConcept extends BaseClass {
 
                 DeepFreezeSuitePg = new PageObjectForDeepFreezeSuite(driver);
                 UtilitiesPagePg = new UtilitiesPagePOM(driver);
+                ManageGroupspg = new ManageGroupsPOM(driver);
 
                 DeepFreezeSuitePg.enterEmailID(readConfig.getUsername());
                 DeepFreezeSuitePg.clickonNextBtn();
@@ -105,6 +107,8 @@ public class HooksConcept extends BaseClass {
         log.info("UtilitiesPagePOM PageObjects initialized.");
         if (DFOnDemandPagePg == null) DFOnDemandPagePg = new DFOnDemandPagePOM(driver);
         log.info("DFOnDemandPagePOM PageObjects initialized.");
+        if (ManageGroupspg == null) ManageGroupspg = new ManageGroupsPOM(driver);
+        log.info("ManageGroupsPOM PageObjects initialized.");
     }
 
     // ---------------- AFTER HOOKS ---------------- //
