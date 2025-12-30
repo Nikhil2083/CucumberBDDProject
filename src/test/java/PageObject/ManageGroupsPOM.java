@@ -63,7 +63,7 @@ public class ManageGroupsPOM {
 			System.err.println("error message not appeared on Add Groups dialog" + e);
 		}
 		
-	}
+	} 
 	
 	public void ClickonADDBtn() {
 		try {
