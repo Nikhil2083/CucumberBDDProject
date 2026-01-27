@@ -29,7 +29,7 @@ package DemoPractice;
 				
 				wait.until(ExpectedConditions.elementToBeClickable(emailid)).click();
 				emailid.sendKeys("nikhilguravnkil@gmail.com");
-				emailid.sendKeys(Keys.ENTER); 
+				emailid.sendKeys(Keys.ENTER);  
 				
 				WebElement password = driver.findElement(By.xpath("//input[@id='txtPassword']"));
 				wait.until(ExpectedConditions.elementToBeClickable(password)).click();
