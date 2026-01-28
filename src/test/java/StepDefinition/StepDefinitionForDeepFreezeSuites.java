@@ -58,7 +58,7 @@ public class StepDefinitionForDeepFreezeSuites extends BaseClass {
         DeepFreezeSuitePg.SearchNewlyAddedSiteNameAndClickOnEdit();
         log.info("Searched and clicked edit on newly added site.");
     //    ExtentReportManager.logStep(Status.INFO, "Searched and clicked edit on newly added site.");
-    }
+    }  
 
     @Then("Update Site Name and verified toast message: {string}")
     public void update_site_name_and_verified_toast_message(String string) {

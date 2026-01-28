@@ -16,7 +16,7 @@ import Utilities.ReadConfig;
 public class BaseClass {
 	ArrayList<String> tabs;
 	 
-	  public static WebDriver driver;
+	    public static WebDriver driver;
 	    public static ReadConfig readConfig = new ReadConfig();
 	    public static Logger log = LogManager.getLogger(BaseClass.class);
 
