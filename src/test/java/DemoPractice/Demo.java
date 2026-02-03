@@ -29,7 +29,7 @@ package DemoPractice;
 				
 				wait.until(ExpectedConditions.elementToBeClickable(emailid)).click();
 				emailid.sendKeys("nikhilguravnkil@gmail.com");
-				emailid.sendKeys(Keys.ENTER);   
+				emailid.sendKeys(Keys.ENTER);
 				
 				WebElement password = driver.findElement(By.xpath("//input[@id='txtPassword']"));
 				wait.until(ExpectedConditions.elementToBeClickable(password)).click();
@@ -47,13 +47,13 @@ package DemoPractice;
 					if (!Handel.equals(ftab)) {
 						driver.switchTo().window(Handel);
 						break;
-					}
+					} 
 				}
 				WebElement comp2 = wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("COMPUTERS")));
 				comp2.click();
 				Thread.sleep(2000);
 				
-				driver.close();
+				driver.close(); 
 				
 				driver.switchTo().window(ftab);
 				comp1.click();
