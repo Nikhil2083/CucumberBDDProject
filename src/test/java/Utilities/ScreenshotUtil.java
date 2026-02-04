@@ -24,7 +24,7 @@ public class ScreenshotUtil {
         String absoluteFilePath = screenshotDir + File.separator + fileName;
 
         TakesScreenshot ts = (TakesScreenshot) driver;
-        File src = ts.getScreenshotAs(OutputType.FILE);
+        File src = ts.getScreenshotAs(OutputType.FILE); 
         File dest = new File(absoluteFilePath);
         try {
             FileUtils.copyFile(src, dest);

@@ -406,7 +406,7 @@ public class PageObjectForDeepFreezeSuite {
 			System.out.println("Select newly created Site for switching cloud");
 
 		} catch (Exception e) {
-			System.err.println("Failed to switch Site: " + e.getMessage());
+			System.err.println("Failed to switch Site: " + e.getMessage()); 
 		}
 	}
 	

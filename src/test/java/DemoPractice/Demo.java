@@ -53,12 +53,13 @@ package DemoPractice;
 				comp2.click();
 				Thread.sleep(2000);
 				
-				driver.close(); 
+				driver.close();  
 				
 				driver.switchTo().window(ftab);
 				comp1.click();
 				Thread.sleep(2000);
 				driver.quit();
+				
 		}
 		
 		
