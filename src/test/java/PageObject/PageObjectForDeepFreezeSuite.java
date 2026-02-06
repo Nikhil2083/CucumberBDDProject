@@ -423,7 +423,7 @@ public class PageObjectForDeepFreezeSuite {
 		}
 	}
 
-	public void SearchNewlyCreatedSiteAndClickOnDelete() {
+ 	public void SearchNewlyCreatedSiteAndClickOnDelete() {
 		try {
 			WebElement searchSiteName = wait.until(ExpectedConditions.elementToBeClickable(searchnewlyaddedsitename));
 			searchSiteName.click();
