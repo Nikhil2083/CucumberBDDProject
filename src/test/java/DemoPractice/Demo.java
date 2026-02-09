@@ -58,7 +58,7 @@ package DemoPractice;
 				driver.switchTo().window(ftab);
 				comp1.click();
 				Thread.sleep(2000);
-				driver.quit(); 
+				driver.quit();  
 				
 		}
 		
