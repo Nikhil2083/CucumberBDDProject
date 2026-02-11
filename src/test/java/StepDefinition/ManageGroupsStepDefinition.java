@@ -24,7 +24,7 @@ public class ManageGroupsStepDefinition extends BaseClass {
 	@Then("Verify that Add Groups dialog is launched")
 	public void verify_that_add_groups_dialog_is_launched() {
 		ManageGroupspg.AddGroupsDialogAppeared();
-		log.info("Add Groups dialog is launched");
+		log.info("Add Groups dialog is launched"); 
 	}
 	
 	@Then("click on ADD button")
