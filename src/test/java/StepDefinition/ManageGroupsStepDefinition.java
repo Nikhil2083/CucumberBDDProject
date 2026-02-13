@@ -38,7 +38,7 @@ public class ManageGroupsStepDefinition extends BaseClass {
 		log.info("verified that group with empty name can not be created");
 	}
 	
-	   
+	    
 	
 	
 	
