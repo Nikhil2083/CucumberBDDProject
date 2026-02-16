@@ -32,7 +32,7 @@ public class ScreenshotUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         
+          
 
         // Return relative path for ExtentReports (relative to project root)
         String relativePath = "ScreenShot" + File.separator + fileName;

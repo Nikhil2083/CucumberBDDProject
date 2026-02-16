@@ -465,7 +465,7 @@ public class PageObjectForDeepFreezeSuite {
 		} catch (Exception e) {
 			Assert.fail("Unexpected error while verifying site name: " + e.getMessage());
 		}
-	}   
+	}    
 
 	public void UpdateSiteNameAndVerifywithToastMsg() {
 		try {
