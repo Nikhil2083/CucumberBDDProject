@@ -36,5 +36,5 @@ public class TestRunnerDFTest extends AbstractTestNGCucumberTests {
 	    @DataProvider(parallel = false)   
 	  public Object[][] scenarios() {
 	        return super.scenarios();
-} 
+}  
 	  }

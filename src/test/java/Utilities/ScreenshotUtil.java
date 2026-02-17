@@ -30,9 +30,8 @@ public class ScreenshotUtil {
             FileUtils.copyFile(src, dest);
             System.out.println("Screenshot saved: " + absoluteFilePath);
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-          
+            e.printStackTrace(); 
+        } 
 
         // Return relative path for ExtentReports (relative to project root)
         String relativePath = "ScreenShot" + File.separator + fileName;
