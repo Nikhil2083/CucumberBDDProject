@@ -38,4 +38,4 @@ public class ScreenshotUtil {
         relativePath = relativePath.replace("\\", "/"); // Ensure forward slashes for HTML
         return relativePath;
     }
-}
+} 
