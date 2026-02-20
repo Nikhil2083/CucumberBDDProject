@@ -1,4 +1,4 @@
-@test
+@test 
 Feature: Manage Groups
 
 Scenario: Verify Add Groups button display on manage group page.
