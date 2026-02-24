@@ -10,7 +10,7 @@ Scenario: Once clicking on Add Groups button ,add group dialog launched.
 And Click on Groups Page
 And Click on Add Groups button
 Then Verify that Add Groups dialog is launched
-   
+     
    
 Scenario: Verify group with empty name can not be created.
 Then click on ADD button
