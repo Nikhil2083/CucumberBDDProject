@@ -26,7 +26,7 @@ public class ManageGroupsStepDefinition extends BaseClass {
 		ManageGroupspg.AddGroupsDialogAppeared();
 		log.info("Add Groups dialog is launched"); 
 	}
-	      
+	       
 	@Then("click on ADD button")
 	public void click_on_add_button() {
 		ManageGroupspg.ClickonADDBtn();

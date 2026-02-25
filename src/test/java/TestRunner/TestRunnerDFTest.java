@@ -29,7 +29,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 		        "json:target/CucumberReports/JSONReport.json",
 		        "junit:target/CucumberReports/XMLReport.xml"}
 						 
-		)     
+		)        
 
 public class TestRunnerDFTest extends AbstractTestNGCucumberTests {
 	  @Override
