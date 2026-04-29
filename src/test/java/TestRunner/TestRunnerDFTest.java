@@ -28,6 +28,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 		        "html:target/CucumberReports/HTMLReport.html",
 		        "json:target/CucumberReports/JSONReport.json",
 		        "junit:target/CucumberReports/XMLReport.xml"}
+
 						 
 		)           
 

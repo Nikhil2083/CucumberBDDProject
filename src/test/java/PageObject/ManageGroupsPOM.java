@@ -88,7 +88,7 @@ public class ManageGroupsPOM {
 		
 	}
 	
-	public void  clickonaddgroupsbutton() {   
+	public void  clickonaddgroupsbutton() {    
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(AddGroupBTN)).click();
 			System.out.println("Clicked on Add groups button");
