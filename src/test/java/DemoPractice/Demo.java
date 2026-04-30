@@ -22,7 +22,7 @@ package DemoPractice;
 			 WebDriver driver = new ChromeDriver();
 			 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
 			 driver.get("https://www1.faronicsbeta.com/");
-			 
+			  
 			 driver.manage().window().maximize();
 				
 				WebElement emailid = driver.findElement(By.xpath("//input[@id='txtUserName']"));

@@ -101,7 +101,7 @@ public class ManageGroupsPOM {
 		try {
 			Longwait.until(ExpectedConditions.presenceOfElementLocated(By.id("addGroupButton")));
 			System.out.println("Add Groups Button is displayed on groups page.");
-		} catch (Exception e) {
+		} catch (Exception e) { 
 			System.err.println("Add Groups Button not displayed on Groups Page." + e);
 		}
 	}            
