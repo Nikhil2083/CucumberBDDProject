@@ -13,7 +13,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @CucumberOptions(features = "src/test/resources/Feature", 
 				glue = "StepDefinition", 
 				tags = "@test",
-				dryRun = false,  
+				dryRun = false,
 				monochrome = true,
 						publish = true,
 		/*  
@@ -29,7 +29,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 		        "json:target/CucumberReports/JSONReport.json",
 		        "junit:target/CucumberReports/XMLReport.xml"}
 
-						 
+				 
 		)           
 
 public class TestRunnerDFTest extends AbstractTestNGCucumberTests {

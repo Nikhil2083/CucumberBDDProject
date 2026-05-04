@@ -446,7 +446,7 @@ public class PageObjectForDeepFreezeSuite {
 		} catch (Exception e) {
 			System.err.println("Failed to Search and Delete New Site Name: " + e.getMessage());
 		}
-	}
+	} 
 
 	public void VerifySiteSwitchedToNewlyCreatedSite() {
 
