@@ -42,7 +42,7 @@ public class BaseClass {
  
         ChromeOptions options = new ChromeOptions();
          
-        options.setExperimentalOption("prefs", prefs);
+        options.setExperimentalOption("prefs", prefs); 
 
         // Headless mode check
         if (readConfig.getHeadless().equalsIgnoreCase("true")) {

@@ -26,7 +26,7 @@ Feature: DeepFreezeSuite
     And click on Logout
     And Close browser
     
-
+ 
     Examples: 
       | emails                         | passwords |
       | nikhilg@alohatechnologydev.com | Aloha@123 |
