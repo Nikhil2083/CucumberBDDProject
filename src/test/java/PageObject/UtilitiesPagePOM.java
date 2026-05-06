@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UtilitiesPagePOM {
-
+ 
 	WebDriver ldriver;
 	WebDriverWait wait;
     

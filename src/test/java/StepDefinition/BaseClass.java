@@ -12,7 +12,7 @@ import PageObject.PageObjectForDeepFreezeSuite;
 import PageObject.UtilitiesPagePOM;
 import PageObject.ManageGroupsPOM;
 import Utilities.ReadConfig;
-
+ 
 public class BaseClass {
 	ArrayList<String> tabs;
 	 

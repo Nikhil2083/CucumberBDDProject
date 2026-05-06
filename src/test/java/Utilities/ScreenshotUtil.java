@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
+ 
 public class ScreenshotUtil {
     public static String capture(WebDriver driver, String scenarioName) {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
