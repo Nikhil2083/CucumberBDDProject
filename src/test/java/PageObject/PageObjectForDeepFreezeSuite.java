@@ -20,7 +20,7 @@ public class PageObjectForDeepFreezeSuite {
 	WebDriver ldriver;
 	WebDriverWait wait;
 	WebDriverWait Longwait;
-    
+     
 	//Constructor
 	public PageObjectForDeepFreezeSuite(WebDriver rDriver) { 
 		ldriver = rDriver;
