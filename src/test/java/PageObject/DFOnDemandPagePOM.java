@@ -12,7 +12,7 @@ import org.testng.Assert;
    
     
 public class DFOnDemandPagePOM { 
-	WebDriver ldriver;
+	WebDriver ldriver; 
 	WebDriverWait wait;
 	WebDriverWait Longwait;
 
